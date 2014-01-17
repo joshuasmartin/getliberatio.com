@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: MyString
+  location: MyText
+  name: MyString
+  operating_system: MyString
+  serial_number: MyString
+  model_number: MyString
+  organization_id: 1
+
+two:
+  role: MyString
+  location: MyText
+  name: MyString
+  operating_system: MyString
+  serial_number: MyString
+  model_number: MyString
+  organization_id: 1

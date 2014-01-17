@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Application:</strong>
+  <%= @instance.application_id %>
+</p>
+
+<p>
+  <strong>Node:</strong>
+  <%= @instance.node_id %>
+</p>
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>

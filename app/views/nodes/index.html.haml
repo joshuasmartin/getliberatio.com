@@ -1,0 +1,27 @@
+.page-header
+  %h1 Computers
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Network Name
+      %th Location
+      %th Operating System
+      %th Model #
+      %th Role
+
+  %tbody
+    - if @nodes.any?
+      - @nodes.each do |node|
+        %tr
+          %td #{node.name}
+          %td #{node.location}
+          %td #{node.operating_system}
+          %td #{node.model_number}
+          %td #{node.role}
+    - else
+      %tr
+        %td{ colspan: 5 }
+          Oh no! You haven't added any computers yet -
+          = link_to "Add One Now", "#"
+          / TODO add image of oh no or something. have it link to a modal that displays instructions

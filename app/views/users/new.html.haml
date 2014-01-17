@@ -1,0 +1,31 @@
+.row
+
+  .col-md-4
+
+    %h3 Register for Liberatio
+
+  .col-md-4
+
+    = form_for :user, :url => users_path, :html => { :role => "form" } do |f|
+
+      .form-group
+        = f.label :email_address, "Email Address"
+        = f.email_field :email_address, :class => 'form-control first'
+
+      .form-group
+        = f.label :name, "Full Legal Name"
+        = f.text_field :name, :class => 'form-control'
+
+      .form-group
+        = f.label :organization_name, "Organization"
+        = f.text_field :organization_name, :class => 'form-control'
+
+      .form-group
+        = f.label :password, "Password"
+        = f.password_field :password, :class => 'form-control'
+
+      .form-group
+        = f.label :password, "Password (confirm)"
+        = f.password_field :password_confirmation, :class => 'form-control'
+
+      = f.submit "Save and Continue", :class => "btn btn-primary"

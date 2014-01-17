@@ -1,0 +1,23 @@
+.page-header
+  %h1 Software
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Version
+      %th Installation Count
+      %th Publisher
+
+  %tbody
+    - if @applications.any?
+      - @applications.each do |application|
+        %tr
+          %td #{application.name}
+          %td #{application.version}
+          %td #{Instance.where(application: application).count}
+          %td #{application.publisher}
+    - else
+      %tr
+        %td{ colspan: 4 }
+          We don't know about any software on your computers.
