@@ -32,7 +32,7 @@ class InventoriesController < ApplicationController
     #                                }
     #                 }
     # }
-    @node = Node.create_or_update_from_inventory(inventory_params[:inventory])
+    @node = Node.create_or_update_from_inventory(inventory_params)
 
     respond_to do |format|
       if @node
