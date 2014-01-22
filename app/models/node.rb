@@ -19,7 +19,7 @@ class Node < ActiveRecord::Base
     node = find_or_create_by(uuid: inventory[:uuid])
     node.update(inventory.except(:uuid))
 
-    inventory.applications.each do |a|
+    inventory[:applications].each do |a|
       application = Application.find_or_create_by( name: a[:name],
                                                    publisher: a[:publisher],
                                                    version: a[:version] )
