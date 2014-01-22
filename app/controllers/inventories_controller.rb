@@ -8,6 +8,8 @@
 
 class InventoriesController < ApplicationController
 
+  protect_from_forgery except: :create
+
   # POST /inventories
   def create
     # Creates or updates the database with the given inventory payload.
