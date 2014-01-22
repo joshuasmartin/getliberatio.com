@@ -32,6 +32,7 @@ class InventoriesController < ApplicationController
     #                                }
     #                 }
     # }
+    logger.debug "the params are #{inventory_params}"
     @node = Node.create_or_update_from_inventory(inventory_params)
 
     respond_to do |format|
