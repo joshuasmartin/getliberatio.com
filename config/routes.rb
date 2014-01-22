@@ -3,6 +3,7 @@ Liberatio::Application.routes.draw do
   get "browse/dashboard" => "browse#dashboard", :as => "dashboard"
   get "browse/home" => "browse#home"
 
+  resources :inventories, :only => :create
   resources :users
   resources :instances
   resources :applications
