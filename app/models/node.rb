@@ -16,7 +16,6 @@ class Node < ActiveRecord::Base
   validates :role, :inclusion => {:in => ["Workstation", "Server"]}
 
   def self.create_or_update_from_inventory(inventory)
-    logger.info inventory
     node = find_or_create_by(uuid: inventory['uuid'])
     node.update(inventory.except(:uuid))
 
