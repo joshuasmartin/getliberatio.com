@@ -12,12 +12,17 @@ class Node < ActiveRecord::Base
   has_many :instances
 
   # validations
-  validates :role, :name, :operating_system, :organization, presence: true
+  # validates :role, :name, :operating_system, :organization, presence: true
   validates :role, :inclusion => {:in => ["Workstation", "Server"]}
 
   def self.create_or_update_from_inventory(inventory)
-    node = find_or_create_by(uuid: inventory[:uuid])
-    node.update(inventory.except(:uuid, :applications))
+    node = where(uuid: inventory[:uuid]).first
+
+    if node.blank?
+      node = node.create(inventory.except(:applications))
+    else
+      node.update(inventory.except(:uuid, :applications))
+    end
 
     inventory[:applications].each do |a|
       application = Application.find_or_create_by( name: a[:name],
