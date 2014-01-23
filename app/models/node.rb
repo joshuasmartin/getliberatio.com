@@ -19,7 +19,7 @@ class Node < ActiveRecord::Base
     node = where(uuid: inventory[:uuid]).first
 
     if node.blank?
-      node = node.create(inventory.except(:applications))
+      node = create(inventory.except(:applications))
     else
       node.update(inventory.except(:uuid, :applications))
     end
