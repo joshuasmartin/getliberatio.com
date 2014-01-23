@@ -32,9 +32,6 @@ class InventoriesController < ApplicationController
     #                                }
     #                 }
     # }
-    logger.info "the params are #{inventory_params}"
-    logger.info "the inventory is #{params[:inventory]}"
-    logger.info "the uuid is #{params[:uuid]}"
     @node = Node.create_or_update_from_inventory(inventory_params)
 
     respond_to do |format|
