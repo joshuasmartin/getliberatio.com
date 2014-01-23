@@ -25,7 +25,7 @@ class NodesController < ApplicationController
 
   def registered
     @node = Node.where(uuid: params[:uuid]).first
-    respond_with @node, status: 302
+    respond_with @node
   end
 
   # GET /nodes/new
