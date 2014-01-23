@@ -12,7 +12,7 @@ class InstancesController < ApplicationController
   # GET /instances
   # GET /instances.json
   def index
-    @instances = Instance.all
+    @instances = current_user.organization.instances
   end
 
   # GET /instances/1
