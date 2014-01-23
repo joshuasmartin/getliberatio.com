@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123005626) do
+ActiveRecord::Schema.define(version: 20140123012031) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140123005626) do
     t.integer  "node_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   add_index "instances", ["application_id"], name: "index_instances_on_application_id"

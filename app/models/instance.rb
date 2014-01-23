@@ -8,9 +8,10 @@
 
 class Instance < ActiveRecord::Base
   # relationships
+  belongs_to :organization
   belongs_to :application
   belongs_to :node
 
   # validations
-  validates :application, :node, presence: true
+  validates :application, :organization_id, :node, presence: true
 end

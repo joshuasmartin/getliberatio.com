@@ -9,7 +9,7 @@
 class Organization < ActiveRecord::Base
   # relationships
   has_many :nodes
-  has_many :applications
+  has_many :instances
   has_many :users
 
   # validations
