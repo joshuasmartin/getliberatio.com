@@ -11,12 +11,13 @@
 
   %tbody
     - if @instances.any?
-      - @applications.each do |application|
-        %tr
-          %td #{application.name}
-          %td #{application.version}
-          %td #{Instance.where(application: application).count}
-          %td #{application.publisher}
+      - Application.each do |application|
+        - if application.instances.any?
+          %tr
+            %td #{application.name}
+            %td #{application.version}
+            %td #{Instance.where(application: application).count}
+            %td #{application.publisher}
     - else
       %tr
         %td{ colspan: 4 }

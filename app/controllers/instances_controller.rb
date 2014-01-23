@@ -13,7 +13,6 @@ class InstancesController < ApplicationController
   # GET /instances.json
   def index
     @instances = Instance.all
-    @applications = @instances.joins(:application)
   end
 
   # GET /instances/1
