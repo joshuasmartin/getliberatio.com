@@ -25,7 +25,12 @@ class NodesController < ApplicationController
 
   def registered
     @node = Node.where(uuid: params[:uuid]).first
-    respond_with @node
+    
+    if @node
+      render :nothing => true, :status => :ok
+    else
+      render :nothing => true, :status => :no_content
+    end
   end
 
   # GET /nodes/new
