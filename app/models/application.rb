@@ -12,5 +12,5 @@ class Application < ActiveRecord::Base
   has_many :instances
 
   # validations
-  validates :name, :organization, :publisher, :version, presence: true
+  #validates :name, :organization, :publisher, :version, presence: true
 end
