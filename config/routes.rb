@@ -10,7 +10,9 @@ Liberatio::Application.routes.draw do
   resources :organizations do
     get 'settings', :on => :member, :as => 'settings'
   end
-  resources :nodes
+  resources :nodes do
+    get 'registered', :on => :collection
+  end
 
   resources :sessions
   get "sessions/new" => "sessions#new", :as => "login"

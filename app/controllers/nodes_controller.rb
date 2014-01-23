@@ -8,6 +8,9 @@
 
 class NodesController < ApplicationController
   before_action :set_node, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :authenticate_user!, only: [:registered]
+
+  respond_to :json
 
   # GET /nodes
   # GET /nodes.json
@@ -18,6 +21,11 @@ class NodesController < ApplicationController
   # GET /nodes/1
   # GET /nodes/1.json
   def show
+  end
+
+  def registered
+    @node = Node.where(uuid: params[:uuid]).first
+    respond_with @node, status: 302
   end
 
   # GET /nodes/new
