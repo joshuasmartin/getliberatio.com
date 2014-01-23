@@ -17,7 +17,7 @@ class Node < ActiveRecord::Base
 
   def self.create_or_update_from_inventory(inventory)
     node = find_or_create_by(uuid: inventory[:uuid])
-    node.update(inventory.except([:uuid, :applications]))
+    node.update(inventory.except(:uuid, :applications))
 
     inventory[:applications].each do |a|
       application = Application.find_or_create_by( name: a[:name],
