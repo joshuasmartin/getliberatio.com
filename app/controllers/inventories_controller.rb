@@ -49,7 +49,7 @@ class InventoriesController < ApplicationController
   private
 
     def inventory_params
-      params.permit(:inventory)
+      params.require(:inventory).permit!
     end
   
 end
