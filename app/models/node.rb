@@ -13,7 +13,7 @@ class Node < ActiveRecord::Base
 
   # validations
   # validates :role, :name, :operating_system, :organization, presence: true
-  validates :role, :inclusion => {:in => ["Workstation", "Server"]}
+  validates :role, :inclusion => {:in => ["Workstation", "Server", "Domain Controller"]}
 
   def self.create_or_update_from_inventory(inventory)
     node = where(uuid: inventory[:uuid]).first
@@ -25,7 +25,6 @@ class Node < ActiveRecord::Base
     end
 
     inventory[:applications].each do |a|
-      logger.info "- -- ------  -- the a is #{a}"
       application = Application.find_or_create_by( name: a[:name],
                                                    publisher: a[:publisher],
                                                    version: a[:version] )

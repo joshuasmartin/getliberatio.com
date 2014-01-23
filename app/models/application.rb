@@ -8,9 +8,8 @@
 
 class Application < ActiveRecord::Base
   # relationships
-  belongs_to :organization
   has_many :instances
 
   # validations
-  #validates :name, :organization, :publisher, :version, presence: true
+  validates :name, :publisher, :version, presence: true
 end
