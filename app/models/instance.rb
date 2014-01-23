@@ -13,5 +13,5 @@ class Instance < ActiveRecord::Base
   belongs_to :node
 
   # validations
-  validates :application, :organization_id, :node, presence: true
+  validates :application, :organization, :node, presence: true
 end

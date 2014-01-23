@@ -12,7 +12,7 @@ class Node < ActiveRecord::Base
   has_many :instances
 
   # validations
-  # validates :role, :name, :operating_system, :organization, presence: true
+  validates :role, :name, :operating_system, :organization, presence: true
   validates :role, :inclusion => {:in => ["Workstation", "Server", "Domain Controller"]}
 
   def self.create_or_update_from_inventory(inventory)
