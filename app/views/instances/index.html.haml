@@ -11,7 +11,7 @@
 
   %tbody
     - if @instances.any?
-      - Application.each do |application|
+      - Application.order(:name).each do |application|
         - if application.instances.any?
           %tr
             %td #{application.name}
