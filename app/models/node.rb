@@ -15,11 +15,12 @@ class Node < ActiveRecord::Base
   validates :role, :name, :operating_system, :organization, presence: true
   validates :role, :inclusion => {:in => ["Workstation", "Server", "Domain Controller"]}
 
-  def self.create_or_update_from_inventory(inventory, organization_id)
+  def self.create_or_update_from_inventory(inventory, registration_code)
+    organization = Organization.where(registration_code: registration_code).first
     node = where(uuid: inventory[:uuid]).first
 
     if node.blank?
-      node = create(inventory.except(:applications).merge(organization_id: organization_id))
+      node = organization.nodes.create(inventory.except(:applications))
     else
       node.update(inventory.except(:uuid, :applications))
     end
@@ -29,7 +30,7 @@ class Node < ActiveRecord::Base
                                                    publisher: a[:publisher],
                                                    version: a[:version] )
 
-      node.instances.find_or_create_by(application_id: application.id, organization_id: node.organization_id)
+      node.instances.find_or_create_by(application_id: application.id, organization_id: organization.id)
     end
 
     return node
