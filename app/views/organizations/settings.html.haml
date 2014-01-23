@@ -1,0 +1,17 @@
+.row
+
+  .col-md-4
+
+    = form_for :organization, :html => { :class => "form-inline", :role => "form" } do |f|
+
+      = f.label :registration_code, "Registration Code"
+
+      %br/
+
+      .form-group
+        = f.text_field :registration_code, :readonly => true, :class => "form-control"
+
+      = link_to "#", :class => "btn btn-default" do
+        %span.glyphicon.glyphicon-refresh
+
+  .col-md-8

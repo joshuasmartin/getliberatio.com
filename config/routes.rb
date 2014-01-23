@@ -7,7 +7,9 @@ Liberatio::Application.routes.draw do
   resources :users
   resources :instances
   resources :applications
-  resources :organizations
+  resources :organizations do
+    get 'settings', :on => :member, :as => 'settings'
+  end
   resources :nodes
 
   resources :sessions
