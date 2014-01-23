@@ -25,6 +25,7 @@ class Node < ActiveRecord::Base
     end
 
     inventory[:applications].each do |a|
+      logger.info "- -- ------  -- the a is #{a}"
       application = Application.find_or_create_by( name: a[:name],
                                                    publisher: a[:publisher],
                                                    version: a[:version] )
