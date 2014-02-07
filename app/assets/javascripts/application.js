@@ -21,10 +21,10 @@ $(document).ready(function () {
   $('.first').focus();
 
   var dispatcher = new WebSocketRails('liberatio.herokuapp.com');
-  // dispatcher.on_open = (function() {
-  //   // trigger a server event immediately after opening connection
-  //   // dispatcher.trigger('new_user',{user_name: 'guest'});
-  //   console.log("Connected successfully");
-  // });
+  dispatcher.on_open = (function() {
+    // trigger a server event immediately after opening connection
+    // dispatcher.trigger('new_user',{user_name: 'guest'});
+    console.log("Connected successfully");
+  });
 
 });
