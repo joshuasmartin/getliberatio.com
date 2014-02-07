@@ -20,7 +20,7 @@ $(document).ready(function () {
 
   $('.first').focus();
 
-  var dispatcher = new WebSocketRails('liberatio.herokuapp.com');
+  var dispatcher = new WebSocketRails('liberatio.herokuapp.com/websocket');
   dispatcher.on_open = (function() {
     // trigger a server event immediately after opening connection
     // dispatcher.trigger('new_user',{user_name: 'guest'});
