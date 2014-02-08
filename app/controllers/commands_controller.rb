@@ -6,6 +6,7 @@ class CommandsController < WebsocketRails::BaseController
   # }
   def create
     # inventory = Node.create_or_update_from_inventory(message)
+    puts message
     send_message :create_success, "Success", :namespace => :commands
 
     # if task.save
