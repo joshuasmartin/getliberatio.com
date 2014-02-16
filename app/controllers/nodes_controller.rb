@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 
 class NodesController < ApplicationController
+  before_action :set_highlight
   before_action :set_node, only: [:show, :edit, :update, :destroy]
   skip_before_filter :authenticate_user!, only: [:registered]
 
@@ -84,12 +85,14 @@ class NodesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_node
       @node = current_user.organization.nodes.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_highlight
+      @highlight = "devices"
+    end
+
     def node_params
       params.require(:node).permit(:role, :location, :name, :operating_system, :serial_number, :model_number, :is_managed)
     end

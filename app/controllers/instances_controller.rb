@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 
 class InstancesController < ApplicationController
+  before_action :set_highlight
   before_action :set_instance, only: [:show, :edit, :update, :destroy]
 
   # GET /instances
@@ -70,12 +71,14 @@ class InstancesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_instance
       @instance = Instance.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_highlight
+      @highlight = "software"
+    end
+
     def instance_params
       params.require(:instance).permit(:application_id, :node_id)
     end
