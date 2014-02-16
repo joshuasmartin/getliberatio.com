@@ -46,6 +46,7 @@ class NodesController < ApplicationController
   # POST /nodes.json
   def create
     @node = current_user.organization.nodes.new(node_params)
+    @node.is_managed = false
 
     respond_to do |format|
       if @node.save

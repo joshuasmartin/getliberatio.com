@@ -28,7 +28,9 @@
               %td #{node.location}
               %td #{node.operating_system}
               %td #{node.model_number}
-              %td #{node.role}
+              %td
+                = image_tag("#{node.role}.png".downcase, :alt => node.role, :style => "width: 10px;")
+                = node.role
               %td #{link_to 'Details', node_path(node)}
         - else
           %tr

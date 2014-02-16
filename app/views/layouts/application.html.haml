@@ -5,7 +5,6 @@
 
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
-    <script src="http://www.fuelcdn.com/fuelux/2.6.0/loader.min.js" type="text/javascript"></script>
     = csrf_meta_tags
 
 %body
@@ -56,3 +55,9 @@
             = alert
 
     = yield
+
+  %footer.container
+    %hr/
+    %small
+      %p.text-muted
+        &copy; 2014, Joshua Shane Martin | Icons by #{link_to "icons8", "http://icons8.com/"}
