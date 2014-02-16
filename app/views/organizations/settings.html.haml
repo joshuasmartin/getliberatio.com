@@ -1,17 +1,42 @@
+.page-header
+  %h1 My Organization
+
 .row
 
-  .col-md-4
+  .col-md-6
 
-    = form_for :organization, :html => { :class => "form-inline", :role => "form" } do |f|
-
-      = f.label :registration_code, "Registration Code"
-
-      %br/
+    = form_for current_user.organization, :html => { :class => "form-horizontal", :role => "form" } do |f|
 
       .form-group
-        = f.text_field :registration_code, :readonly => true, :class => "form-control"
+        = f.label :name, "Name", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :name, :class => "form-control", :disabled => true
 
-      = link_to "#", :class => "btn btn-default" do
-        %span.glyphicon.glyphicon-refresh
+      .form-group
+        = f.label :registration_code, "Registration Code", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :registration_code, :class => "form-control", :readonly => true
+          %p.help-block
+            = link_to "#" do
+              Generate New Code
 
-  .col-md-8
+      .form-group
+        .col-sm-offset-5.col-sm-7
+          = f.submit "Clear", :name => "reset", :type => "reset", :class => "btn btn-default"
+          = f.submit "Save Changes", :class => "btn btn-primary"
+
+  .col-sm-offset-1.col-md-5
+    .well
+      .row
+        .col-md-4
+          %h2
+            = current_user.organization.nodes.count
+          Devices
+        .col-md-4
+          %h2
+            = current_user.organization.instances.count
+          Apps
+        .col-md-4
+          %h2
+            = current_user.organization.users.count
+          Users

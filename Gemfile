@@ -4,8 +4,6 @@ ruby "2.0.0"
 
 gem 'rails', '~>4.0.2'
 
-gem 'websocket-rails'
-
 gem 'haml'
 
 group :development do

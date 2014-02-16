@@ -2,9 +2,12 @@ Liberatio::Application.routes.draw do
 
   get "browse/dashboard" => "browse#dashboard", :as => "dashboard"
   get "browse/home" => "browse#home"
+  get "browse/roadmap" => "browse#roadmap", :as => "browse_roadmap"
 
   resources :inventories, :only => :create
-  resources :users
+  resources :users do
+    get 'settings', :on => :member, :as => 'settings'
+  end
   resources :instances
   resources :applications
   resources :organizations do

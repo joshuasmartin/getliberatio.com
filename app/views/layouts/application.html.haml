@@ -10,36 +10,37 @@
 %body
 
   %nav.navbar.navbar-default.navbar-fixed-top{ role: "navigation" }
-    .navbar-header
-      = link_to "Liberatio", root_path, :class => "navbar-brand"
+    .container
+      .navbar-header
+        = link_to "Liberatio", root_path, :class => "navbar-brand"
 
-    - if current_user
-      %ul.nav.navbar-nav
-        %li
-          = link_to "Computers", nodes_path
-        %li
-          = link_to "Software", instances_path
-        %li
-          = link_to "Protection", nodes_path
+      - if current_user
+        %ul.nav.navbar-nav
+          %li
+            = link_to "Devices", nodes_path
+          %li
+            = link_to "Software", instances_path
+          %li
+            = link_to "Protection", nodes_path
 
-    - if current_user
-      %ul.nav.navbar-nav.navbar-right
-        %li.dropdown
-          = link_to "#", "data-toggle" => "dropdown", :class => "dropdown-toggle" do
-            Joshua Shane Martin
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              = link_to "My Organization", settings_organization_path(current_user.organization_id)
-            %li.divider
-            %li
-              = link_to "My Settings", "#"
-            %li
-              = link_to "Logout", logout_path, method: :delete
-    - else
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          = link_to "Login or Register", login_path
+      - if current_user
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            = link_to "#", "data-toggle" => "dropdown", :class => "dropdown-toggle" do
+              Joshua Shane Martin
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                = link_to "My Organization", settings_organization_path(current_user.organization_id)
+              %li.divider
+              %li
+                = link_to "My Account", settings_user_path(current_user)
+              %li
+                = link_to "Logout", logout_path, method: :delete
+      - else
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            = link_to "Login or Register", login_path
 
   .container
 

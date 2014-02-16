@@ -1,0 +1,30 @@
+.row
+
+  .col-md-7
+
+    = form_for @node, :html => { :class => "form-horizontal", :role => "form" } do |f|
+
+      .form-group
+        = f.label :name, "Name", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :name, :class => "form-control"
+
+      .form-group
+        = f.label :location, "Location", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :location, :class => "form-control"
+
+      .form-group
+        = f.label :role, "Role", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.select :role, options_for_select([ "Workstation", "Server", "Domain Controller" ], @node.role), {}, { :class => "form-control" }
+
+      .form-group
+        = f.label :operating_system, "Operating System", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :operating_system, :class => "form-control"
+
+      .form-group
+        .col-sm-offset-5.col-sm-7
+          = f.submit "Clear", :name => "reset", :type => "reset", :class => "btn btn-default"
+          = f.submit "Save Changes", :class => "btn btn-primary"

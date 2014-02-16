@@ -1,27 +1,47 @@
-.page-header
-  %h1 Computers
+.alert.alert-warning.alert-dismissable
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  Liberatio only supports <strong>Windows computers</strong> at this time - check the
+  = link_to "Roadmap", browse_roadmap_path
+  to see when we'll be adding support for other systems.
 
-%table.table.table-bordered.table-striped.table-condensed
-  %thead
-    %tr
-      %th Network Name
-      %th Location
-      %th Operating System
-      %th Model #
-      %th Role
+%ol.breadcrumb
+  %li.active
+    Devices
 
-  %tbody
-    - if @nodes.any?
-      - @nodes.each do |node|
+.row
+  .col-md-10
+    %table.table.table-bordered.table-striped.table-condensed
+      %thead
         %tr
-          %td #{node.name}
-          %td #{node.location}
-          %td #{node.operating_system}
-          %td #{node.model_number}
-          %td #{node.role}
-    - else
-      %tr
-        %td{ colspan: 5 }
-          Oh no! You haven't added any computers yet -
-          = link_to "Add One Now", "#"
-          / TODO add image of oh no or something. have it link to a modal that displays instructions
+          %th Network Name
+          %th Location
+          %th Operating System
+          %th Model #
+          %th Role
+
+      %tbody
+        - if @nodes.any?
+          - @nodes.each do |node|
+            %tr
+              %td #{node.name}
+              %td #{node.location}
+              %td #{node.operating_system}
+              %td #{node.model_number}
+              %td #{node.role}
+        - else
+          %tr
+            %td{ colspan: 5 }
+              Oh no! You haven't added any devices yet -
+              = link_to "Add One Now", "#"
+              / TODO add image of oh no or something. have it link to a modal that displays instructions
+
+  .col-md-2
+    = link_to "Add Device", new_node_path, :class => "btn btn-primary btn-block"
+
+    %br/
+
+    .alert.alert-info
+      Registration Code
+      %br/
+      %strong
+        = current_user.organization.registration_code
