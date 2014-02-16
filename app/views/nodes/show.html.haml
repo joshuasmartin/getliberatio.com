@@ -76,9 +76,7 @@
               = link_to "Execute Command", "#"
             %li.divider
             %li
-              = link_to node_path(@node), :method => :delete, "data-confirm" => "Are you sure you want to delete this device? It will be re-created if you have not uninstalled the Agent from the device and it performs an inventory." do
-                %span.glyphicon.glyphicon-remove
-                Delete
+              = link_to node_path(@node), "Delete", :method => :delete, "data-confirm" => "Are you sure you want to delete this device? It will be re-created if you have not uninstalled the Agent from the device and it performs an inventory."
 
     %ul.nav.nav-tabs
       %li.active
