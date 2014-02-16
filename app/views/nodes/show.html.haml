@@ -4,5 +4,68 @@
   %li.active
     = @node.name
 
-%h2
-  = @node.name
+.row
+
+  .col-md-2
+    = image_tag("", :alt => @node.role, :class => "thumbnail col-md-12")
+
+  .col-md-10
+    %h2{ :style => "margin-top: 0;" } #{@node.name}
+    %h4 #{@node.role}, #{@node.operating_system}
+
+    %br/
+
+    .row
+
+      .col-md-7
+        %table.table.table-condensed.table-bordered
+          %tbody
+            %tr
+              %td.col-md-4 Name
+              %td #{@node.name}
+            %tr
+              %td Role
+              %td #{@node.role}
+            %tr
+              %td Operating System
+              %td #{@node.operating_system}
+            %tr
+              %td Location
+              %td #{@node.location}
+            %tr
+              %td Model Number
+              %td #{@node.model_number}
+            %tr
+              %td Serial Number
+              %td #{@node.serial_number}
+            %tr
+              %td Uses Agent?
+              %td #{@node.is_managed?}
+            %tr
+              %td UUID
+              %td #{@node.uuid}
+
+      .col-md-5
+        %table.table.table-condensed.table-bordered
+          %tbody
+            %tr
+              %td.col-md-5 Status
+              %td
+                %strong.text-success Online
+            %tr
+              %td Last Inventory
+              %td
+                %strong #{time_ago_in_words(@node.updated_at)}
+
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to "Software", "#software", "data-toggle" => "tab"
+
+    .tab-content
+      .tab-pane.active{ :id => "software" }
+
+        %table.table.table-condensed.table-bordered
+          %tr
+            %th Name
+            %th Version
+            %th Publisher

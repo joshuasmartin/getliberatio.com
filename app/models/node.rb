@@ -7,6 +7,9 @@
 # -----------------------------------------------------------------------------
 
 class Node < ActiveRecord::Base
+  # callbacks
+  before_create :generate_uuid
+
   # relationships
   belongs_to :organization
   has_many :instances
@@ -36,4 +39,8 @@ class Node < ActiveRecord::Base
     return node
   end
 
+  private
+    def generate_uuid
+      self.uuid = SecureRandom.uuid
+    end
 end
