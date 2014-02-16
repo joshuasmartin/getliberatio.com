@@ -64,8 +64,21 @@
     .tab-content
       .tab-pane.active{ :id => "software" }
 
+        %br/
+
         %table.table.table-condensed.table-bordered
-          %tr
-            %th Name
-            %th Version
-            %th Publisher
+          %thead
+            %tr
+              %th Name
+              %th Version
+              %th Publisher
+          %tbody
+            - if @node.instances.any?
+              - @node.instances.each do |instance|
+                %tr
+                  %td #{instance.application.name}
+                  %td #{instance.application.version}
+                  %td #{instance.application.publisher}
+            - else
+              %tr
+                %td{ colspan: 3 } No Software Inventoried
