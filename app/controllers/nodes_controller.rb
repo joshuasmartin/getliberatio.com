@@ -35,7 +35,7 @@ class NodesController < ApplicationController
 
   # GET /nodes/new
   def new
-    @node = Node.new
+    @node = current_user.organization.nodes.new
   end
 
   # GET /nodes/1/edit
@@ -85,11 +85,11 @@ class NodesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_node
-      @node = Node.find(params[:id])
+      @node = current_user.organization.nodes.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def node_params
-      params.require(:node).permit(:role, :location, :name, :operating_system, :serial_number, :model_number, :organization_id)
+      params.require(:node).permit(:role, :location, :name, :operating_system, :serial_number, :model_number, :is_managed)
     end
 end

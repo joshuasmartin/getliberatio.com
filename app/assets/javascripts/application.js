@@ -19,4 +19,6 @@ $(document).ready(function () {
 
   $('.first').focus();
 
+  $('a[data-toggle=tooltip]').tooltip();
+
 });

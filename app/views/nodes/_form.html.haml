@@ -4,10 +4,35 @@
 
     = form_for @node, :html => { :class => "form-horizontal", :role => "form" } do |f|
 
+      - if @node.errors.any?
+        .alert.alert-danger
+          %ul.list-unstyled
+            - @node.errors.full_messages.each do |msg|
+              %li
+                = msg
+
+      .form-group
+        = f.label :is_managed, "Managed?", :class => "control-label col-sm-5"
+        .col-sm-7
+          %p.form-control-static.text-muted
+            - if @node.id.blank?
+              No
+            - else
+              Yes
+
+      .form-group
+        = f.label :uuid, "UUID", :class => "control-label col-sm-5"
+        .col-sm-7
+          %p.form-control-static.text-muted
+            - unless @node.uuid.blank?
+              = @node.uuid
+            - else
+              Created Automatically
+
       .form-group
         = f.label :name, "Name", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.text_field :name, :class => "form-control"
+          = f.text_field :name, :class => "form-control first"
 
       .form-group
         = f.label :location, "Location", :class => "control-label col-sm-5"
@@ -17,12 +42,22 @@
       .form-group
         = f.label :role, "Role", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.select :role, options_for_select([ "Workstation", "Server", "Domain Controller" ], @node.role), {}, { :class => "form-control" }
+          = f.select :role, options_for_select(["Domain Controller", "Phone", "Router", "Server", "Tablet", "Workstation"], @node.role), { :include_blank => "Choose One" }, { :class => "form-control" }
 
       .form-group
         = f.label :operating_system, "Operating System", :class => "control-label col-sm-5"
         .col-sm-7
           = f.text_field :operating_system, :class => "form-control"
+
+      .form-group
+        = f.label :model_number, "Model Number", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :model_number, :class => "form-control"
+
+      .form-group
+        = f.label :serial_number, "Serial Number", :class => "control-label col-sm-5"
+        .col-sm-7
+          = f.text_field :serial_number, :class => "form-control"
 
       .form-group
         .col-sm-offset-5.col-sm-7

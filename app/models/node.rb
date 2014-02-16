@@ -13,7 +13,7 @@ class Node < ActiveRecord::Base
 
   # validations
   validates :role, :name, :operating_system, :organization, presence: true
-  validates :role, :inclusion => {:in => ["Workstation", "Server", "Domain Controller"]}
+  validates :role, :inclusion => {:in => ["Domain Controller", "Phone", "Router", "Server", "Tablet", "Workstation"]}, :if => Proc.new { |node| node.role.present? }
 
   def self.create_or_update_from_inventory(inventory, registration_code)
     organization = Organization.where(registration_code: registration_code).first

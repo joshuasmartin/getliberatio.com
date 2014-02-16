@@ -18,6 +18,7 @@
           %th Operating System
           %th Model #
           %th Role
+          %th
 
       %tbody
         - if @nodes.any?
@@ -28,9 +29,10 @@
               %td #{node.operating_system}
               %td #{node.model_number}
               %td #{node.role}
+              %td #{link_to 'Details', node_path(node)}
         - else
           %tr
-            %td{ colspan: 5 }
+            %td{ colspan: 6 }
               Oh no! You haven't added any devices yet -
               = link_to "Add One Now", "#"
               / TODO add image of oh no or something. have it link to a modal that displays instructions

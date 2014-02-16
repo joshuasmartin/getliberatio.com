@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123012604) do
+ActiveRecord::Schema.define(version: 20140216045539) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140123012604) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uuid"
+    t.boolean  "is_managed",       default: true
   end
 
   add_index "nodes", ["organization_id"], name: "index_nodes_on_organization_id"
