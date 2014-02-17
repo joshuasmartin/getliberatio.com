@@ -25,3 +25,5 @@
 body { padding-top: 70px; }
 
 .page-header { margin-top: 0; }
+
+h3.no-top-margin { padding-top: 0; }

@@ -17,11 +17,21 @@
       - if current_user
         %ul.nav.navbar-nav
           %li{ :class => ("active" if @highlight == "devices") }
-            = link_to "Devices", nodes_path
+            = link_to nodes_path do
+              = image_tag("devices.png", :alt => "Software", :style => "height: 20px;")
+              Devices
           %li{ :class => ("active" if @highlight == "software") }
-            = link_to "Software", instances_path
+            = link_to instances_path do
+              = image_tag("software.png", :alt => "Software", :style => "height: 20px;")
+              Software
           %li{ :class => ("active" if @highlight == "protection") }
-            = link_to "Protection", nodes_path
+            = link_to nodes_path do
+              = image_tag("protection.png", :alt => "Software", :style => "height: 20px;")
+              Protection
+      - else
+        %ul.nav.navbar-nav
+          %li
+            = link_to "Pricing", browse_pricing_path
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right

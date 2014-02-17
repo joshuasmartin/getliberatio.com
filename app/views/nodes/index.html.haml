@@ -1,8 +1,10 @@
 .alert.alert-warning.alert-dismissable
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  Liberatio only supports <strong>Windows computers</strong> at this time - check the
-  = link_to "Roadmap", browse_roadmap_path
-  to see when we'll be adding support for other systems.
+  %p <strong>Liberatio Agent only supports Windows at this time</strong>
+  %p
+    #{link_to "Get Notified", browse_roadmap_path} when we add other systems,
+    and keep an eye on our #{link_to "Roadmap", browse_roadmap_path}.
+    <strong>But keep in mind</strong>, you can add devices of any type, manually without using the Agent.
 
 %ol.breadcrumb
   %li.active

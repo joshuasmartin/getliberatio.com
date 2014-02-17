@@ -55,7 +55,7 @@
         = f.label :architecture, "Architecture", :class => "control-label col-sm-5"
         .col-sm-7
           - if @node.can_edit_special_field?
-            = f.select :architecture, options_for_select(["x86", "x64"], @node.architecture), { :include_blank => "Choose One" }, { :class => "form-control" }
+            = f.select :architecture, options_for_select(["x86", "x64", "MIPS", "Alpha", "PowerPC", "ARM", "Itanium"], @node.architecture), { :include_blank => "Choose One" }, { :class => "form-control" }
           - else
             %p.form-control-static
               = @node.architecture

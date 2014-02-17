@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216234959) do
+ActiveRecord::Schema.define(version: 20140217012006) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140216234959) do
     t.boolean  "is_managed",                default: true
     t.string   "architecture"
     t.string   "service_pack_update_level"
+    t.datetime "inventoried_at"
   end
 
   add_index "nodes", ["organization_id"], name: "index_nodes_on_organization_id"
