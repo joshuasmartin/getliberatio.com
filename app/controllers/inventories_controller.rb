@@ -32,6 +32,7 @@ class InventoriesController < ApplicationController
     #                                }
     #                 }
     # }
+    params.permit(:registration_code)
     @node = Node.create_or_update_from_inventory(inventory_params, params[:registration_code])
 
     respond_to do |format|
