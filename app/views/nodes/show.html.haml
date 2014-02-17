@@ -29,9 +29,17 @@
               %td
                 %strong #{@node.role}
             %tr
+              %td Architecture
+              %td
+                %strong #{@node.architecture}
+            %tr
               %td Operating System
               %td
                 %strong #{@node.operating_system}
+            %tr
+              %td Service Pack or Update
+              %td
+                %strong #{@node.service_pack_update_level}
             %tr
               %td Location
               %td #{@node.location}
@@ -73,10 +81,11 @@
             %span.caret
           %ul.dropdown-menu{ :role => "menu" }
             %li
-              = link_to "Execute Command", "#"
+              = link_to "Execute Command", "#", "data-toggle" => "modal", "data-target" => "#modal-execute-command"
             %li.divider
             %li
               = link_to "Delete", node_path(@node), :method => :delete, "data-confirm" => "Are you sure you want to delete this device? It will be re-created if you have not uninstalled the Agent from the device and it performs an inventory."
+        = link_to "Edit Details", edit_node_path, :class => "btn btn-default"
 
     %ul.nav.nav-tabs
       %li.active
@@ -103,3 +112,12 @@
             - else
               %tr
                 %td{ colspan: 3 } No Software Inventoried
+
+.modal.fade{ :id => "modal-execute-command" }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        %h4.modal-title Execute Command
+      .modal-body
+        test

@@ -1,0 +1,9 @@
+%ol.breadcrumb
+  %li
+    = link_to "Devices", nodes_path
+  %li
+    = link_to @node.name, node_path(@node)
+  %li.active
+    Editing
+
+= render 'form'

@@ -51,7 +51,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save
-        format.html { redirect_to @node, notice: 'Node was successfully created.' }
+        format.html { redirect_to @node, notice: 'Device was successfully added.' }
         format.json { render action: 'show', status: :created, location: @node }
       else
         format.html { render action: 'new' }
@@ -65,7 +65,7 @@ class NodesController < ApplicationController
   def update
     respond_to do |format|
       if @node.update(node_params)
-        format.html { redirect_to @node, notice: 'Node was successfully updated.' }
+        format.html { redirect_to @node, notice: 'Device was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -13,11 +13,11 @@
     %table.table.table-bordered.table-striped.table-condensed
       %thead
         %tr
-          %th Network Name
-          %th Location
+          %th.col-md-2 Name
+          %th.col-md-2 Role
           %th Operating System
-          %th Model #
-          %th Role
+          %th Location
+          %th.col-md-2 Model #
           %th
 
       %tbody
@@ -25,12 +25,12 @@
           - @nodes.each do |node|
             %tr
               %td #{node.name}
-              %td #{node.location}
-              %td #{node.operating_system}
-              %td #{node.model_number}
               %td
-                = image_tag("#{node.role}.png".downcase, :alt => node.role, :style => "width: 10px;")
+                = image_tag("#{node.role}.png".downcase, :alt => node.role, :style => "width: 16px;")
                 = node.role
+              %td #{node.operating_system}
+              %td #{node.location}
+              %td #{node.model_number}
               %td #{link_to 'Details', node_path(node)}
         - else
           %tr

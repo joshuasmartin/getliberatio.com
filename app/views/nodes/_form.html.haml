@@ -18,7 +18,10 @@
             - if @node.id.blank?
               No
             - else
-              Yes
+              - if @node.is_managed?
+                Yes
+              - else
+                No
 
       .form-group
         = f.label :uuid, "UUID", :class => "control-label col-sm-5"
@@ -32,7 +35,11 @@
       .form-group
         = f.label :name, "Name", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.text_field :name, :class => "form-control first"
+          - if @node.can_edit_special_field?
+            = f.text_field :name, :class => "form-control first"
+          - else
+            %p.form-control-static
+              = @node.name
 
       .form-group
         = f.label :location, "Location", :class => "control-label col-sm-5"
@@ -45,19 +52,49 @@
           = f.select :role, options_for_select(["Domain Controller", "Phone", "Router", "Server", "Tablet", "Workstation"], @node.role), { :include_blank => "Choose One" }, { :class => "form-control" }
 
       .form-group
+        = f.label :architecture, "Architecture", :class => "control-label col-sm-5"
+        .col-sm-7
+          - if @node.can_edit_special_field?
+            = f.select :architecture, options_for_select(["x86", "x64"], @node.architecture), { :include_blank => "Choose One" }, { :class => "form-control" }
+          - else
+            %p.form-control-static
+              = @node.architecture
+
+      .form-group
         = f.label :operating_system, "Operating System", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.text_field :operating_system, :class => "form-control"
+          - if @node.can_edit_special_field?
+            = f.select :operating_system, options_for_select(Node.operating_systems, @node.operating_system), { :include_blank => "Choose One" }, { :class => "form-control" }
+          - else
+            %p.form-control-static
+              = @node.operating_system
+
+      .form-group
+        = f.label :service_pack_update_level, "Service Pack or Update Level", :class => "control-label col-sm-5"
+        .col-sm-7
+          - if @node.can_edit_special_field?
+            = f.text_field :service_pack_update_level, :class => "form-control"
+          - else
+            %p.form-control-static
+              = @node.service_pack_update_level
 
       .form-group
         = f.label :model_number, "Model Number", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.text_field :model_number, :class => "form-control"
+          - if @node.can_edit_special_field?
+            = f.text_field :model_number, :class => "form-control"
+          - else
+            %p.form-control-static
+              = @node.model_number
 
       .form-group
         = f.label :serial_number, "Serial Number", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.text_field :serial_number, :class => "form-control"
+          - if @node.can_edit_special_field?
+            = f.text_field :serial_number, :class => "form-control"
+          - else
+            %p.form-control-static
+              = @node.serial_number
 
       .form-group
         .col-sm-offset-5.col-sm-7
