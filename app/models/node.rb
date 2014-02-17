@@ -49,9 +49,9 @@ class Node < ActiveRecord::Base
     node.memories.destroy_all
     inventory[:memory].each do |m|
       node.memories << node.memories.new( capacity: m[:capacity],
-                                          form_factor: m["FormFactor"],
+                                          form_factor: m[:form_factor],
                                           manufacturer: m[:manufacturer],
-                                          memory_type: m["MemoryType"],
+                                          memory_type: m[:memory_type],
                                           speed: m[:speed])
       node.save
     end
