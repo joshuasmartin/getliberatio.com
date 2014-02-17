@@ -126,14 +126,28 @@
 
             %h4 Memory
 
-            %table.table.table-condensed.table-bordered
-              %tbody
-                %tr
-                  %td.col-md-6 Memory Type
-                  %td
-                %tr
-                  %td Memory Capacity
-                  %td
+            - @node.memories.each_with_index do |memory, i|
+
+              %table.table.table-condensed.table-bordered
+                %tbody
+                  %tr
+                    %td.col-md-6 Module #
+                    %td #{i++}
+                  %tr
+                    %td Type
+                    %td #{memory.memory_type}
+                  %tr
+                    %td Form Factor
+                    %td #{memory.form_factor}
+                  %tr
+                    %td Manufacturer
+                    %td #{memory.manufacturer}
+                  %tr
+                    %td Capacity
+                    %td #{memory.capacity}
+                  %tr
+                    %td Speed
+                    %td #{memory.speed}
 
             %h4 Operating System
 

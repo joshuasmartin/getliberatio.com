@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217012006) do
+ActiveRecord::Schema.define(version: 20140217201437) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20140217012006) do
 
   add_index "instances", ["application_id"], name: "index_instances_on_application_id"
   add_index "instances", ["node_id"], name: "index_instances_on_node_id"
+
+  create_table "memories", force: true do |t|
+    t.integer  "node_id"
+    t.string   "capacity"
+    t.string   "form_factor"
+    t.string   "manufacturer"
+    t.string   "memory_type"
+    t.string   "speed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "nodes", force: true do |t|
     t.string   "role"
