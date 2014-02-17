@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  node_id: 1
+  capacity: MyString
+  form_factor: MyString
+  manufacturer: MyString
+  memory_type: MyString
+  speed: MyString
+
+two:
+  node_id: 1
+  capacity: MyString
+  form_factor: MyString
+  manufacturer: MyString
+  memory_type: MyString
+  speed: MyString

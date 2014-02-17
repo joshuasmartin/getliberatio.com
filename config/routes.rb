@@ -1,5 +1,7 @@
 Liberatio::Application.routes.draw do
 
+  resources :memories
+
   get "browse/dashboard" => "browse#dashboard", :as => "dashboard"
   get "browse/home" => "browse#home"
   get "browse/roadmap" => "browse#roadmap", :as => "browse_roadmap"

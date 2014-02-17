@@ -13,6 +13,7 @@ class Node < ActiveRecord::Base
   # relationships
   belongs_to :organization
   has_many :instances
+  has_many :memories
 
   # validations
   validates :role, :name, :operating_system, :organization, presence: true
@@ -35,12 +36,24 @@ class Node < ActiveRecord::Base
       node.update(inventory.except(:uuid, :applications))
     end
 
+    # applications
     inventory[:applications].each do |a|
       application = Application.find_or_create_by( name: a[:name],
                                                    publisher: a[:publisher],
                                                    version: a[:version] )
 
       node.instances.find_or_create_by(application_id: application.id, organization_id: organization.id)
+    end
+
+    # memories
+    node.memories.destroy_all
+    inventory[:memory].each do |m|
+      node.memories << node.memories.new( capacity: m[:capacity],
+                                          form_factor: m["FormFactor"],
+                                          manufacturer: m[:manufacturer],
+                                          memory_type: m["MemoryType"],
+                                          speed: m[:speed])
+      node.save
     end
 
     return node
