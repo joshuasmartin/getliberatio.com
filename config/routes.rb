@@ -2,10 +2,10 @@ Liberatio::Application.routes.draw do
 
   resources :memories
 
-  get "browse/dashboard" => "browse#dashboard", :as => "dashboard"
   get "browse/home" => "browse#home"
   get "browse/roadmap" => "browse#roadmap", :as => "browse_roadmap"
   get "browse/pricing" => "browse#pricing", :as => "browse_pricing"
+  get "browse/features" => "browse#features", :as => "browse_features"
 
   resources :inventories, :only => :create
   resources :users do

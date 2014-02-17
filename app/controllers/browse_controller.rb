@@ -8,14 +8,22 @@
 
 class BrowseController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:home, :pricing]
+  skip_before_filter :authenticate_user!, :only => [:home, :pricing, :features, :roadmap]
 
   # GET /browse/home
   def home
   end
 
-  # GET /browse/dashboard
-  def dashboard
+  def pricing
+    @highlight = "pricing"
+  end
+
+  def features
+    @highlight = "features"
+  end
+
+  def roadmap
+    @highlight = "features"
   end
   
 end

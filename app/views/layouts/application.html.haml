@@ -18,20 +18,28 @@
         %ul.nav.navbar-nav
           %li{ :class => ("active" if @highlight == "devices") }
             = link_to nodes_path do
-              = image_tag("devices.png", :alt => "Software", :style => "height: 20px;")
+              = image_tag("devices.png", :alt => "Software", :style => "height: 18px;")
               Devices
           %li{ :class => ("active" if @highlight == "software") }
             = link_to instances_path do
-              = image_tag("software.png", :alt => "Software", :style => "height: 20px;")
+              = image_tag("software.png", :alt => "Software", :style => "height: 18px;")
               Software
           %li{ :class => ("active" if @highlight == "protection") }
             = link_to nodes_path do
-              = image_tag("protection.png", :alt => "Software", :style => "height: 20px;")
+              = image_tag("protection.png", :alt => "Software", :style => "height: 18px;")
               Protection
       - else
         %ul.nav.navbar-nav
-          %li
-            = link_to "Pricing", browse_pricing_path
+          %li{ :class => ("active" if request.fullpath == root_path) }
+            = link_to "Home", root_path
+          %li{ :class => ("active" if @highlight == "pricing") }
+            = link_to browse_pricing_path do
+              = image_tag("plans.png", :alt => "Plans and Pricing", :style => "height: 18px;")
+              Plans + Pricing
+          %li{ :class => ("active" if @highlight == "features") }
+            = link_to browse_features_path do
+              = image_tag("features.png", :alt => "Features", :style => "height: 18px;")
+              Features
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right
@@ -49,6 +57,10 @@
                 = link_to "Logout", logout_path, method: :delete
       - else
         %ul.nav.navbar-nav.navbar-right
+          %li{ :class => ("active" if @highlight == "pricing") }
+            = link_to browse_pricing_path do
+              = image_tag("download.png", :alt => "Download", :style => "height: 18px;")
+              Download
           %li
             = link_to "Login or Register", login_path
 
