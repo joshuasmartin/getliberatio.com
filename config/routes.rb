@@ -1,5 +1,7 @@
 Liberatio::Application.routes.draw do
 
+  resources :processors
+
   resources :memories
 
   get "browse/home" => "browse#home"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217201437) do
+ActiveRecord::Schema.define(version: 20140218010235) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20140217201437) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "registration_code"
+  end
+
+  create_table "processors", force: true do |t|
+    t.integer  "node_id"
+    t.string   "architecture"
+    t.string   "name"
+    t.string   "cores_count"
+    t.string   "speed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

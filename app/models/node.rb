@@ -14,6 +14,7 @@ class Node < ActiveRecord::Base
   belongs_to :organization
   has_many :instances
   has_many :memories
+  has_many :processors
 
   # validations
   validates :role, :name, :operating_system, :organization, presence: true
@@ -53,6 +54,16 @@ class Node < ActiveRecord::Base
                                           manufacturer: m[:manufacturer],
                                           memory_type: m[:memory_type],
                                           speed: m[:speed])
+      node.save
+    end
+
+    # processors
+    node.processors.destroy_all
+    inventory[:processor].each do |m|
+      node.processors << node.processors.new( architecture: m[:architecture],
+                                              name: m[:name],
+                                              cores_count: m[:cores_count],
+                                              speed: m[:speed])
       node.save
     end
 

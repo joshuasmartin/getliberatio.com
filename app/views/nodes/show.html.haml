@@ -107,20 +107,29 @@
 
             %h4 Processor
 
-            %table.table.table-condensed.table-bordered
-              %tbody
-                %tr
-                  %td.col-md-6 Model
-                  %td
-                %tr
-                  %td Speed
-                  %td
-                %tr
-                  %td Cores
-                  %td
-                %tr
-                  %td Architecture
-                  %td
+            - if @node.processors.any?
+              - @node.processors.each_with_index do |processor, i|
+
+                %table.table.table-condensed.table-bordered
+                  %tbody
+                    %tr
+                      %td.col-md-6 Processor #
+                      %td #{i}
+                    %tr
+                      %td Name
+                      %td #{processor.name}
+                    %tr
+                      %td Architecture
+                      %td #{processor.architecture}
+                    %tr
+                      %td Number of Cores
+                      %td #{processor.cores_count}
+                    %tr
+                      %td Speed
+                      %td #{processor.speed}
+
+            - else
+              %p No processors inventoried.
 
           .col-md-4
 
