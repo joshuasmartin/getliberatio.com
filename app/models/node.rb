@@ -34,7 +34,7 @@ class Node < ActiveRecord::Base
     if node.blank?
       node = organization.nodes.create(inventory.except(:applications, :memory, :processor))
     else
-      node.update(inventory.except(:uuid, :applications))
+      node.update(inventory.except(:uuid, :applications, :memory, :processor).merge(:inventoried_at => Time.now))
     end
 
     # applications
