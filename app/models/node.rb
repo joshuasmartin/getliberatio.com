@@ -31,8 +31,10 @@ class Node < ActiveRecord::Base
     organization = Organization.where(registration_code: registration_code).first
     node = where(uuid: inventory[:uuid]).first
 
+    return nil if organization.blank?
+
     if node.blank?
-      node = organization.nodes.create(inventory.except(:applications, :memory, :processor))
+      node = organization.nodes.create(inventory.except(:applications, :memory, :processor).merge(:inventoried_at => Time.now))
     else
       node.update(inventory.except(:uuid, :applications, :memory, :processor).merge(:inventoried_at => Time.now))
     end
@@ -221,6 +223,8 @@ class Node < ActiveRecord::Base
 
   private
     def generate_uuid
-      self.uuid = SecureRandom.uuid
+      if self.uuid.blank?
+        self.uuid = SecureRandom.uuid
+      end
     end
 end
