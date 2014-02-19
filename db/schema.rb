@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219023051) do
+ActiveRecord::Schema.define(version: 20140219165203) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20140219023051) do
     t.string   "architecture"
     t.string   "service_pack_update_level"
     t.datetime "inventoried_at"
+    t.text     "token"
+    t.datetime "token_created_at"
   end
 
   add_index "nodes", ["organization_id"], name: "index_nodes_on_organization_id"

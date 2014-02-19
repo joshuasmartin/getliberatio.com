@@ -34,6 +34,24 @@ class NodesController < ApplicationController
     end
   end
 
+  # POST /nodes/register
+  def register
+    @organization = Organization.where(registration_code: params[:registration_code]).first!
+    
+    raise "Must provide a uuid" if !params.has_key?(:uuid)
+
+    # since the registration code matches, we create
+    # or update the node with a token to be returned
+    @node = Node.update_or_create_from_uuid(uuid: params[:uuid],
+                                            registration_code: @organization.registration_code)
+
+    render :json => @node.to_json( :only => [:uuid, :token] ), :status => :ok
+  rescue ActiveRecord::RecordNotFound
+    render :json => { errors: ["Registration Code is invalid"] }, :status => :unprocessable_entity
+  rescue => error
+    render :json => { errors: error }, :status => :unprocessable_entity
+  end
+
   # GET /nodes/new
   def new
     @node = current_user.organization.nodes.new

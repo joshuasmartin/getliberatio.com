@@ -22,6 +22,7 @@ Liberatio::Application.routes.draw do
   end
   resources :nodes do
     get 'registered', :on => :collection
+    post 'register', :on => :collection
   end
 
   resources :sessions

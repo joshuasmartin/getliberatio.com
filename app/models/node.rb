@@ -28,6 +28,17 @@ class Node < ActiveRecord::Base
   # end
 
 
+  # Returns a newly created or updated node object for the given uuid. The
+  # node will belong to the organization with the given registration code and
+  # will have its communications token regenerated before being returned.
+  def self.update_or_create_from_uuid(hsh = {})
+    @organization = Organization.where(registration_code: hsh[:registration_code]).first
+    @node = @organization.nodes.find_or_create_by(uuid: hsh[:uuid])
+    @node.regenerate_token!
+    return @node
+  end
+
+
   def self.create_or_update_from_inventory(inventory, registration_code)
     organization = Organization.where(registration_code: registration_code).first
     node = where(uuid: inventory[:uuid]).first
@@ -230,6 +241,15 @@ class Node < ActiveRecord::Base
     oses << "Windows Server 2012 R2 Standard"
     oses << "Windows Server 2012 R2 Datacenter"
     return oses
+  end
+
+  # Generates and saves a new string of numbers as the token
+  # for communication between the node and the Agent. Every communique
+  # must contain the token for the communique to be authentic.
+  def regenerate_token!
+    self.token = SecureRandom.hex
+    self.token_created_at = Time.now
+    self.save
   end
 
 
