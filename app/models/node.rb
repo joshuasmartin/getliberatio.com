@@ -40,60 +40,50 @@ class Node < ActiveRecord::Base
   end
 
 
-  def self.create_or_update_from_inventory(inventory, registration_code)
-    organization = Organization.where(registration_code: registration_code).first
-    node = where(uuid: inventory[:uuid]).first
-
-    return nil if organization.blank?
-
-    if node.blank?
-      node = organization.nodes.create(inventory.except(:applications, :memory, :processor, :disks).merge(:inventoried_at => Time.now))
-    else
-      node.update(inventory.except(:uuid, :applications, :memory, :processor, :disks).merge(:inventoried_at => Time.now))
-    end
+  
+  def inventory(inventory)
+    self.update(inventory.except(:uuid, :applications, :memory, :processor, :disks).merge(:inventoried_at => Time.now))
 
     # applications
+    self.instances.destroy_all
     inventory[:applications].each do |a|
       application = Application.find_or_create_by( name: a[:name],
                                                    publisher: a[:publisher],
                                                    version: a[:version] )
 
-      node.instances.find_or_create_by(application_id: application.id, organization_id: organization.id)
+      self.instances << self.instances.new(application_id: application.id, organization_id: self.organization_id)
     end
 
     # memories
-    node.memories.destroy_all
+    self.memories.destroy_all
     inventory[:memory].each do |m|
-      node.memories << node.memories.new( capacity: m[:capacity],
+      self.memories << self.memories.new( capacity: m[:capacity],
                                           form_factor: m[:form_factor],
                                           manufacturer: m[:manufacturer],
                                           memory_type: m[:memory_type],
                                           speed: m[:speed])
-      node.save
     end
 
     # processors
-    node.processors.destroy_all
-    inventory[:processor].each do |m|
-      node.processors << node.processors.new( architecture: m[:architecture],
-                                              name: m[:name],
-                                              cores_count: m[:cores_count],
-                                              speed: m[:speed])
-      node.save
+    self.processors.destroy_all
+    inventory[:processor].each do |p|
+      self.processors << self.processors.new( architecture: p[:architecture],
+                                              name: p[:name],
+                                              cores_count: p[:cores_count],
+                                              speed: p[:speed])
     end
 
     # disks
-    node.disks.destroy_all
+    self.disks.destroy_all
     inventory[:disks].each do |d|
-      node.disks << node.disks.new( disk_type: d[:disk_type],
+      self.disks << self.disks.new( disk_type: d[:disk_type],
                                     file_system: d[:file_system],
                                     free_bytes: d[:free_bytes],
                                     total_bytes: d[:total_bytes],
                                     volume_name: d[:volume_name])
-      node.save
     end
 
-    return node
+    self.save
   end
 
 
