@@ -251,7 +251,7 @@ class Node < ActiveRecord::Base
     self.token = SecureRandom.hex
     self.token_created_at = Time.now
 
-    # Do not save for as-yet saved nodes.
+    # Do not save for not-yet saved nodes.
     unless self.id.blank?
       self.save
     end
