@@ -83,7 +83,7 @@ class Node < ActiveRecord::Base
                                     volume_name: d[:volume_name])
     end
 
-    self.save
+    return self.save
   end
 
 

@@ -47,9 +47,9 @@ class NodesController < ApplicationController
 
     render :json => @node.to_json( :only => [:uuid, :token] ), :status => :ok
   rescue ActiveRecord::RecordNotFound
-    render :json => { errors: ["Registration Code is invalid"] }, :status => :unprocessable_entity
+    render :json => { [ "Registration Code is invalid" ] }, :status => :unprocessable_entity
   rescue => error
-    render :json => { errors: error }, :status => :unprocessable_entity
+    render :json => { [ error ] }, :status => :unprocessable_entity
   end
 
   # GET /nodes/new

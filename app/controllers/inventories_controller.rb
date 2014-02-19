@@ -37,14 +37,14 @@ class InventoriesController < ApplicationController
 
     respond_to do |format|
       if @node
-        format.json { render @node, status: :created, location: @node }
+        format.json { render json: { [ "Success" ] }, status: :ok }
       else
-        format.json { render json: @node.errors, status: :unprocessable_entity }
+        format.json { render json: @node.errors.full_messages, status: :unprocessable_entity }
       end
     end
 
   rescue => error
-    render :json => { errors: error }, :status => :unprocessable_entity
+    render :json => { [ error ] }, :status => :unprocessable_entity
   end
 
   private
