@@ -1,5 +1,7 @@
 Liberatio::Application.routes.draw do
 
+  resources :disks
+
   resources :processors
 
   resources :memories

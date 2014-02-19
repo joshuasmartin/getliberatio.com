@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  node_id: 1
+  drive_type: MyString
+  file_system: MyString
+  free_bytes: MyString
+  total_bytes: MyString
+  volume_name: MyString
+
+two:
+  node_id: 1
+  drive_type: MyString
+  file_system: MyString
+  free_bytes: MyString
+  total_bytes: MyString
+  volume_name: MyString

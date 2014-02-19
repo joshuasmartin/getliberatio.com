@@ -15,6 +15,7 @@ class Node < ActiveRecord::Base
   has_many :instances
   has_many :memories
   has_many :processors
+  has_many :disks
 
   # validations
   validates :role, :name, :operating_system, :organization, presence: true
@@ -34,9 +35,9 @@ class Node < ActiveRecord::Base
     return nil if organization.blank?
 
     if node.blank?
-      node = organization.nodes.create(inventory.except(:applications, :memory, :processor).merge(:inventoried_at => Time.now))
+      node = organization.nodes.create(inventory.except(:applications, :memory, :processor, :disks).merge(:inventoried_at => Time.now))
     else
-      node.update(inventory.except(:uuid, :applications, :memory, :processor).merge(:inventoried_at => Time.now))
+      node.update(inventory.except(:uuid, :applications, :memory, :processor, :disks).merge(:inventoried_at => Time.now))
     end
 
     # applications
@@ -66,6 +67,17 @@ class Node < ActiveRecord::Base
                                               name: m[:name],
                                               cores_count: m[:cores_count],
                                               speed: m[:speed])
+      node.save
+    end
+
+    # disks
+    node.disks.destroy_all
+    inventory[:disks].each do |d|
+      node.disks << node.disks.new( disk_type: d[:disk_type],
+                                    file_system: d[:file_system],
+                                    free_bytes: d[:free_bytes],
+                                    total_bytes: d[:total_bytes],
+                                    volume_name: d[:volume_name])
       node.save
     end
 

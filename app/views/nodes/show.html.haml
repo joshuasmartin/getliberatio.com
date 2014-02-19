@@ -166,7 +166,34 @@
 
           .col-md-4
 
-            %h4 Storage
+            %h4 Disks
+
+            - if @node.disks.any?
+              - @node.disks.each_with_index do |disk, i|
+
+                %table.table.table-condensed.table-bordered
+                  %tbody
+                    %tr
+                      %td.col-md-6 Disk #
+                      %td #{i}
+                    %tr
+                      %td Type
+                      %td #{disk.disk_type}
+                    %tr
+                      %td File System
+                      %td #{disk.file_system}
+                    %tr
+                      %td Volume Name
+                      %td #{disk.volume_name}
+                    %tr
+                      %td Total Size
+                      %td #{disk.total_bytes}
+                    %tr
+                      %td Free Size
+                      %td #{disk.free_bytes}
+
+            - else
+              %p No disks inventoried.
 
       .tab-pane.active{ :id => "software" }
 

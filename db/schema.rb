@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218010235) do
+ActiveRecord::Schema.define(version: 20140219023051) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 20140218010235) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "disks", force: true do |t|
+    t.integer  "node_id"
+    t.string   "disk_type"
+    t.string   "file_system"
+    t.string   "free_bytes"
+    t.string   "total_bytes"
+    t.string   "volume_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "disks", ["node_id"], name: "index_disks_on_node_id"
 
   create_table "instances", force: true do |t|
     t.integer  "application_id"
