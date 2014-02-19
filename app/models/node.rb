@@ -9,6 +9,7 @@
 class Node < ActiveRecord::Base
   # callbacks
   before_create :generate_uuid
+  before_create :regenerate_token!
 
   # relationships
   belongs_to :organization
@@ -249,9 +250,12 @@ class Node < ActiveRecord::Base
   def regenerate_token!
     self.token = SecureRandom.hex
     self.token_created_at = Time.now
-    self.save
-  end
 
+    # Do not save for as-yet saved nodes.
+    unless self.id.blank?
+      self.save
+    end
+  end
 
   private
     def generate_uuid
