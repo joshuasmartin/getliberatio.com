@@ -8,7 +8,7 @@
 
 class Application < ActiveRecord::Base
   # relationships
-  has_many :instances
+  has_many :instances, dependent: :destroy
 
   # validations
   validates :name, :publisher, :version, presence: true

@@ -13,10 +13,10 @@ class Node < ActiveRecord::Base
 
   # relationships
   belongs_to :organization
-  has_many :instances
-  has_many :memories
-  has_many :processors
-  has_many :disks
+  has_many :instances, dependent: :destroy
+  has_many :memories, dependent: :destroy
+  has_many :processors, dependent: :destroy
+  has_many :disks, dependent: :destroy
 
   # validations
   validates :uuid, :organization, presence: true

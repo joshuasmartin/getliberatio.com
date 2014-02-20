@@ -11,9 +11,9 @@ class Organization < ActiveRecord::Base
   before_create :generate_registration_code
 
   # relationships
-  has_many :nodes
-  has_many :instances
-  has_many :users
+  has_many :nodes, dependent: :destroy
+  has_many :instances, dependent: :destroy
+  has_many :users, dependent: :destroy
 
   # validations
   validates :name, presence: true
