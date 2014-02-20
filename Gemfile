@@ -38,8 +38,7 @@ end
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Web server
-# gem 'unicorn'
-gem 'thin'
+gem 'unicorn'
 
 # Heroku integration
 gem 'rails_12factor'
