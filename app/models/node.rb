@@ -19,7 +19,7 @@ class Node < ActiveRecord::Base
   has_many :disks
 
   # validations
-  validates :role, :name, :operating_system, :organization, presence: true
+  validates :uuid, :organization, presence: true
   validates :role, :inclusion => {:in => ["Domain Controller", "Phone", "Router", "Server", "Tablet", "Workstation"]}, :if => Proc.new { |node| node.role.present? }
   # validates :operating_system, :inclusion => {:in => Node.operating_systems}
 
