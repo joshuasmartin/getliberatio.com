@@ -7,9 +7,8 @@
 # -----------------------------------------------------------------------------
 
 class InventoriesController < ApplicationController
-
   protect_from_forgery except: :create
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, only: [:create]
   before_filter :authenticate_node!
 
   # POST /inventories
