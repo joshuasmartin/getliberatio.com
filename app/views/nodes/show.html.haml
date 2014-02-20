@@ -52,14 +52,6 @@
               %td
                 %strong #{@node.serial_number}
             %tr
-              %td Uses Agent?
-              %td
-                %strong
-                  - if @node.is_managed?
-                    Yes
-                  - else
-                    No
-            %tr
               %td UUID
               %td #{@node.uuid}
 
@@ -67,14 +59,23 @@
         %table.table.table-condensed.table-bordered
           %tbody
             %tr
-              %td.col-md-5 Status
+              %td Uses Agent?
               %td
-                %strong.text-success Online
-            %tr
-              %td Last Inventory
-              %td
-                - if @node.inventoried_at?
-                  %strong #{time_ago_in_words(@node.inventoried_at)}
+                %strong
+                  - if @node.is_managed?
+                    Yes
+                  - else
+                    No
+            - if @node.is_managed?
+              %tr
+                %td.col-md-5 Status
+                %td
+                  %strong.text-success Online
+              %tr
+                %td Last Inventory
+                %td
+                  - if @node.inventoried_at?
+                    %strong #{time_ago_in_words(@node.inventoried_at)}
 
         %hr/
 
