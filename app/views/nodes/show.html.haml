@@ -92,13 +92,13 @@
         = link_to "Edit Details", edit_node_path, :class => "btn btn-default"
 
     %ul.nav.nav-tabs
-      %li
+      %liactive
         = link_to "Hardware", "#hardware", "data-toggle" => "tab"
-      %li.active
+      %li
         = link_to "Software", "#software", "data-toggle" => "tab"
 
     .tab-content
-      .tab-pane{ :id => "hardware" }
+      .tab-pane.active{ :id => "hardware" }
 
         %br/
 
@@ -194,7 +194,7 @@
             - else
               %p No disks inventoried.
 
-      .tab-pane.active{ :id => "software" }
+      .tab-pane{ :id => "software" }
 
         %br/
 
