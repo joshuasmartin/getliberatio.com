@@ -25,15 +25,16 @@
       %tbody
         - if @nodes.any?
           - @nodes.each do |node|
-            %tr
-              %td #{node.name}
-              %td
-                = image_tag("#{node.role}.png".downcase, :alt => node.role, :style => "width: 16px;")
-                = node.role
-              %td #{node.operating_system}
-              %td #{node.location}
-              %td #{node.model_number}
-              %td #{link_to 'Details', node_path(node)}
+            - if !(node.is_managed? && node.inventoried_at.blank?)
+              %tr
+                %td #{node.name}
+                %td
+                  = image_tag("#{node.role}.png".downcase, :alt => node.role, :style => "width: 16px;")
+                  = node.role
+                %td #{node.operating_system}
+                %td #{node.location}
+                %td #{node.model_number}
+                %td #{link_to 'Details', node_path(node)}
         - else
           %tr
             %td{ colspan: 6 }

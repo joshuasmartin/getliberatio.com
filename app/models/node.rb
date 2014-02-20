@@ -35,6 +35,7 @@ class Node < ActiveRecord::Base
   def self.update_or_create_from_uuid(hsh = {})
     @organization = Organization.where(registration_code: hsh[:registration_code]).first
     @node = @organization.nodes.find_or_create_by(uuid: hsh[:uuid])
+    @node.is_managed = true
     @node.regenerate_token!
     return @node
   end
