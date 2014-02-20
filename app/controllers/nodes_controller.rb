@@ -49,7 +49,7 @@ class NodesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     render :json => { [ "Registration Code is invalid" ] }, :status => :unprocessable_entity
   rescue => error
-    render :json => { [ error ] }, :status => :unprocessable_entity
+    render :json => { [ error ] }.to_json, :status => :unprocessable_entity
   end
 
   # GET /nodes/new
