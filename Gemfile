@@ -41,7 +41,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'unicorn'
 
 # Heroku integration
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
