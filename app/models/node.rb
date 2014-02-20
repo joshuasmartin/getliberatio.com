@@ -8,7 +8,7 @@
 
 class Node < ActiveRecord::Base
   # callbacks
-  before_create :generate_uuid
+  before_validation :generate_uuid, :on => :create
   before_create :regenerate_token!
 
   # relationships
