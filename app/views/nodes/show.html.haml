@@ -222,4 +222,19 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         %h4.modal-title Execute Command
       .modal-body
-        test
+        = form_for :commands, :html => { :class => "form-horizontal", :role => "form" } do |f|
+          .form-group
+            = f.label :input, "Command", :class => "col-sm-2 control-label"
+            .col-sm-10
+              = f.text_field :input, :value => "rm -rf tmp/*", :class => "form-control", :style => "background-color: #000000; color: #ffffff; font-family: monospace"
+          .form-group
+            = f.label :output, "Output", :class => "col-sm-2 control-label"
+            .col-sm-10
+              = f.text_area :output, :value => "Deleted Successfully", :class => "form-control", :style => "background-color: #000000; color: #ffffff; font-family: monospace", :readonly => true
+          .form-group
+            .col-md-offset-2.col-sm-10
+              = link_to "Execute", "#", :class => "btn btn-primary"
+        .alert.alert-info.alert-small
+          %small
+            %strong Warning!
+            Commands will be run in the context of a <em>very privileged</em> account called LocalSystem. It is more powerful than an Administrator account, and will perform almost any function - even those that would destroy your computer. Liberatio cannot protect you from yourself - only execute commands whose ramifications you are willing to accept and capable of managing.
