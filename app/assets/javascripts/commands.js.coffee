@@ -73,3 +73,27 @@ $ ->
         $("#command_kind").css("color", "#888888")
         $("#command_executable").css("color", "#888888")
         $("#command_arguments").css("color", "#888888")
+
+
+  # Sets the 'kind' select to 'custom' and shows the modal
+  $("a.command-show-modal-custom").on('click', (event) ->
+    $("#command_kind").val("custom")
+    $("#command_kind").change()
+    $("#modal-execute-command").modal("show")
+  )
+
+
+  # Sets the 'kind' select to 'builtin' and shows the modal
+  $("a.command-show-modal-reboot").on('click', (event) ->
+    $("#command_kind").val("builtin")
+    $("#command_kind").change()
+    $("#modal-execute-command").modal("show")
+  )
+
+
+  # Sets the 'kind' select to 'builtin' and shows the modal
+  $("a.command-show-modal-shutdown").on('click', (event) ->
+    $("#command_kind").val("builtin")
+    $("#command_kind").change()
+    $("#modal-execute-command").modal("show")
+  )
