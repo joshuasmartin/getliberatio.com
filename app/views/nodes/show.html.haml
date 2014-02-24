@@ -235,13 +235,23 @@
 
           = form_for :command, :html => { :class => "form-horizontal", :role => "form" } do |f|
             .form-group
-              = f.label :executable, "Executable", :class => "col-sm-2 control-label"
+              = f.label :kind, "Kind", :class => "col-sm-2 control-label"
               .col-sm-10
-                = f.text_field :executable, :value => "rm", :class => "form-control first", :style => "background-color: #000000; color: #ffffff; font-family: monospace"
-            .form-group
-              = f.label :arguments, "Arguments", :class => "col-sm-2 control-label"
-              .col-sm-10
-                = f.text_field :arguments, :value => "-rf tmp/*", :class => "form-control", :style => "background-color: #000000; color: #ffffff; font-family: monospace"
+                = f.select :kind, options_for_select([["Builtin", "builtin"], ["Custom", "custom"]]), {}, { :class => "form-control" }
+            .page-builtin
+              .form-group
+                = f.label :executable, "Command", :class => "col-sm-2 control-label"
+                .col-sm-10
+                  = f.select :executable, options_for_select([["Reboot", "reboot"], ["Shutdown", "shutdown"]]), {}, { :class => "form-control" }
+            .page-custom
+              .form-group
+                = f.label :executable, "Executable", :class => "col-sm-2 control-label"
+                .col-sm-10
+                  = f.text_field :executable, :value => "rm", :class => "form-control first", :style => "background-color: #000000; color: #ffffff; font-family: monospace"
+              .form-group
+                = f.label :arguments, "Arguments", :class => "col-sm-2 control-label"
+                .col-sm-10
+                  = f.text_field :arguments, :value => "-rf tmp/*", :class => "form-control", :style => "background-color: #000000; color: #ffffff; font-family: monospace"
             .form-group
               = f.label :output, "Output", :class => "col-sm-2 control-label"
               .col-sm-10

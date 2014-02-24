@@ -1,6 +1,22 @@
 $ ->
 
 
+  $("#command_kind").on('change', (event) ->
+    value = $(this).val()
+
+    switch value
+      when "builtin"
+        $(".page-custom").hide()
+        $(".page-builtin").show()
+      when "custom"
+        $(".page-builtin").hide()
+        $(".page-custom").show()
+  )
+
+
+  $("#command_kind").change()
+
+
   # Creates the command object on the server and sends the
   # command to the given node via Pusher WebSocket
   $("a.command-execute").on('click', (event) ->
