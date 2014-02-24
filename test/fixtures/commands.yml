@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  node_id: 1
+  executable: MyText
+  arguments: MyText
+  output: MyText
+
+two:
+  node_id: 1
+  executable: MyText
+  arguments: MyText
+  output: MyText

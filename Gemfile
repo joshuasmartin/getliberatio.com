@@ -43,5 +43,8 @@ gem 'unicorn'
 # Heroku integration
 gem 'rails_12factor', group: :production
 
+# Pusher WebSockets
+gem 'pusher'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]

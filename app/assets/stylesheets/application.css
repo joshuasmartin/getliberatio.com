@@ -29,3 +29,5 @@ body { padding-top: 70px; }
 h3.no-top-margin { padding-top: 0; }
 
 .alert-small { padding: 10px; }
+
+.navbar-brand { padding-top: 13px; }

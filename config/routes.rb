@@ -1,5 +1,7 @@
 Liberatio::Application.routes.draw do
 
+  post "pusher/auth" => "pusher#auth"
+
   resources :disks
 
   resources :processors
@@ -21,6 +23,7 @@ Liberatio::Application.routes.draw do
     get 'settings', :on => :member, :as => 'settings'
   end
   resources :nodes do
+    resources :commands
     get 'registered', :on => :collection
     post 'register', :on => :collection
   end

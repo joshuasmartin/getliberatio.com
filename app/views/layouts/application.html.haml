@@ -3,6 +3,9 @@
   %head
     %title Liberatio
 
+    = favicon_link_tag '/favicon.ico'
+    = favicon_link_tag '/favicon.png', rel: 'apple-touch-icon', type: 'image/png'
+
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -12,7 +15,8 @@
   %nav.navbar.navbar-default.navbar-fixed-top{ role: "navigation" }
     .container
       .navbar-header
-        = link_to "Liberatio", root_path, :class => "navbar-brand"
+        = link_to root_path, :class => "navbar-brand" do
+          = image_tag("nav-logo.png", :alt => "")
 
       - if current_user
         %ul.nav.navbar-nav

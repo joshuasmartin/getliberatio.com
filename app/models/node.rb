@@ -13,6 +13,7 @@ class Node < ActiveRecord::Base
 
   # relationships
   belongs_to :organization
+  has_many :commands, dependent: :destroy
   has_many :instances, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :processors, dependent: :destroy

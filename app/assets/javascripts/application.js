@@ -19,6 +19,11 @@ $(document).ready(function () {
 
   $('.first').focus();
 
+  $('.modal').off('shown.bs.modal');
+  $('.modal').on('shown.bs.modal', function(event) {
+    $(this).find('.first').focus();
+  });
+
   $('a[data-toggle=tooltip]').tooltip();
 
 });
