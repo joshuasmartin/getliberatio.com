@@ -14,7 +14,7 @@ class Command < ActiveRecord::Base
   belongs_to :node
 
   def to_pusher_hash
-    { commands: { "reboot" } }
+    { commands: { builtin: "reboot" } }
   end
 
   def trigger_event
