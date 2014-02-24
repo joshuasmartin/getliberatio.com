@@ -258,9 +258,9 @@
                 = f.text_area :output, :class => "form-control", :style => "background-color: #000000; color: #888888; font-family: monospace", :readonly => true
             .form-group
               .col-md-offset-2.col-sm-10
-                = image_tag("waiting.gif", :alt => "Working")
                 = link_to "Execute", "javascript:void(0)", :class => "btn btn-primary command-execute", "data-node_id" => @node.id
                 <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                = image_tag("waiting.gif", :alt => "Working", :class => "waiting", :style => "display: none;")
           .alert.alert-warning.alert-small
             %small
               %strong Warning!

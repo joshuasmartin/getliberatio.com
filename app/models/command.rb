@@ -8,7 +8,7 @@
 
 class Command < ActiveRecord::Base
   # callbacks
-  after_create :trigger_event
+  # after_create :trigger_event
 
   # relationships
   belongs_to :node

@@ -22,14 +22,8 @@ $ ->
   $("a.command-execute").on('click', (event) ->
     link = $(this)
 
-    link.text("Working...")
-    link.attr("disabled", true)
-
-    $("#command_executable").attr("disabled", true)
-    $("#command_arguments").attr("disabled", true)
-
-    $("#command_executable").css("color", "#888888")
-    $("#command_arguments").css("color", "#888888")
+    # switch the form to non-editable
+    switchForm("off")
 
     $("#command_output").val("Sending command to device..")
 
@@ -49,5 +43,33 @@ $ ->
         $("#command_output").val(textStatus)
         console.log "AJAX Error: #{textStatus}"
       success: (data, textStatus, jqXHR) ->
+        switchForm("on")
         # $("#modal-execute-command").modal("hide")
   )
+
+  switchForm = (onOrOff) ->
+    switch onOrOff
+      when "on"
+        $(".command-execute").text("Execute")
+        $(".command-execute").attr("disabled", false)
+
+        $("img.waiting").hide()
+
+        $("#command_kind").attr("disabled", false)
+        $("#command_executable").attr("disabled", false)
+        $("#command_arguments").attr("disabled", false)
+        $("#command_kind").css("color", "#000000")
+        $("#command_executable").css("color", "#000000")
+        $("#command_arguments").css("color", "#000000")
+      when "off"
+        $(".command-execute").text("Working...")
+        $(".command-execute").attr("disabled", true)
+
+        $("img.waiting").show()
+
+        $("#command_kind").attr("disabled", true)
+        $("#command_executable").attr("disabled", true)
+        $("#command_arguments").attr("disabled", true)
+        $("#command_kind").css("color", "#888888")
+        $("#command_executable").css("color", "#888888")
+        $("#command_arguments").css("color", "#888888")
