@@ -13,13 +13,21 @@ class Command < ActiveRecord::Base
   # relationships
   belongs_to :node
 
-  def to_pusher_hash
-    { commands: { builtin: "reboot" } }
+  # Returns a hash whose content depends on the 'kind' of command this is.
+  def to_pusher_json
+    case self.kind
+    when "builtin"
+      { commands: { builtin: "reboot" } }
+    when "custom"
+      { commands: { executable: self.executable, arguments: self.arguments } }
+    end
   end
 
+  # Triggers the 'commands.run' event on all clients on the private channel
+  # belonging to the device. It checks first to see that the device is ready.
   def trigger_event
     begin
-      Pusher.trigger("private-cmd_#{self.node.uuid}", "commands.run", self.to_pusher_hash)
+      Pusher.trigger("private-cmd_#{self.node.uuid}", "commands.run", self.to_pusher_json)
     rescue Pusher::Error => error
       logger.error error.message
       self.output << "Error executing command"

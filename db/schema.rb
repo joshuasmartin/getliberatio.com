@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222154522) do
+ActiveRecord::Schema.define(version: 20140224162314) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140222154522) do
     t.text     "output"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "kind"
   end
 
   add_index "commands", ["node_id"], name: "index_commands_on_node_id"
