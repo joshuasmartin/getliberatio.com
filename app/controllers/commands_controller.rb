@@ -32,6 +32,6 @@ class CommandsController < ApplicationController
     end
 
     def command_params
-      params.require(:command).permit(:executable, :arguments)
+      params.require(:command).permit(:name, :kind, :executable, :arguments)
     end
 end

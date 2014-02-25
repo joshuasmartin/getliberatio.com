@@ -240,9 +240,9 @@
                 = f.select :kind, options_for_select([["Builtin", "builtin"], ["Custom", "custom"]]), {}, { :class => "form-control" }
             .page-builtin
               .form-group
-                = f.label :executable, "Command", :class => "col-sm-2 control-label"
+                = f.label :name, "Command", :class => "col-sm-2 control-label"
                 .col-sm-10
-                  = f.select :executable, options_for_select([["Reboot", "reboot"], ["Shutdown", "shutdown"]]), {}, { :class => "form-control" }
+                  = f.select :name, options_for_select([["Reboot", "reboot"], ["Shutdown", "shutdown"]]), {}, { :class => "form-control" }
             .page-custom
               .form-group
                 = f.label :executable, "Executable", :class => "col-sm-2 control-label"

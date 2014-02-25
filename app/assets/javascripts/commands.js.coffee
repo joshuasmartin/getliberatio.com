@@ -87,6 +87,8 @@ $ ->
   $("a.command-show-modal-reboot").on('click', (event) ->
     $("#command_kind").val("builtin")
     $("#command_kind").change()
+    $("#command_name").val("reboot")
+    $("#command_name").change()
     $("#modal-execute-command").modal("show")
   )
 
@@ -95,5 +97,7 @@ $ ->
   $("a.command-show-modal-shutdown").on('click', (event) ->
     $("#command_kind").val("builtin")
     $("#command_kind").change()
+    $("#command_name").val("shutdown")
+    $("#command_name").change()
     $("#modal-execute-command").modal("show")
   )

@@ -17,7 +17,7 @@ class Command < ActiveRecord::Base
   def to_pusher_json
     case self.kind
     when "builtin"
-      { commands: { builtin: "reboot" } }
+      { commands: { name: self.name } }
     when "custom"
       { commands: { executable: self.executable, arguments: self.arguments } }
     end
