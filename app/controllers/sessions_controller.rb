@@ -25,7 +25,13 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:password]) # authenticated
         format.html {
           session[:user_id] = user.id
-          redirect_to root_path
+
+          # Continue sign up if a plan is in the session
+          if session[:plan]
+            redirect_to browse_buy_path
+          else
+            redirect_to root_path
+          end
         }
         format.json { render :json => user.as_json( :only => [:api_key, :api_secret] ) }
       else

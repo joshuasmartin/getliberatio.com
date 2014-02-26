@@ -38,8 +38,16 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        session[:user_id] = @user.id
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html {
+          session[:user_id] = user.id
+
+          # Continue sign up if a plan is in the session
+          if session[:plan]
+            redirect_to browse_buy_path
+          else
+            redirect_to root_path
+          end
+        }
       else
         flash[:alert] = @user.errors.full_messages
         format.html { render action: 'new' }

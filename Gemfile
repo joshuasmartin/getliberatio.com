@@ -46,8 +46,9 @@ gem 'rails_12factor', group: :production
 # Pusher WebSockets
 gem 'pusher'
 
-# Currency
+# Currency and money
 gem 'money-rails'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

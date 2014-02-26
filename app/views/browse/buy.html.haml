@@ -1,0 +1,21 @@
+.row
+
+  .col-md-offset-1.col-md-5
+
+    %h4 Great, you're signing up for the
+    %h2 #{session[:plan]} Plan
+    %h5.text-muted You'll be billed #{@price} every month
+
+  .col-md-6
+
+    - if !current_user
+      .row
+        .col-md-6
+          .well
+            = link_to "Sign In", new_session_path, :class => "btn btn-primary btn-lg"
+        .col-md-6
+          .well
+            = link_to "Register", new_user_path, :class => "btn btn-primary btn-lg"
+    - else
+      %h4 Credit or Debit Card
+      %hr
