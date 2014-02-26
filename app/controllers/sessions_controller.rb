@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   # POST /sessions
   def create
     # we don't want the session to keep old stuff
-    reset_session
+    # reset_session
 
     user = User.where(email_address: params[:email_address].downcase).first
 

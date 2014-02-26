@@ -22,8 +22,21 @@ class BrowseController < ApplicationController
   def buy
     @highlight = "pricing"
 
-    # Set the session
-    session[:plan] = params[:plan] if params.has_key?(:plan)
+    # Set session variable
+    if params.has_key?(:plan)
+      plan = { :name => params[:plan]  }
+      case params[:plan]
+      when "Brook"
+        plan[:price_cents] = 19*100
+      when "Stream"
+        plan[:price_cents] = 89*100
+      when "Creek"
+        plan[:price_cents] = 299*100
+      when "River"
+        plan[:price_cents] = 599*100
+      end
+      session[:plan] = plan
+    end
   end
 
   # GET /browse/features

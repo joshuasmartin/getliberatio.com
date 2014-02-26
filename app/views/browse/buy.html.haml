@@ -3,8 +3,8 @@
   .col-md-offset-1.col-md-5
 
     %h4 Great, you're signing up for the
-    %h2 #{session[:plan]} Plan
-    %h5.text-muted You'll be billed #{@price} every month
+    %h2 #{session[:plan][:name]} Plan
+    %h5.text-muted You'll be billed $#{session[:plan][:price_cents]/100} every month
 
   .col-md-6
 
@@ -19,3 +19,6 @@
     - else
       %h4 Credit or Debit Card
       %hr
+
+      %form{ :action => "/charge", :method => "POST" }
+        %script{ :src => "https://checkout.stripe.com/checkout.js", :class => "stripe-button", "data-key" => Rails.configuration.stripe[:publishable_key], "data-image" => "", "data-name" => "Signing Up", "data-description" => "#{session[:plan][:name]} Plan ($#{session[:plan][:price_cents]/100}/month)", "data-amount" => session[:plan][:price_cents], "data-email" => current_user.email_address }
