@@ -1,5 +1,9 @@
 Liberatio::Application.routes.draw do
 
+  resources :responses
+
+  resources :tickets
+
   post "pusher/auth" => "pusher#auth"
 
   resources :disks

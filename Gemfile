@@ -46,5 +46,8 @@ gem 'rails_12factor', group: :production
 # Pusher WebSockets
 gem 'pusher'
 
+# Currency
+gem 'money-rails'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]

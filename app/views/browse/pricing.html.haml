@@ -5,7 +5,7 @@
 
 .row
   
-  .col-md-offset-2.col-md-8
+  .col-md-offset-1.col-md-10
 
     .row
 
@@ -13,14 +13,29 @@
 
         %table.table.table-condensed.table-bordered
           %tr
-            %th.text-center
-              %h4.text-primary
+            %th.active.text-center{ :colspan => "2" }
+              %h4
                 $ 19 / month
           %tr
-            %td.text-center{ :style => "padding-top: 40px; padding-bottom: 40px;" }
+            %th.active.text-center{ :colspan => "2" }
+              %h5
+                Brook Plan
+          %tr
+            %td.padded.text-center{ :colspan => "2" }
               %strong Up to 5 Devices
+          %tr.details
+            %td.padded.col-md-7
+              = link_to "#", "data-toggle" => "tooltip", "data-placement" => "top", "title" => "We'll actually help you fix your " do
+                Liberatio Assisted Support Tickets &trade;
+            %td.padded
+              1 free per month
+          %tr.details
+            %td.padded
+              Support Tickets
+            %td.padded
+              Unlimited
           %tr.active
-            %td.text-center
+            %td.text-center{ :colspan => "2" }
               = link_to "#", :class => "btn btn-primary" do
                 %span.glyphicon.glyphicon-shopping-cart
                 Sign Up
@@ -29,14 +44,28 @@
 
         %table.table.table-condensed.table-bordered
           %tr
-            %th.text-center
-              %h4.text-primary
+            %th.active.text-center{ :colspan => "2" }
+              %h4
                 $ 89 / month
           %tr
-            %td.text-center{ :style => "padding-top: 40px; padding-bottom: 40px;" }
+            %th.active.text-center{ :colspan => "2" }
+              %h5
+                Stream Plan
+          %tr
+            %td.padded.text-center{ :colspan => "2" }
               %strong Up to 25 Devices
+          %tr.details
+            %td.padded
+              Assisted Support Tickets
+            %td.padded
+              5 free per month
+          %tr.details
+            %td.padded
+              Support Tickets
+            %td.padded
+              Unlimited
           %tr.active
-            %td.text-center
+            %td.text-center{ :colspan => "2" }
               = link_to "#", :class => "btn btn-primary" do
                 %span.glyphicon.glyphicon-shopping-cart
                 Sign Up
@@ -45,14 +74,28 @@
 
         %table.table.table-condensed.table-bordered
           %tr
-            %th.text-center
-              %h4.text-primary
+            %th.active.text-center{ :colspan => "2" }
+              %h4
                 $ 299 / month
           %tr
-            %td.text-center{ :style => "padding-top: 40px; padding-bottom: 40px;" }
+            %th.active.text-center{ :colspan => "2" }
+              %h5
+                Creek Plan
+          %tr
+            %td.padded.text-center{ :colspan => "2" }
               %strong Up to 100 Devices
+          %tr.details
+            %td.padded
+              Assisted Support Tickets
+            %td.padded
+              20 free per month
+          %tr.details
+            %td.padded
+              Support Tickets
+            %td.padded
+              Unlimited
           %tr.active
-            %td.text-center
+            %td.text-center{ :colspan => "2" }
               = link_to "#", :class => "btn btn-primary" do
                 %span.glyphicon.glyphicon-shopping-cart
                 Sign Up
@@ -61,14 +104,28 @@
 
         %table.table.table-condensed.table-bordered
           %tr
-            %th.text-center
-              %h4.text-primary
+            %th.active.text-center{ :colspan => "2" }
+              %h4
                 $ 599 / month
           %tr
-            %td.text-center{ :style => "padding-top: 40px; padding-bottom: 40px;" }
+            %th.active.text-center{ :colspan => "2" }
+              %h5
+                River Plan
+          %tr
+            %td.padded.text-center{ :colspan => "2" }
               %strong Up to 500 Devices
+          %tr.details
+            %td.padded
+              Assisted Support Tickets
+            %td.padded
+              50 free per month
+          %tr.details
+            %td.padded
+              Support Tickets
+            %td.padded
+              Unlimited
           %tr.active
-            %td.text-center
+            %td.text-center{ :colspan => "2" }
               = link_to "#", :class => "btn btn-primary" do
                 %span.glyphicon.glyphicon-shopping-cart
                 Sign Up

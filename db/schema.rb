@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224162314) do
+ActiveRecord::Schema.define(version: 20140226030420) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -105,6 +105,27 @@ ActiveRecord::Schema.define(version: 20140224162314) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "responses", force: true do |t|
+    t.integer  "ticket_id"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "priority"
+    t.string   "status"
+    t.string   "category"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "tickets", ["organization_id"], name: "index_tickets_on_organization_id"
 
   create_table "users", force: true do |t|
     t.string   "email_address"

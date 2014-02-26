@@ -31,3 +31,7 @@ h3.no-top-margin { padding-top: 0; }
 .alert-small { padding: 10px; }
 
 .navbar-brand { padding-top: 13px; }
+
+
+table tr td.padded { padding-top: 20px; padding-bottom: 20px; }
+table tr.details { font-size: 12px; }
