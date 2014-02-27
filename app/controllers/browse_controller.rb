@@ -28,12 +28,20 @@ class BrowseController < ApplicationController
       case params[:plan]
       when "Brook"
         plan[:price_cents] = 19*100
+        plan[:devices] = 5
+        plan[:assisted] = 1
       when "Stream"
         plan[:price_cents] = 89*100
+        plan[:devices] = 25
+        plan[:assisted] = 5
       when "Creek"
         plan[:price_cents] = 299*100
+        plan[:devices] = 100
+        plan[:assisted] = 20
       when "River"
         plan[:price_cents] = 599*100
+        plan[:devices] = 500
+        plan[:assisted] = 50
       end
       session[:plan] = plan
     end

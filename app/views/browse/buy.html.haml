@@ -1,24 +1,52 @@
-.row
+.row{ :style => "margin-top: 60px; margin-bottom: 40px;" }
 
+  .col-md-offset-2.col-md-4
+
+    .row
+
+      %h4.signing-up.text-grayed Great, you're signing up for the
+      %h2.plan-name Liberatio <strong>#{session[:plan][:name]}</strong> Plan
+      
+      #plan-details.well
+        %h5 Plan Details
+
+        .row
+          .col-md-5
+            %ul.list-unstyled
+              %li <strong>#{number_to_currency(session[:plan][:price_cents]/100)}</strong>/month
+              %li Up to <strong>#{session[:plan][:devices]} Devices</strong>
+              %li Hardware Inventory
+              %li Software Inventory
+          .col-md-7
+            %ul.list-unstyled
+              %li <strong>#{session[:plan][:assisted]} Free</strong> Assisted Support Tickets
+              %li Unlimited Support Tickets
+              %li Windows Agent
+              %li Execute Commands Remotely
+    
   .col-md-offset-1.col-md-5
 
-    %h4 Great, you're signing up for the
-    %h2 #{session[:plan][:name]} Plan
-    %h5.text-muted You'll be billed $#{session[:plan][:price_cents]/100} every month
-
-  .col-md-6
+    .row
 
     - if !current_user
+      %h5 To continue, just sign in or register:
       .row
-        .col-md-6
-          .well
-            = link_to "Sign In", new_session_path, :class => "btn btn-primary btn-lg"
-        .col-md-6
-          .well
-            = link_to "Register", new_user_path, :class => "btn btn-primary btn-lg"
+        .col-md-4
+          = link_to "Sign In", new_session_path, :class => "btn btn-primary btn-lg btn-block"
+        .col-md-4
+          = link_to "Register", new_user_path, :class => "btn btn-primary btn-lg btn-block"
     - else
       %h4 Credit or Debit Card
       %hr
 
       %form{ :action => "/charge", :method => "POST" }
-        %script{ :src => "https://checkout.stripe.com/checkout.js", :class => "stripe-button", "data-key" => Rails.configuration.stripe[:publishable_key], "data-image" => "", "data-name" => "Signing Up", "data-description" => "#{session[:plan][:name]} Plan ($#{session[:plan][:price_cents]/100}/month)", "data-amount" => session[:plan][:price_cents], "data-email" => current_user.email_address }
+        %script{ :src => "https://checkout.stripe.com/checkout.js", :class => "stripe-button", "data-key" => Rails.configuration.stripe[:publishable_key], "data-image" => "", "data-name" => "Signing Up", "data-description" => "#{session[:plan][:name]} Plan (#{number_to_currency(session[:plan][:price_cents]/100)}/month)", "data-amount" => session[:plan][:price_cents], "data-panel-label" => "Subscribe {{amount}}/month", "data-email" => current_user.email_address }
+
+      %p.text-small.text-muted{ :style => "padding-top: 30px;" }
+        %strong We Accept
+        %br/
+        = image_tag("cards/visa-32.png", :alt => "Visa")
+        = image_tag("cards/mastercard-32.png", :alt => "Mastercard")
+        = image_tag("cards/amex-32.png", :alt => "American Express")
+        %br/
+        and Discover, Diners Club, JCB
