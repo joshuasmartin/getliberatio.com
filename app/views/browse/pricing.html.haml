@@ -11,7 +11,7 @@
 
       .col-md-3
 
-        %table.table.table-condensed.table-bordered
+        %table.table.table-condensed.table-bordered.table-plan
           %tr
             %th.active.text-center{ :colspan => "2" }
               %h4
@@ -21,19 +21,25 @@
               %h5
                 Brook Plan
           %tr
-            %td.padded.text-center{ :colspan => "2" }
+            %td.text-center{ :colspan => "2" }
               %strong Up to 5 Devices
           %tr.details
-            %td.padded.col-md-7
+            %td.col-md-7
               = link_to "#", "data-toggle" => "tooltip", "data-placement" => "top", "title" => "We'll actually help you fix your " do
                 Liberatio Assisted Support Tickets &trade;
-            %td.padded
+            %td.text-center
               1 free per month
           %tr.details
-            %td.padded
+            %td
               Support Tickets
-            %td.padded
+            %td.text-center
               Unlimited
+          %tr.details
+            %td
+              = link_to "#", "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Inventory, Windows Agent, Execute Commands Remotely" do
+                Standard Features
+            %td.text-center
+              &#x2713;
           %tr.active
             %td.text-center{ :colspan => "2" }
               = link_to browse_buy_path(plan: "Brook"), :class => "btn btn-primary" do
@@ -42,7 +48,7 @@
 
       .col-md-3
 
-        %table.table.table-condensed.table-bordered
+        %table.table.table-condensed.table-bordered.table-plan
           %tr
             %th.active.text-center{ :colspan => "2" }
               %h4
@@ -52,17 +58,17 @@
               %h5
                 Stream Plan
           %tr
-            %td.padded.text-center{ :colspan => "2" }
+            %td.text-center{ :colspan => "2" }
               %strong Up to 25 Devices
           %tr.details
-            %td.padded
+            %td
               Assisted Support Tickets
-            %td.padded
+            %td
               5 free per month
           %tr.details
-            %td.padded
+            %td
               Support Tickets
-            %td.padded
+            %td
               Unlimited
           %tr.active
             %td.text-center{ :colspan => "2" }
@@ -72,7 +78,7 @@
 
       .col-md-3
 
-        %table.table.table-condensed.table-bordered
+        %table.table.table-condensed.table-bordered.table-plan
           %tr
             %th.active.text-center{ :colspan => "2" }
               %h4
@@ -82,17 +88,17 @@
               %h5
                 Creek Plan
           %tr
-            %td.padded.text-center{ :colspan => "2" }
+            %td.text-center{ :colspan => "2" }
               %strong Up to 100 Devices
           %tr.details
-            %td.padded
+            %td
               Assisted Support Tickets
-            %td.padded
+            %td
               20 free per month
           %tr.details
-            %td.padded
+            %td
               Support Tickets
-            %td.padded
+            %td
               Unlimited
           %tr.active
             %td.text-center{ :colspan => "2" }
@@ -102,7 +108,7 @@
 
       .col-md-3
 
-        %table.table.table-condensed.table-bordered
+        %table.table.table-condensed.table-bordered.table-plan
           %tr
             %th.active.text-center{ :colspan => "2" }
               %h4
@@ -112,17 +118,17 @@
               %h5
                 River Plan
           %tr
-            %td.padded.text-center{ :colspan => "2" }
+            %td.text-center{ :colspan => "2" }
               %strong Up to 500 Devices
           %tr.details
-            %td.padded
+            %td
               Assisted Support Tickets
-            %td.padded
+            %td
               50 free per month
           %tr.details
-            %td.padded
+            %td
               Support Tickets
-            %td.padded
+            %td
               Unlimited
           %tr.active
             %td.text-center{ :colspan => "2" }
@@ -132,6 +138,11 @@
 
 .row
   .col-md-4
-    .well
-      %h5 Payment Methods Accepted
-      %p Visa / Mastercard / Discover / American Express
+    %p.text-small.text-muted{ :style => "padding-top: 30px;" }
+      %strong We Accept
+      %br/
+      = image_tag("cards/visa-32.png", :alt => "Visa")
+      = image_tag("cards/mastercard-32.png", :alt => "Mastercard")
+      = image_tag("cards/amex-32.png", :alt => "American Express")
+      %br/
+      and Discover, Diners Club, JCB

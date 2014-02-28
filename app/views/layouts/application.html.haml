@@ -3,8 +3,8 @@
   %head
     %title Liberatio
 
-    = favicon_link_tag '/favicon.ico'
-    = favicon_link_tag '/favicon.png', rel: 'apple-touch-icon', type: 'image/png'
+    = favicon_link_tag '/assets/favicon.ico'
+    = favicon_link_tag '/assets/favicon.png', rel: 'apple-touch-icon', type: 'image/png'
 
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
@@ -29,7 +29,7 @@
               = image_tag("software.png", :alt => "Software", :style => "height: 18px;")
               Software
           %li{ :class => ("active" if @highlight == "protection") }
-            = link_to nodes_path do
+            = link_to protection_nodes_path do
               = image_tag("protection.png", :alt => "Software", :style => "height: 18px;")
               Protection
       - else

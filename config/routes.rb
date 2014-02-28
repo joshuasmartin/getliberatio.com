@@ -31,6 +31,7 @@ Liberatio::Application.routes.draw do
     resources :commands
     get 'registered', :on => :collection
     post 'register', :on => :collection
+    get 'protection', :on => :collection, :as => "protection"
   end
 
   resources :sessions
