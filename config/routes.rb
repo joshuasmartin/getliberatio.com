@@ -1,7 +1,5 @@
 Liberatio::Application.routes.draw do
 
-  resources :installations
-
   resources :updates
 
   resources :responses

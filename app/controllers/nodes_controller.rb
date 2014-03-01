@@ -9,7 +9,7 @@
 class NodesController < ApplicationController
   protect_from_forgery except: :register
   skip_before_filter :authenticate_user!, only: [:register, :registered]
-  before_action :set_highlight
+  before_action :set_highlight, except: :protection
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   respond_to :json
@@ -33,6 +33,14 @@ class NodesController < ApplicationController
     else
       render :nothing => true, :status => :no_content
     end
+  end
+
+  # GET /nodes/protection
+  def protection
+    @highlight = "protection"
+
+    @devices_needing = current_user.organization.updates.joins(:node).where(:is_installed => false).uniq.pluck("nodes.id").count
+    @updates_needed = current_user.organization.updates.where(:is_installed => false).uniq.pluck("title").count
   end
 
   # POST /nodes/register

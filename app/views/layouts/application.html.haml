@@ -32,6 +32,10 @@
             = link_to protection_nodes_path do
               = image_tag("protection.png", :alt => "Software", :style => "height: 18px;")
               Protection
+          %li{ :class => ("active" if @highlight == "tickets") }
+            = link_to tickets_path do
+              = image_tag("tickets.png", :alt => "Tickets", :style => "height: 18px;")
+              Tickets
       - else
         %ul.nav.navbar-nav
           %li{ :class => ("active" if request.fullpath == root_path) }

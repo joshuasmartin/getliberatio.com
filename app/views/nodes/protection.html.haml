@@ -3,18 +3,43 @@
     Protection
 
 .row
+  .col-md-3
+    = link_to "#" do
+      .box
+        %h2 0
+        %h4 Needing Updates
+  .col-md-3
+    = link_to "#" do
+      .box
+        %h2 0
+        %h4 Without Antivirus
+  .col-md-3
+    = link_to "#" do
+      .box
+        %h2 0
+        %h4 Without Firewall
+  .col-md-3
+    = link_to "#" do
+      .box
+        %h2 0
+        %h4 With Other Issues
+
+.row
   .col-md-5
 
-    .row
-      .col-md-6
-        .well.well-small
-          %h3 12
-          %h5 Devices Needing Updates
-      .col-md-6
-        .well.well-small
-          %h3 12
-          %h5 Updates Not Installed
+  .col-md-7
 
-  .col-md-5
+    %h4 Devices Needing Updates
+    %table.table.table-bordered.table-striped.table-condensed
+      %tr
+        %th Name
 
-    asdf
+    %h4 Devices Without Functioning Anti-virus
+    %table.table.table-bordered.table-striped.table-condensed
+      %tr
+        %th Name
+
+    %h4 Devices Without Functioning Firewall
+    %table.table.table-bordered.table-striped.table-condensed
+      %tr
+        %th Name

@@ -8,9 +8,10 @@
 
 class Update < ActiveRecord::Base
   # relationships
-  has_many :installations
+  belongs_to :node
+  belongs_to :organization
 
   # validations
-  validates :title, :platform, presence: true
-  validates :role, :platform => { :in => ["Windows"] }
+  validates :node, :organization, :platform, :title, presence: true
+  validates :platform, inclusion: { in: ["Windows"] }
 end

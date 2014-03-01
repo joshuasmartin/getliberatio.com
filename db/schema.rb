@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228202344) do
+ActiveRecord::Schema.define(version: 20140228212143) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -45,18 +45,6 @@ ActiveRecord::Schema.define(version: 20140228202344) do
   end
 
   add_index "disks", ["node_id"], name: "index_disks_on_node_id"
-
-  create_table "installations", force: true do |t|
-    t.integer  "update_id"
-    t.integer  "node_id"
-    t.integer  "organization_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "installations", ["node_id"], name: "index_installations_on_node_id"
-  add_index "installations", ["organization_id"], name: "index_installations_on_organization_id"
-  add_index "installations", ["update_id"], name: "index_installations_on_update_id"
 
   create_table "instances", force: true do |t|
     t.integer  "application_id"
@@ -140,11 +128,16 @@ ActiveRecord::Schema.define(version: 20140228202344) do
   add_index "tickets", ["organization_id"], name: "index_tickets_on_organization_id"
 
   create_table "updates", force: true do |t|
-    t.string   "title"
-    t.string   "realm"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "title"
+    t.string  "platform"
+    t.integer "severity",        default: 10
+    t.integer "organization_id"
+    t.integer "node_id"
+    t.boolean "is_installed",    default: false
   end
+
+  add_index "updates", ["node_id"], name: "index_updates_on_node_id"
+  add_index "updates", ["organization_id"], name: "index_updates_on_organization_id"
 
   create_table "users", force: true do |t|
     t.string   "email_address"
