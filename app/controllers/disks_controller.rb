@@ -1,2 +1,0 @@
-class DisksController < ApplicationController
-end

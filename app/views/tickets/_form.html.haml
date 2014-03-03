@@ -13,12 +13,16 @@
       .form-group
         = f.label :status, :class => "control-label col-sm-5"
         .col-sm-7
-          = f.select :status, options_for_select(["Open", "Closed"], @ticket.status), {}, { :class => "form-control" }
+          - if @ticket.id.blank?
+            %p.form-control-static.text-muted
+              Open
+          - else
+            = f.select :status, options_for_select(["Open", "Closed"], @ticket.status), {}, { :class => "form-control" }
 
       .form-group
         = f.label :priority, :class => "control-label col-sm-5"
         .col-sm-7
-          = f.select :priority, options_for_select(["Open", "Closed"], @ticket.priority), {}, { :class => "form-control" }
+          = f.select :priority, options_for_select(["Low", "Normal", "High", "Critical"], @ticket.priority), {}, { :class => "form-control" }
 
       .form-group
         = f.label :category, :class => "control-label col-sm-5"
@@ -32,6 +36,6 @@
 
       .form-group
         .col-sm-offset-5.col-sm-7
-          = link_to "Cancel", :back, :class => "btn btn-default"
-          = f.submit "Clear", :name => "reset", :type => "reset", :class => "btn btn-default"
           = f.submit "Save Changes", :class => "btn btn-primary"
+          = f.submit "Clear", :name => "reset", :type => "reset", :class => "btn btn-default"
+          = link_to "Cancel", :back, :class => "btn btn-default"

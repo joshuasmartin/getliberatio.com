@@ -1,18 +1,9 @@
 Liberatio::Application.routes.draw do
 
-  resources :updates
-
   resources :responses
-
   resources :tickets
 
   post "pusher/auth" => "pusher#auth"
-
-  resources :disks
-
-  resources :processors
-
-  resources :memories
 
   get "browse/home" => "browse#home"
   get "browse/roadmap" => "browse#roadmap", :as => "browse_roadmap"
