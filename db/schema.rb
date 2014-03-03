@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228212143) do
+ActiveRecord::Schema.define(version: 20140303023855) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -129,11 +129,11 @@ ActiveRecord::Schema.define(version: 20140228212143) do
 
   create_table "updates", force: true do |t|
     t.string  "title"
-    t.string  "platform"
-    t.integer "severity",        default: 10
     t.integer "organization_id"
     t.integer "node_id"
     t.boolean "is_installed",    default: false
+    t.string  "severity"
+    t.string  "support_url"
   end
 
   add_index "updates", ["node_id"], name: "index_updates_on_node_id"

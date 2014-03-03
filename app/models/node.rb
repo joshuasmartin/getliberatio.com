@@ -85,6 +85,15 @@ class Node < ActiveRecord::Base
                                     volume_name: d[:volume_name])
     end
 
+    # updates
+    self.updates.destroy_all
+    inventory[:updates].each do |u|
+      self.updates << self.updates.new( title: u[:title],
+                                        severity: u[:severity],
+                                        support_url: u[:support_url],
+                                        is_installed: u[:is_installed] )
+    end
+
     return self.save
   end
 
