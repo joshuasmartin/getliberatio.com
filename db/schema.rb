@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303023855) do
+ActiveRecord::Schema.define(version: 20140303124043) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20140303023855) do
   create_table "tickets", force: true do |t|
     t.integer  "organization_id"
     t.integer  "priority"
-    t.string   "status"
+    t.string   "status",          default: "Open"
     t.string   "category"
     t.text     "description"
     t.datetime "created_at"

@@ -1,0 +1,29 @@
+.row
+  .col-md-6
+    = link_to "Edit Details", edit_ticket_path(@ticket), :class => "btn btn-default"
+    = link_to "Delete", ticket_path(@ticket), :method => :delete, :class => "btn btn-danger", "data-confirm" => "Are you sure you want to delete this ticket?"
+
+  .col-md-6
+    .pull-right
+      .btn-group
+        = link_to "Open", "#", :class => "btn btn-default btn-lg #{'active' if @ticket.open?}"
+        = link_to "Handling", "#", :class => "btn btn-default btn-lg #{'active' if @ticket.handling?}"
+        = link_to "Closed", "#", :class => "btn btn-default btn-lg #{'active' if @ticket.closed?}"
+
+.well
+  .row
+    .col-md-1
+      %p Opened
+    .col-md-3
+      %p
+        %strong #{@ticket.created_at.to_human}
+    .col-md-1
+      %p Status
+    .col-md-3
+      %p
+        %strong #{@ticket.status}
+    .col-md-1
+      %p Status
+    .col-md-3
+      %p
+        %strong #{@ticket.status}

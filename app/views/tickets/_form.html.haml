@@ -27,10 +27,10 @@
       .form-group
         = f.label :category, :class => "control-label col-sm-5"
         .col-sm-7
-          = f.select :category, options_for_select(["Open", "Closed"], @ticket.category), {}, { :class => "form-control" }
+          = f.select :category, options_for_select(["Desktop Support", "Server Support"], @ticket.category), {}, { :class => "form-control" }
 
       .form-group
-        = f.label :description, :class => "control-label col-sm-5"
+        = f.label :description, "Problem, Question, etc.", :class => "control-label col-sm-5"
         .col-sm-7
           = f.text_area :description, :class => "form-control"
 
