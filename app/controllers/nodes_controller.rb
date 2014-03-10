@@ -39,8 +39,10 @@ class NodesController < ApplicationController
   def protection
     @highlight = "protection"
 
-    @devices_needing = current_user.organization.updates.joins(:node).where(:is_installed => false).uniq.pluck("nodes.id").count
-    @updates_needed = current_user.organization.updates.where(:is_installed => false).uniq.pluck("title").count
+    @devices_needing_updates = current_user.organization.nodes.joins(:updates).where("updates.is_installed = ?", false)
+    @devices_with_issues = current_user.organization.issues
+    #@updates = current_user.organization.updates.joins(:node).where(:is_installed => false).uniq.pluck("nodes.id").count
+    #@issues = current_user.organization.updates.where(:is_installed => false).uniq.pluck("title").count
   end
 
   # POST /nodes/register

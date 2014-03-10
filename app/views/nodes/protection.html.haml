@@ -6,11 +6,17 @@
   .col-md-4
     .box
       = link_to "#" do
-        %h2 Zero
+        - if @devices_needing_updates.size == 0
+          %h2 Zero
+        - else
+          %h2 #{@devices_needing_updates.size}
         %h4 Needing Updates
     .box
       = link_to "#" do
-        %h2 Zero
+        - if @devices_with_issues.size == 0
+          %h2 Zero
+        - else
+          %h2 #{@devices_with_issues.size}
         %h4 With Other Issues
     .box.box-coming-soon
       = link_to "#" do
@@ -29,11 +35,15 @@
       %tr
         %th.col-md-4 Name
         %th Updates
-      - current_user.organization.nodes.joins(:updates).where("updates.is_installed = ?", false).each do |node|
+      - if @devices_needing_updates.size == 0
         %tr
-          %td
-            = link_to node.name, node_path(node)
-          %td #{node.updates.where(is_installed: false).count}
+          %td{ colspan: 2 } Yay! You're devices are up-to-date!
+      - else
+        - @devices_needing_updates.each do |node|
+          %tr
+            %td
+              = link_to node.name, node_path(node)
+            %td #{node.updates.where(is_installed: false).count}
 
     %br/
 
@@ -42,8 +52,12 @@
       %tr
         %th.col-md-4 Name
         %th Issue
-      - current_user.organization.issues.each do |issue|
+      - if @devices_with_issues.size == 0
         %tr
-          %td
-            = link_to issue.node.name, node_path(issue.node)
-          %td #{issue.title}
+          %td{ colspan: 2 } Yay! You're devices don't have any issues!
+      - else
+        - @devices_with_issues.each do |issue|
+          %tr
+            %td
+              = link_to issue.node.name, node_path(issue.node)
+            %td #{issue.title}
