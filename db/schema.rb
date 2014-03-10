@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303124043) do
+ActiveRecord::Schema.define(version: 20140310212014) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20140303124043) do
 
   add_index "instances", ["application_id"], name: "index_instances_on_application_id"
   add_index "instances", ["node_id"], name: "index_instances_on_node_id"
+
+  create_table "issues", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "node_id"
+    t.string   "title"
+    t.string   "severity",        default: "low"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "memories", force: true do |t|
     t.integer  "node_id"
