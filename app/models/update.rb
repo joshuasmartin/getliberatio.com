@@ -12,6 +12,6 @@ class Update < ActiveRecord::Base
   belongs_to :organization
 
   # validations
-  validates :node, :organization, :platform, :title, presence: true
-  validates :platform, inclusion: { in: ["Windows"] }
+  validates :node, :organization, :is_installed, :severity, :title, presence: true
+  validates :severity, inclusion: { in: [""] }
 end

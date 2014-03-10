@@ -1,5 +1,7 @@
 Liberatio::Application.routes.draw do
 
+  resources :issues
+
   resources :responses
   resources :tickets
 

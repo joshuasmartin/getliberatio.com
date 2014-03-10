@@ -1,2 +1,9 @@
-a .box { padding: 10px 20px 10px 20px; margin-bottom: 20px; color: #ffffff; background-color: Green; }
-a .box h2 { margin-top: 10px; }
+.box { padding: 10px 20px 10px 20px; margin-bottom: 20px; background-color: #006600; }
+.box a { color: #ffffff; }
+.box a:hover { color: #C0C0C0; text-decoration: none; }
+
+.box h2 { margin-top: 10px; font-size: 18px; }
+.box h4 { font-size: 12px; }
+
+.box-coming-soon { background-color: #909090; }
+.box-coming-soon a { color: #B8B8B8; }

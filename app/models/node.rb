@@ -18,6 +18,7 @@ class Node < ActiveRecord::Base
   has_many :memories, dependent: :destroy
   has_many :processors, dependent: :destroy
   has_many :disks, dependent: :destroy
+  has_many :updates, dependent: :destroy
 
   # validations
   validates :uuid, :organization, presence: true

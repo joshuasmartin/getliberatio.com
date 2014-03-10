@@ -3,43 +3,44 @@
     Protection
 
 .row
-  .col-md-3
-    = link_to "#" do
-      .box
-        %h2 0
+  .col-md-4
+    .box
+      = link_to "#" do
+        %h2 Zero
         %h4 Needing Updates
-  .col-md-3
-    = link_to "#" do
-      .box
-        %h2 0
-        %h4 Without Antivirus
-  .col-md-3
-    = link_to "#" do
-      .box
-        %h2 0
-        %h4 Without Firewall
-  .col-md-3
-    = link_to "#" do
-      .box
-        %h2 0
+    .box
+      = link_to "#" do
+        %h2 Zero
         %h4 With Other Issues
+    .box.box-coming-soon
+      = link_to "#" do
+        %h2 Coming Soon
+        %h4 Without Antivirus
+    .box.box-coming-soon
+      = link_to "#" do
+        %h2 Coming Soon
+        %h4 Without Firewall
 
-.row
-  .col-md-5
 
-  .col-md-7
+  .col-md-offset-1.col-md-7
 
     %h4 Devices Needing Updates
     %table.table.table-bordered.table-striped.table-condensed
       %tr
         %th Name
+        %th Updates
+      - current_user.organization.nodes.joins(:updates).where("updates.is_installed = ?", false).each do |node|
+        %tr
+          %td #{node.name}
+          %td #{node.updates.where(is_installed: false).count}
 
-    %h4 Devices Without Functioning Anti-virus
+    %br/
+
+    %h4 Devices With Other Issues
     %table.table.table-bordered.table-striped.table-condensed
       %tr
         %th Name
-
-    %h4 Devices Without Functioning Firewall
-    %table.table.table-bordered.table-striped.table-condensed
+        %th Issue
       %tr
-        %th Name
+        %td HOST1
+        %td Low Disk Space
