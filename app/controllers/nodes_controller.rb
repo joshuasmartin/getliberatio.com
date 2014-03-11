@@ -9,7 +9,7 @@
 class NodesController < ApplicationController
   protect_from_forgery except: :register
   skip_before_filter :authenticate_user!, only: [:register, :registered]
-  before_action :set_highlight, except: :protection
+  before_action :set_highlight, except: :maintenance
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   respond_to :json
@@ -35,9 +35,9 @@ class NodesController < ApplicationController
     end
   end
 
-  # GET /nodes/protection
-  def protection
-    @highlight = "protection"
+  # GET /nodes/maintenance
+  def maintenance
+    @highlight = "maintenance"
 
     @devices_needing_updates = current_user.organization.nodes.joins(:updates).where("updates.is_installed = ?", false)
     @devices_with_issues = current_user.organization.issues

@@ -28,8 +28,8 @@
             = link_to instances_path do
               = image_tag("software.png", :alt => "Software", :style => "height: 18px;")
               Software
-          %li{ :class => ("active" if @highlight == "protection") }
-            = link_to protection_nodes_path do
+          %li{ :class => ("active" if @highlight == "maintenance") }
+            = link_to maintenance_nodes_path do
               = image_tag("protection.png", :alt => "Software", :style => "height: 18px;")
               Maintenance
           %li{ :class => ("active" if @highlight == "tickets") }

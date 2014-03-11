@@ -8,6 +8,11 @@
 
 class Ticket < ActiveRecord::Base
   # relationships
+  belongs_to :organization
+  belongs_to :user
+
+  # validations
+  validates :category, :description, :organization, :priority, :status, :user, presence: true
 
   def open?
     self.status == "Open"
