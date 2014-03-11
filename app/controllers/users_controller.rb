@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html {
-          session[:user_id] = user.id
+          session[:user_id] = @user.id
 
           # Continue sign up if a plan is in the session
           if session[:plan]

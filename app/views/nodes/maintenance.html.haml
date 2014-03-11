@@ -11,13 +11,6 @@
         - else
           %h2 #{@devices_needing_updates.size}
         %h4 Needing Updates
-    .box
-      = link_to "#" do
-        - if @devices_with_issues.size == 0
-          %h2 Zero
-        - else
-          %h2 #{@devices_with_issues.size}
-        %h4 With Other Issues
     .box.box-coming-soon
       = link_to "#" do
         %h2 Coming Soon
@@ -44,20 +37,3 @@
             %td
               = link_to node.name, node_path(node)
             %td #{node.updates.where(is_installed: false).count}
-
-    %br/
-
-    %h4 Devices With Other Issues
-    %table.table.table-bordered.table-striped.table-condensed
-      %tr
-        %th.col-md-4 Name
-        %th Issue
-      - if @devices_with_issues.size == 0
-        %tr
-          %td{ colspan: 2 } Yay! You're devices don't have any issues!
-      - else
-        - @devices_with_issues.each do |issue|
-          %tr
-            %td
-              = link_to issue.node.name, node_path(issue.node)
-            %td #{issue.title}
