@@ -95,18 +95,20 @@
               %li.divider
             %li
               = link_to "Delete", node_path(@node), :method => :delete, "data-confirm" => "Are you sure you want to delete this device? It will be re-created if you have not uninstalled the Agent from the device and it performs an inventory."
-        = link_to "Edit Details", edit_node_path, :class => "btn btn-default"
+        = link_to "Edit Details", edit_node_path, :class => "btn btn-primary"
 
     %ul.nav.nav-tabs
       %li.active
         = link_to "Hardware", "#hardware", "data-toggle" => "tab"
       %li
         = link_to "Software", "#software", "data-toggle" => "tab"
+      %li
+        = link_to "Updates", "#updates", "data-toggle" => "tab"
 
     .tab-content
-      .tab-pane.active{ :id => "hardware" }
 
-        %br/
+      / hardware tab
+      .tab-pane.active{ :id => "hardware" }
 
         .row
 
@@ -200,16 +202,15 @@
             - else
               %p No disks inventoried.
 
+      / software tab
       .tab-pane{ :id => "software" }
-
-        %br/
 
         %table.table.table-condensed.table-bordered
           %thead
             %tr
               %th Name
-              %th Version
-              %th Publisher
+              %th.col-md-3 Version
+              %th.col-md-4 Publisher
           %tbody
             - if @node.instances.any?
               - @node.instances.each do |instance|
@@ -220,6 +221,45 @@
             - else
               %tr
                 %td{ colspan: 3 } No Software Inventoried
+
+      / updates tab
+      .tab-pane{ :id => "updates" }
+
+        %h4 Needed
+
+        %table.table.table-condensed.table-bordered
+          %thead
+            %tr
+              %th.col-md-3 Severity
+              %th Title
+          %tbody
+            - if @node.updates.any?
+              - @node.updates.each do |update|
+                %tr
+                  %td #{update.severity}
+                  %td #{update.title}
+            - else
+              %tr
+                %td{ colspan: 2 } No Updates Inventoried
+
+        %br/
+
+        %h4 Installed
+
+        %table.table.table-condensed.table-bordered
+          %thead
+            %tr
+              %th.col-md-3 Severity
+              %th Title
+          %tbody
+            - if @node.updates.any?
+              - @node.updates.each do |update|
+                %tr
+                  %td #{update.severity}
+                  %td #{update.title}
+            - else
+              %tr
+                %td{ colspan: 2 } No Updates Inventoried
 
 - if true#@node.is_managed?
   .modal.fade{ :id => "modal-execute-command" }

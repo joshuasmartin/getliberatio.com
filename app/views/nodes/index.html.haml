@@ -15,11 +15,10 @@
     %table.table.table-bordered.table-striped.table-condensed
       %thead
         %tr
-          %th.col-md-2 Name
           %th.col-md-2 Role
+          %th.col-md-3 Name
           %th Operating System
           %th Location
-          %th.col-md-2 Model #
           %th
 
       %tbody
@@ -27,19 +26,19 @@
           - @nodes.each do |node|
             - if !(node.is_managed? && node.inventoried_at.blank?)
               %tr
-                %td #{node.name}
                 %td
                   = image_tag("#{node.role}.png".downcase, :alt => node.role, :style => "width: 16px;")
                   = node.role
+                %td
+                  = link_to node.name, node_path(node)
                 %td #{node.operating_system}
                 %td #{node.location}
-                %td #{node.model_number}
                 %td #{link_to 'Details', node_path(node)}
         - else
           %tr
             %td{ colspan: 6 }
               Oh no! You haven't added any devices yet -
-              = link_to "Add One Now", "#"
+              = link_to "Add One Now", new_node_path
               / TODO add image of oh no or something. have it link to a modal that displays instructions
 
   .col-md-2

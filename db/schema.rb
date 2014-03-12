@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311221230) do
+ActiveRecord::Schema.define(version: 20140312183941) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20140311221230) do
     t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "should_receive_newsletter", default: false
   end
 
   add_index "users", ["organization_id"], name: "index_users_on_organization_id"
