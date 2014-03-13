@@ -1,148 +1,34 @@
-.row
-  .col-md-4
-    %h3 How Does Billing Work?
-    %p Simply, that's how! We hate
+- content_for :title, "Pricing Information"
+
+%h2 Simple, Direct Pricing
 
 .row
-  
-  .col-md-offset-1.col-md-10
+
+  .col-md-8
 
     .row
+      .col-md-6
+        %h4.pricing-question.text-liberatio-primary How do I pay?
+        %p.pricing-answer On a month-by-month basis. You pay each month via a debit or credit card. You can cancel any time.
 
-      .col-md-3
+        %h4.pricing-question.text-liberatio-primary Is there a contract?
+        %p.pricing-answer No, you can cancel your subscription and download your data at any time.
 
-        %table.table.table-condensed.table-bordered.table-plan
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h4
-                $ 19 / month
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h5
-                Brook Plan
-          %tr
-            %td.text-center{ :colspan => "2" }
-              %strong Up to 5 Devices
-          %tr.details
-            %td.col-md-7
-              = link_to "#", "data-toggle" => "tooltip", "data-placement" => "top", "title" => "We'll actually help you fix your " do
-                Liberatio Assisted Support Tickets &trade;
-            %td.text-center
-              1 free per month
-          %tr.details
-            %td
-              Support Tickets
-            %td.text-center
-              Unlimited
-          %tr.details
-            %td
-              = link_to "#", "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Inventory, Windows Agent, Execute Commands Remotely" do
-                Standard Features
-            %td.text-center
-              &#x2713;
-          %tr.active
-            %td.text-center{ :colspan => "2" }
-              = link_to browse_buy_path(plan: "Brook"), :class => "btn btn-primary" do
-                %span.glyphicon.glyphicon-shopping-cart
-                Sign Up
+      .col-md-6
+        %h4.pricing-question.text-liberatio-primary What platforms are supported?
+        %p.pricing-answer Only Windows is supported by our Agent at this time - the Agent sends an inventory to Liberatio, and allows you to control the machine from the Liberatio Website. Any other type of device can be added manually.
 
-      .col-md-3
-
-        %table.table.table-condensed.table-bordered.table-plan
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h4
-                $ 89 / month
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h5
-                Stream Plan
-          %tr
-            %td.text-center{ :colspan => "2" }
-              %strong Up to 25 Devices
-          %tr.details
-            %td
-              Assisted Support Tickets
-            %td
-              5 free per month
-          %tr.details
-            %td
-              Support Tickets
-            %td
-              Unlimited
-          %tr.active
-            %td.text-center{ :colspan => "2" }
-              = link_to browse_buy_path(plan: "Stream"), :class => "btn btn-primary" do
-                %span.glyphicon.glyphicon-shopping-cart
-                Sign Up
-
-      .col-md-3
-
-        %table.table.table-condensed.table-bordered.table-plan
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h4
-                $ 299 / month
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h5
-                Creek Plan
-          %tr
-            %td.text-center{ :colspan => "2" }
-              %strong Up to 100 Devices
-          %tr.details
-            %td
-              Assisted Support Tickets
-            %td
-              20 free per month
-          %tr.details
-            %td
-              Support Tickets
-            %td
-              Unlimited
-          %tr.active
-            %td.text-center{ :colspan => "2" }
-              = link_to browse_buy_path(plan: "Creek"), :class => "btn btn-primary" do
-                %span.glyphicon.glyphicon-shopping-cart
-                Sign Up
-
-      .col-md-3
-
-        %table.table.table-condensed.table-bordered.table-plan
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h4
-                $ 599 / month
-          %tr
-            %th.active.text-center{ :colspan => "2" }
-              %h5
-                River Plan
-          %tr
-            %td.text-center{ :colspan => "2" }
-              %strong Up to 500 Devices
-          %tr.details
-            %td
-              Assisted Support Tickets
-            %td
-              50 free per month
-          %tr.details
-            %td
-              Support Tickets
-            %td
-              Unlimited
-          %tr.active
-            %td.text-center{ :colspan => "2" }
-              = link_to browse_buy_path(plan: "River"), :class => "btn btn-primary" do
-                %span.glyphicon.glyphicon-shopping-cart
-                Sign Up
-
-.row
   .col-md-4
-    %p.text-small.text-muted{ :style => "padding-top: 30px;" }
-      %strong We Accept
-      %br/
-      = image_tag("cards/visa-32.png", :alt => "Visa")
-      = image_tag("cards/mastercard-32.png", :alt => "Mastercard")
-      = image_tag("cards/amex-32.png", :alt => "American Express")
-      %br/
-      and Discover, Diners Club, JCB
+
+    %h1 $49/month
+
+    %h4 Single, Unified Plan Gets You:
+
+    %ul.list-unstyled.list-padded
+      %li &#x2713; Unlimited Devices
+      %li &#x2713; Asset Inventory
+      %li &#x2713; Execute Commands Remotely
+      %li &#x2713; Shutdown, Reboot Remotely
+
+.text-center
+  = link_to "Sign Up Now", "#", :class => "btn btn-primary btn-lg"

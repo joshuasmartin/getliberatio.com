@@ -9,7 +9,7 @@
       .form-group
         = f.label :email_address, "Email Address", :class => "control-label col-sm-5"
         .col-sm-7
-          = f.email_field :email_address, :class => "form-control"
+          = f.email_field :email_address, :class => "form-control first"
 
       .form-group
         = f.label :password, "Password", :class => "control-label col-sm-5"
@@ -20,6 +20,14 @@
         = f.label :password_confirmation, "Password (Confirm)", :class => "control-label col-sm-5"
         .col-sm-7
           = f.password_field :password_confirmation, :class => "form-control"
+
+
+      .form-group
+        .col-sm-offset-5.col-sm-7
+          .checkbox
+            %label
+              = f.check_box :should_receive_newsletter
+              Receive the Newsletter?
 
       .form-group
         .col-sm-offset-5.col-sm-7

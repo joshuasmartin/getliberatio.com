@@ -1,1 +1,29 @@
-= link_to "Roadmap", browse_roadmap_path, :class => "btn btn-primary"
+- content_for :title, "Features"
+
+%h2 Features
+
+%br/
+
+%ul.nav.nav-pills
+  %li.active
+    = link_to "Inventory", "#inventory", "data-toggle" => "pill"
+  %li
+    = link_to "Remote Commands", "#remote-commands", "data-toggle" => "pill"
+  %li
+    = link_to "Open Source", "#foss", "data-toggle" => "pill"
+  %li
+    = link_to "Roadmap", "#roadmap", "data-toggle" => "pill"
+
+.tab-content
+
+  #inventory.tab-pane.active
+    test
+
+  #remote-commands.tab-pane
+    remote
+
+  #foss.tab-pane
+    foss
+
+  #roadmap.tab-pane
+    test 2

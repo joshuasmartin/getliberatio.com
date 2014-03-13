@@ -12,6 +12,7 @@ Liberatio::Application.routes.draw do
   get "browse/pricing" => "browse#pricing", :as => "browse_pricing"
   get "browse/features" => "browse#features", :as => "browse_features"
   get "browse/buy" => "browse#buy", :as => "browse_buy"
+  get "browse/download" => "browse#download", :as => "browse_download"
 
   resources :inventories, :only => :create
   resources :users do

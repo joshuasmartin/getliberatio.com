@@ -7,10 +7,15 @@
 # -----------------------------------------------------------------------------
 
 class BrowseController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:home, :pricing, :buy, :features, :roadmap]
+  skip_before_filter :authenticate_user!, :only => [:home, :download, :pricing, :buy, :features, :roadmap]
 
   # GET /browse/home
   def home
+  end
+
+  # GET /browse/download
+  def download
+    @highlight = "download"
   end
 
   # GET /browse/pricing

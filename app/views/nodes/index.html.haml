@@ -1,17 +1,9 @@
-.alert.alert-warning.alert-dismissable
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  %p <strong>Liberatio Agent only supports Windows at this time</strong>
-  %p
-    #{link_to "Get Notified", browse_roadmap_path} when we add other systems,
-    and keep an eye on our #{link_to "Roadmap", browse_roadmap_path}.
-    <strong>But keep in mind</strong>, you can add devices of any type, manually without using the Agent.
-
 %ol.breadcrumb
   %li.active
     Devices
 
 .row
-  .col-md-10
+  .col-md-8
     %table.table.table-bordered.table-striped.table-condensed
       %thead
         %tr
@@ -41,13 +33,23 @@
               = link_to "Add One Now", new_node_path
               / TODO add image of oh no or something. have it link to a modal that displays instructions
 
-  .col-md-2
-    = link_to "Add Device", new_node_path, :class => "btn btn-primary btn-block"
+  .col-md-4
+
+    .alert.alert-warning.alert-dismissable
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      %p <strong>Liberatio Agent only supports Windows at this time</strong>
+      %p
+        #{link_to 'Get our newsletter', settings_user_path(current_user)} and be the first to know when we add other systems,
+        and keep an eye on our #{link_to "Roadmap", browse_roadmap_path}.
+        <strong>But keep in mind</strong>, you can add devices of any type, manually without using the Agent.
+
+    = link_to "Add Device Manually", new_node_path, :class => "btn btn-primary btn-block"
 
     %br/
 
     .alert.alert-info
       Registration Code
-      %br/
       %strong
         = current_user.organization.registration_code
+      %br/
+      %small #{link_to 'Install the Agent', browse_download_path} on your devices and register with this code.

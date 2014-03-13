@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Liberatio
+    %title #{yield(:title)} - Systems Management - Liberatio
 
     = favicon_link_tag '/assets/favicon.ico'
     = favicon_link_tag '/assets/favicon.png', rel: 'apple-touch-icon', type: 'image/png'
@@ -9,6 +9,8 @@
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
+    <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 
 %body
 
@@ -36,14 +38,18 @@
         %ul.nav.navbar-nav
           %li{ :class => ("active" if request.fullpath == root_path) }
             = link_to "Home", root_path
-          %li{ :class => ("active" if @highlight == "pricing") }
-            = link_to browse_pricing_path do
-              = image_tag("plans.png", :alt => "Plans and Pricing", :style => "height: 18px;")
-              Plans + Pricing
           %li{ :class => ("active" if @highlight == "features") }
             = link_to browse_features_path do
               = image_tag("features.png", :alt => "Features", :style => "height: 18px;")
               Features
+          %li{ :class => ("active" if @highlight == "pricing") }
+            = link_to browse_pricing_path do
+              = image_tag("plans.png", :alt => "Plans and Pricing", :style => "height: 18px;")
+              Pricing
+          %li{ :class => ("active" if @highlight == "download") }
+            = link_to browse_download_path do
+              = image_tag("download.png", :alt => "Download", :style => "height: 18px;")
+              Download
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right
@@ -61,10 +67,6 @@
                 = link_to "Logout", logout_path, method: :delete
       - else
         %ul.nav.navbar-nav.navbar-right
-          %li{ :class => ("active" if @highlight == "pricing") }
-            = link_to browse_pricing_path do
-              = image_tag("download.png", :alt => "Download", :style => "height: 18px;")
-              Download
           %li
             = link_to "Login or Register", login_path
 
