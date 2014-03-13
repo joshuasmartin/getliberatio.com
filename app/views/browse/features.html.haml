@@ -10,6 +10,8 @@
   %li
     = link_to "Remote Commands", "#remote-commands", "data-toggle" => "pill"
   %li
+    = link_to "System Cleanup", "#cleanup", "data-toggle" => "pill"
+  %li
     = link_to "Open Source", "#foss", "data-toggle" => "pill"
   %li
     = link_to "Roadmap", "#roadmap", "data-toggle" => "pill"
@@ -20,10 +22,37 @@
     test
 
   #remote-commands.tab-pane
-    remote
+    .row
+      .col-md-6
+        %h4.text-liberatio-primary.cursive What are "Remote Commands" ?
+        %p Liberatio Agent allows you to run executables (with parameters) and typical "Command Prompt" commands on a remote device via the Liberatio Website.
+        %p This powerful feature enables you to do things like delete files, run batch files, or execute binaries from a remote location over secure, encrypted channels in the context of a privileged account (i.e. Administrator account).
+        %p The result of the Remote Command is available to you immediately upon execution due to our unique, direct, two-way communication with the remote device (using standard, open, secure protocols).
+
+    .row
+      .col-md-offset-6.col-md-6
+        %h4.text-liberatio-primary.cursive Is it secure?
+        %p Absolutely. The commands are sent over secure, encrypted WebSockets; and the user account on the remote device is an Administrator account whose password resets automatically every time the Agent is started. This account is kept disabled until it is needed, and the password is generated and stored (encrypted) in a file that only the Agent can read. Using this feature requires you to re-enter your Liberatio Website password in order to prevent third parties from accessing your stale connection.
+
+    .row
+      .col-md-6
+        %h4.text-liberatio-primary.cursive What kind of commands can I execute?
+        %p Examples would include:
+        %p
+          %pre rd /s /q "C:\Users\UserName\Desktop\Folder"
+        %p
+          %pre sfc /scanboot
+        %p
+          %pre C:\mybat.bat
+
+  #cleanup.tab-pane
+    cleanup
 
   #foss.tab-pane
     foss
 
   #roadmap.tab-pane
-    test 2
+    %ul.list-unstyled
+      %li Alerts for System Issues
+      %li Antivirus and Firewall Discovery
+      %li Software Deployment

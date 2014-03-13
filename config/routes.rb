@@ -8,7 +8,6 @@ Liberatio::Application.routes.draw do
   post "pusher/auth" => "pusher#auth"
 
   get "browse/home" => "browse#home"
-  get "browse/roadmap" => "browse#roadmap", :as => "browse_roadmap"
   get "browse/pricing" => "browse#pricing", :as => "browse_pricing"
   get "browse/features" => "browse#features", :as => "browse_features"
   get "browse/buy" => "browse#buy", :as => "browse_buy"

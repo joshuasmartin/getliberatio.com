@@ -1,1 +1,41 @@
-%h2 Download
+- content_for :title, "Download Agent"
+
+%h2 Download the Agent
+
+.row{ :style => "padding-top: 20px;" }
+
+  .col-md-5
+    %h4.text-liberatio-primary.cursive What does the Agent do?
+    %p Install this agent on your machines (servers, workstations, laptops) to have an Asset Inventory sent to Liberatio automatically. The Agent also enables features like shutting down and restarting remotely, as well as executing commands remotely.
+
+    %p Liberatio Agent only supports Windows at this time, but watch our #{link_to "Roadmap", browse_features_path}. <strong>And keep in mind</strong>, you can add devices of any type, manually without using the Agent.
+
+  .col-md-6
+    .alert.alert-warning
+      %p <strong>Liberatio Agent only supports Windows at this time</strong>
+
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to "Windows", "#windows", "data-toggle" => "tab"
+      %li
+        = link_to "OS X", "#osx", "data-toggle" => "tab"
+      %li
+        = link_to "Linux", "#linux", "data-toggle" => "tab"
+
+    .tab-content
+
+      #windows.tab-pane.active
+        %p.text-muted
+          Version 1.0.0, Released March 13, 2014
+        %p
+          = link_to "Download Now", "#", :class => "btn btn-primary"
+          = link_to "View Source", "https://github.com/joshuasmartin/liberatio-agent-windows/", :class => "btn btn-default"
+
+        %p.text-muted
+          %small Supports Windows Vista, 7, 8, 2003, 2008, 2008 R2, 2012. Requires .NET 4 Client Profile.
+
+      #osx.tab-pane
+        %p Coming Soon, #{link_to 'Get Notified', '#'} when we add this platform
+
+      #linux.tab-pane
+        %p Coming Soon, #{link_to 'Get Notified', '#'} when we add this platform
