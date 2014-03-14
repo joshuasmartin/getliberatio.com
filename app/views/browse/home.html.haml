@@ -1,2 +1,31 @@
-.jumbotron
-  = image_tag("banner-logo.png", :alt => "")
+- content_for :title, "Asset Inventory, Remote Management"
+
+.row{ :style => "padding-top: 40px; padding-bottom: 30px;" }
+  .col-md-5.col-md-offset-1.text-center
+    = image_tag("banner-logo.png", :alt => "")
+  .col-md-5
+    %h2.cursive{ :style => "line-height: 40px; padding-bottom: 10px;" }
+      Simple, Powerful, Cloud-based Systems Management
+    = link_to "#", :class => "btn btn-primary btn-lg" do
+      Get Liberatio Now
+      &#x279e;
+    = link_to browse_features_path, :class => "btn btn-default btn-lg" do
+      Learn More
+
+%hr/
+
+.row.product-details
+  .col-md-4
+    = image_tag("what.png", :alt => "What is Liberatio?", :class => "pull-left", :style => "padding-right: 15px;")
+    %h4.text-liberatio-primary.cursive What is Liberatio?
+    %h5 Liberatio is a cloud-based systems management tool designed to give you greater control and insight over your IT devices and infrastructure. Agents are a key component that, when deployed on your devices, enable real-time, two-way communication and management securely over the Web.
+
+  .col-md-4
+    = image_tag("who.png", :alt => "Who is Liberatio for?", :class => "pull-left", :style => "padding-right: 15px;")
+    %h4.text-liberatio-primary.cursive Who is Liberatio for?
+    %h5 IT Managers, IT guys, and System Administrators who need to get a handle on their IT infrastructure. Liberatio works well in small to mid-size environments, and can be used to manage from just one to 1000+ devices. Liberatio works securely over the Web, and requires no firewall or network modifications.
+
+  .col-md-4
+    = image_tag("do.png", :alt => "What can Liberatio do?", :class => "pull-left", :style => "padding-right: 15px;")
+    %h4.text-liberatio-primary.cursive What can Liberatio do?
+    %h5 Liberatio enables you to streamline your IT infrastructure by improving the way you manage your devices. Automatic hardware and software inventory, real-time communication, and continual monitoring will not only help you resolve issues, but also prevent them from occuring.

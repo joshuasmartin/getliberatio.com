@@ -1,58 +1,110 @@
 - content_for :title, "Features"
 
-%h2 Features
+%h2 Simple, Powerful Features
 
 %br/
 
-%ul.nav.nav-pills
-  %li.active
-    = link_to "Inventory", "#inventory", "data-toggle" => "pill"
-  %li
-    = link_to "Remote Commands", "#remote-commands", "data-toggle" => "pill"
-  %li
-    = link_to "System Cleanup", "#cleanup", "data-toggle" => "pill"
-  %li
-    = link_to "Open Source", "#foss", "data-toggle" => "pill"
-  %li
-    = link_to "Roadmap", "#roadmap", "data-toggle" => "pill"
+.row
 
-.tab-content
+  / details
+  .col-md-8
 
-  #inventory.tab-pane.active
-    test
+    %ul.nav.nav-pills
+      %li.active
+        = link_to "Inventory", "#inventory", "data-toggle" => "pill"
+      %li
+        = link_to "Remote Commands", "#remote-commands", "data-toggle" => "pill"
+      %li
+        = link_to "System Cleanup", "#cleanup", "data-toggle" => "pill"
+      %li
+        = link_to "Open Source", "#foss", "data-toggle" => "pill"
+      %li
+        = link_to "Roadmap", "#roadmap", "data-toggle" => "pill"
 
-  #remote-commands.tab-pane
-    .row
-      .col-md-6
-        %h4.text-liberatio-primary.cursive What are "Remote Commands" ?
-        %p Liberatio Agent allows you to run executables (with parameters) and typical "Command Prompt" commands on a remote device via the Liberatio Website.
-        %p This powerful feature enables you to do things like delete files, run batch files, or execute binaries from a remote location over secure, encrypted channels in the context of a privileged account (i.e. Administrator account).
-        %p The result of the Remote Command is available to you immediately upon execution due to our unique, direct, two-way communication with the remote device (using standard, open, secure protocols).
+    .tab-content
 
-    .row
-      .col-md-offset-6.col-md-6
-        %h4.text-liberatio-primary.cursive Is it secure?
-        %p Absolutely. The commands are sent over secure, encrypted WebSockets; and the user account on the remote device is an Administrator account whose password resets automatically every time the Agent is started. This account is kept disabled until it is needed, and the password is generated and stored (encrypted) in a file that only the Agent can read. Using this feature requires you to re-enter your Liberatio Website password in order to prevent third parties from accessing your stale connection.
+      #inventory.tab-pane.active
+        .row
+          .col-md-6
+            %h4.text-liberatio-primary.cursive What gets inventoried?
+            %p The Agent inventories both hardware and software:
+            %ul.list-liberatio-padded
+              %li Model and Serial Number
+              %li Storage Devices
+              %li Processors and Memory
+              %li Network Interfaces
+              %li Operating System Name and Version
+              %li <strong>Software Applications Installed</strong>
+              %li Windows Updates <em>Installed</em>
+              %li <strong>Windows Updates <em>Needed</em></strong>
+          .col-md-offset-1.col-md-3
+            = image_tag("features/inventory.png", :alt => "Inventory", :class => "text-center btn-block")
 
-    .row
-      .col-md-6
-        %h4.text-liberatio-primary.cursive What kind of commands can I execute?
-        %p Examples would include:
-        %p
-          %pre rd /s /q "C:\Users\UserName\Desktop\Folder"
-        %p
-          %pre sfc /scanboot
-        %p
-          %pre C:\mybat.bat
+      #remote-commands.tab-pane
+        .row
+          .col-md-6
+            %h4.text-liberatio-primary.cursive What are "Remote Commands" ?
+            %p Liberatio Agent allows you to run executables (with parameters) and typical "Command Prompt" commands on a remote device via the Liberatio Dashboard.
+            %p This powerful feature enables you to do things like delete files, run batch files, or execute binaries from a remote location over secure, encrypted channels in the context of a privileged account (i.e. Administrator account).
+            %p The result of the Remote Command is available to you immediately upon execution due to our unique, direct, two-way communication with the remote device (using standard, open, secure protocols).
+          .col-md-offset-1.col-md-3
+            = image_tag("features/commands.png", :alt => "Commands", :class => "text-center btn-block")
 
-  #cleanup.tab-pane
-    cleanup
+        %br/
 
-  #foss.tab-pane
-    foss
+        .row
+          .col-md-6
+            %h4.text-liberatio-primary.cursive What kind of commands can I execute?
+            %p Examples would include:
+            %p
+              %pre rd /s /q "C:\Folder"
+            %p
+              %pre sfc /scanboot
+            %p
+              %pre C:\mybat.bat
+          .col-md-6
+            %h4.text-liberatio-primary.cursive Is it secure?
+            %p Absolutely.
+            %p The commands are sent over secure, encrypted WebSockets; and the user account on the remote device is a privileged account whose password resets automatically every time the Agent is started. This account is kept disabled until it is needed, and the password is generated and stored (encrypted) in a file that only the Agent can read.
+            %p Only you can execute Remote Commands, and a history of all Remote Commands is maintained.
 
-  #roadmap.tab-pane
-    %ul.list-unstyled
-      %li Alerts for System Issues
-      %li Antivirus and Firewall Discovery
-      %li Software Deployment
+
+      #cleanup.tab-pane
+        cleanup
+
+      #foss.tab-pane
+        .row
+          .col-md-6
+            %h4.text-liberatio-primary.cursive Liberatio Agents are Open
+            %p The Agent(s) for every platform will always be Open Source to ensure that you can see exactly what information we collect, how we collect it, and what we do it with.
+            %p The source code for the Liberatio Agent for Windows is licensed under the GPLv3 and is #{link_to 'available on GitHub', 'https://github.com/joshuasmartin/liberatio-agent-windows'}.
+
+      #roadmap.tab-pane
+        %ul.list-unstyled
+          %li Alerts for System Issues
+          %li Antivirus and Firewall Discovery
+          %li Software Deployment
+
+  / at a glance
+  .col-md-4
+    %h4 Features at a Glance
+
+    %table{ :class => "table table-bordered" }
+      %tr
+        %td.text-center &#x2713;
+        %td
+          %strong Automatically Inventory Devices
+      %tr
+        %td.text-center &#x2713;
+        %td Track Device Maintenance
+      %tr
+        %td.text-center &#x2713;
+        %td Discover Out-of-Date Devices
+      %tr
+        %td.text-center &#x2713;
+        %td
+          %strong Execute Commands Remotely
+      %tr
+        %td.text-center &#x2713;
+        %td
+          %strong Automatic System Cleanup
