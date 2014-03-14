@@ -70,7 +70,11 @@
 
 
       #cleanup.tab-pane
-        cleanup
+        .row
+          .col-md-6
+            &nbsp;
+          .col-md-offset-1.col-md-3
+            = image_tag("features/cleanup.png", :alt => "Cleanup", :class => "text-center btn-block")
 
       #foss.tab-pane
         .row
@@ -78,12 +82,18 @@
             %h4.text-liberatio-primary.cursive Liberatio Agents are Open
             %p The Agent(s) for every platform will always be Open Source to ensure that you can see exactly what information we collect, how we collect it, and what we do it with.
             %p The source code for the Liberatio Agent for Windows is licensed under the GPLv3 and is #{link_to 'available on GitHub', 'https://github.com/joshuasmartin/liberatio-agent-windows'}.
+          .col-md-offset-1.col-md-3
+            = image_tag("features/code.png", :alt => "Source Code", :class => "text-center btn-block")
 
       #roadmap.tab-pane
-        %ul.list-unstyled
-          %li Alerts for System Issues
-          %li Antivirus and Firewall Discovery
-          %li Software Deployment
+        .row
+          .col-md-6
+            %ul.list-liberatio-padded
+              %li Alerts for System Issues
+              %li Antivirus and Firewall Discovery
+              %li Software Deployment
+          .col-md-offset-1.col-md-3
+            = image_tag("features/roadmap.png", :alt => "Roadmap", :class => "text-center btn-block")
 
   / at a glance
   .col-md-4
