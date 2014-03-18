@@ -33,17 +33,9 @@ class InventoriesController < ApplicationController
     #                 ]
     # }
     @node.inventory(inventory_params)
-
-    respond_to do |format|
-      if @node
-        format.json { render json: { :success => true }, status: :ok }
-      else
-        format.json { render json: @node.errors.full_messages, status: :unprocessable_entity }
-      end
-    end
-
-  rescue => error
-    render :json => { :errors => error }, :status => :unprocessable_entity
+    render :json => { :success => true }, :status => :ok
+  rescue => e
+    render :json => { :errors => e.to_s }, :status => :unprocessable_entity
   end
 
   private
