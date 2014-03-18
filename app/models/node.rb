@@ -92,7 +92,8 @@ class Node < ActiveRecord::Base
       self.updates << self.updates.new( title: u[:title],
                                         severity: u[:severity],
                                         support_url: u[:support_url],
-                                        is_installed: u[:is_installed] )
+                                        is_installed: u[:is_installed],
+                                        organization_id: self.organization_id )
     end
 
     return self.save
