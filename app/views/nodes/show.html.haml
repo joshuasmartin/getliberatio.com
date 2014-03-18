@@ -77,7 +77,7 @@
                 %td Last Inventory
                 %td
                   - if @node.inventoried_at?
-                    %strong #{time_ago_in_words(@node.inventoried_at)}
+                    %strong #{time_ago_in_words(@node.inventoried_at)} ago
 
         %hr/
 
@@ -242,7 +242,10 @@
                   %td #{update.title}
             - else
               %tr
-                %td{ colspan: 2 } No Updates Needed
+                - if @node.updates.where(is_installed: true).any?
+                  %td{ colspan: 2 } No Updates Needed
+                - else
+                  %td{ colspan: 2 } No Updates Inventoried
 
         %br/
 
