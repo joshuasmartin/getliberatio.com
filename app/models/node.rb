@@ -45,7 +45,7 @@ class Node < ActiveRecord::Base
 
   
   def inventory(inventory)
-    self.update(inventory.except(:uuid, :applications, :memory, :processor, :disks).merge(:inventoried_at => Time.now))
+    self.update(inventory.except(:uuid, :applications, :memory, :processor, :disks, :updates).merge(:inventoried_at => Time.now))
 
     # applications
     self.instances.destroy_all
