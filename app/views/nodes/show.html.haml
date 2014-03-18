@@ -235,14 +235,14 @@
               %th.col-md-3 Severity
               %th Title
           %tbody
-            - if @node.updates.any?
-              - @node.updates.each do |update|
+            - if @node.updates.where(is_installed: false).any?
+              - @node.updates.where(is_installed: false).each do |update|
                 %tr
                   %td #{update.severity}
                   %td #{update.title}
             - else
               %tr
-                %td{ colspan: 2 } No Updates Inventoried
+                %td{ colspan: 2 } No Updates Needed
 
         %br/
 
@@ -254,8 +254,8 @@
               %th.col-md-3 Severity
               %th Title
           %tbody
-            - if @node.updates.any?
-              - @node.updates.each do |update|
+            - if @node.updates.where(is_installed: true).any?
+              - @node.updates.where(is_installed: true).each do |update|
                 %tr
                   %td #{update.severity}
                   %td #{update.title}
