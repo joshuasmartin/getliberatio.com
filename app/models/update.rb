@@ -13,5 +13,5 @@ class Update < ActiveRecord::Base
 
   # validations
   validates :node, :organization, :is_installed, :severity, :title, presence: true
-  validates :severity, inclusion: { in: [""] }
+  # validates :severity, inclusion: { in: [""] }
 end
