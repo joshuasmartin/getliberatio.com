@@ -7,6 +7,7 @@ Liberatio::Application.routes.draw do
   resources :responses
   resources :tickets
 
+  # Needed by Pusher C# Client for authentication
   post "pusher/auth" => "pusher#auth"
 
   get "browse/home" => "browse#home"

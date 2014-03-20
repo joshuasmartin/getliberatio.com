@@ -10,11 +10,18 @@ class PusherController < ApplicationController
   protect_from_forgery :except => :auth # stop rails CSRF protection for this action
 
   def auth
-    if current_user
-      response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
-      render :json => response
-    else
-      render :text => "Forbidden", :status => '403'
-    end
+    uuid = params[:channel_name].split("cmd_")[1]
+    node = Node.where(uuid: uuid, token: params[:token]).first
+
+    raise "Valid token must be provided for given device UUID" if node.blank?
+
+    response = Pusher[params[:channel_name]].authenticate(params[:socket_id], {
+      :user_id => node.id, # => required
+      :user_info => { # => optional - for example
+      }
+    })
+    render :json => response
+  rescue => e
+    render :text => "Forbidden", :status => '403'
   end
 end
