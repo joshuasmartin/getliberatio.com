@@ -29,6 +29,7 @@ Liberatio::Application.routes.draw do
     get 'registered', :on => :collection
     post 'register', :on => :collection
     get 'maintenance', :on => :collection, :as => "maintenance"
+    get 'dashboard', :on => :collection, :as => "dashboard"
   end
 
   resources :sessions

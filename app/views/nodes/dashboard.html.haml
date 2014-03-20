@@ -1,0 +1,47 @@
+- content_for :title, "Dashboard"
+
+%ol.breadcrumb
+  %li.active
+    Dashboard
+
+.row
+  .col-md-5.col-md-offset-1
+    %h1 Welcome to Liberatio
+    %h5.text-muted
+      for #{current_user.organization.name},
+      joined #{current_user.organization.created_at.to_date.to_human}
+
+    .row{ :style => "padding-top: 30px;" }
+      .col-md-7
+        %ul.list-unstyled.list-padded
+          %li
+            = link_to "Getting Started Guide", "#", :class => "btn btn-primary btn-block"
+          %li
+            = link_to "Frequently Asked Questions", "#", :class => "btn btn-default btn-block"
+  .col-md-5
+
+    %h4 Quick Statistics
+    %table{ :class => "table table-bordered table-condensed" }
+      %tr{ :style => "background-color: #f9f9f9;" }
+        %td.col-md-2.text-center
+          %strong #{current_user.organization.nodes.count}
+        %td{ colspan: 2 } Total Devices
+      %tr
+        %td.col-md-2
+        %td.col-md-2.text-center
+          %strong #{current_user.organization.nodes(is_managed: true).count}
+        %td Managed
+      %tr
+        %td.col-md-2
+        %td.col-md-2.text-center
+          %strong #{current_user.organization.nodes(is_managed: false).count}
+        %td Unmanaged
+      %tr
+        %td.col-md-2
+        %td.col-md-2.text-center
+          %strong #{current_user.organization.instances.count}
+        %td Needing Updates
+      %tr{ :style => "background-color: #f9f9f9;" }
+        %td.col-md-2.text-center
+          %strong #{current_user.organization.instances.count}
+        %td{ colspan: 2 } Total Applications

@@ -20,11 +20,15 @@
         = link_to root_path, :class => "navbar-brand" do
           = image_tag("nav-logo.png", :alt => "")
 
-      - if current_user
+      - if @navigation == "account"
         %ul.nav.navbar-nav
+          %li{ :class => ("active" if @highlight == "dashboard") }
+            = link_to dashboard_nodes_path do
+              = image_tag("dashboard.png", :alt => "Dashboard", :style => "height: 18px;")
+              Dashboard
           %li{ :class => ("active" if @highlight == "devices") }
             = link_to nodes_path do
-              = image_tag("devices.png", :alt => "Software", :style => "height: 18px;")
+              = image_tag("devices.png", :alt => "Devices", :style => "height: 18px;")
               Devices
           %li{ :class => ("active" if @highlight == "software") }
             = link_to instances_path do
@@ -32,7 +36,7 @@
               Software
           %li{ :class => ("active" if @highlight == "maintenance") }
             = link_to maintenance_nodes_path do
-              = image_tag("protection.png", :alt => "Software", :style => "height: 18px;")
+              = image_tag("protection.png", :alt => "Maintenance", :style => "height: 18px;")
               Maintenance
       - else
         %ul.nav.navbar-nav
@@ -53,6 +57,10 @@
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right
+          - if @navigation != "account"
+            %li
+              = link_to dashboard_nodes_path do
+                %strong Go to Liberatio Dashboard
           %li.dropdown
             = link_to "#", "data-toggle" => "dropdown", :class => "dropdown-toggle" do
               Joshua Shane Martin

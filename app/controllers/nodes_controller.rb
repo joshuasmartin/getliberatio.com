@@ -10,6 +10,7 @@ class NodesController < ApplicationController
   protect_from_forgery except: :register
   skip_before_filter :authenticate_user!, only: [:register, :registered]
   before_action :set_highlight, except: :maintenance
+  before_action :set_navigation
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   respond_to :json
@@ -33,6 +34,11 @@ class NodesController < ApplicationController
     else
       render :nothing => true, :status => :no_content
     end
+  end
+
+  # GET /nodes/dashboard
+  def dashboard
+    @highlight = "dashboard"
   end
 
   # GET /nodes/maintenance
@@ -120,6 +126,10 @@ class NodesController < ApplicationController
 
     def set_highlight
       @highlight = "devices"
+    end
+
+    def set_navigation
+      @navigation = "account"
     end
 
     def node_params

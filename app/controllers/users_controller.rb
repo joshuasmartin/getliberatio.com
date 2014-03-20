@@ -7,8 +7,8 @@
 # -----------------------------------------------------------------------------
 
 class UsersController < ApplicationController
-
   skip_before_filter :authenticate_user!, :only => [:new, :create]
+  before_action :set_navigation
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -80,12 +80,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_navigation
+      @navigation = "account"
+    end
+
     def user_params
       params.require(:user).permit(:email_address, :name, :password, :password_confirmation, :role, :organization_id, :organization_name)
     end

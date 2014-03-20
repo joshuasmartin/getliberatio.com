@@ -8,6 +8,7 @@
 
 class InstancesController < ApplicationController
   before_action :set_highlight
+  before_action :set_navigation
   before_action :set_instance, only: [:show, :edit, :update, :destroy]
 
   # GET /instances
@@ -77,6 +78,10 @@ class InstancesController < ApplicationController
 
     def set_highlight
       @highlight = "software"
+    end
+
+    def set_navigation
+      @navigation = "account"
     end
 
     def instance_params
