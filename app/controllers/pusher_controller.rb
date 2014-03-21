@@ -8,6 +8,7 @@
 
 class PusherController < ApplicationController
   protect_from_forgery :except => :auth # stop rails CSRF protection for this action
+  skip_before_filter :authenticate_user!, only: [:auth]
 
   def auth
     uuid = params[:channel_name].split("cmd_")[1]
