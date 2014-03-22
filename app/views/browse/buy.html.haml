@@ -1,30 +1,30 @@
+- content_for :title, "Signing Up"
+
 .row{ :style => "margin-top: 60px; margin-bottom: 40px;" }
 
   .col-md-offset-2.col-md-4
 
     .row
 
-      %h4.signing-up.text-grayed Great, you're signing up for the
-      %h2.plan-name Liberatio <strong>#{session[:plan][:name]}</strong> Plan
+      %h4.signing-up.text-grayed Great, you're signing up for
+      = image_tag("banner-logo.png", :alt => "Liberatio Logo", :class => "buy-logo")
       
-      #plan-details.well
-        %h5 Plan Details
+      #plan-details.text-grayed
+        %h5 What you're getting for <strong>#{number_to_currency(59)}</strong>/month
 
         .row
           .col-md-5
             %ul.list-unstyled
-              %li <strong>#{number_to_currency(session[:plan][:price_cents]/100)}</strong>/month
-              %li Up to <strong>#{session[:plan][:devices]} Devices</strong>
+              %li Unlimited Devices
               %li Hardware Inventory
               %li Software Inventory
           .col-md-7
             %ul.list-unstyled
-              %li <strong>#{session[:plan][:assisted]} Free</strong> Assisted Support Tickets
-              %li Unlimited Support Tickets
-              %li Windows Agent
+              %li Real-Time Windows Agent
               %li Execute Commands Remotely
+              %li Determine Needed Updates
     
-  .col-md-offset-1.col-md-5
+  .col-md-offset-1.col-md-4
 
     .row
 
@@ -36,11 +36,29 @@
         .col-md-4
           = link_to "Register", new_user_path, :class => "btn btn-primary btn-lg btn-block"
     - else
-      %h4 Credit or Debit Card
-      %hr
+      = form_for @subscription, :html => { :class => "form", :role => "form" } do |f|
+        = f.hidden_field :stripe_card_token
 
-      %form{ :action => "/charge", :method => "POST" }
-        %script{ :src => "https://checkout.stripe.com/checkout.js", :class => "stripe-button", "data-key" => Rails.configuration.stripe[:publishable_key], "data-image" => "", "data-name" => "Signing Up", "data-description" => "#{session[:plan][:name]} Plan (#{number_to_currency(session[:plan][:price_cents]/100)}/month)", "data-amount" => session[:plan][:price_cents], "data-panel-label" => "Subscribe {{amount}}/month", "data-email" => current_user.email_address }
+        .form-group
+          = label_tag :card_number, "Credit or Debit Card Number"
+          = text_field_tag :card_number, nil, name: nil, :class => "form-control first"
+
+        .form-group
+          = label_tag :card_code, "Security Code on Card (CVV)"
+          = text_field_tag :card_code, nil, name: nil, :class => "form-control"
+
+        .form-group
+          = label_tag :card_month, "Card Expiration"
+          .row
+            .col-md-6
+              = select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", :class => "form-control" }
+            .col-md-6
+              = select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, id: "card_year", :class => "form-control" }
+
+        #stripe_error
+          %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+
+        = f.submit "Subscribe", :class => "btn btn-primary"
 
       %p.text-small.text-muted{ :style => "padding-top: 30px;" }
         %strong We Accept

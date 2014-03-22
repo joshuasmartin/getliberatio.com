@@ -20,18 +20,19 @@
 
   .col-md-4
 
-    %h1 $49/month
+    %h1 $59/month
 
     %h4 Single, Unified Plan Gets You:
 
     %ul.list-unstyled.list-padded
       %li &#x2713; Unlimited Devices
-      %li &#x2713; Asset Inventory
+      %li &#x2713; Hardware Inventory
+      %li &#x2713; Software Inventory
+      %li &#x2713; Real-Time Windows Agent
       %li &#x2713; Execute Commands Remotely
-      %li &#x2713; Shutdown, Reboot Remotely
+      %li &#x2713; Determine Needed Updates
 
 .text-center
-  = link_to "Sign Up Now", "#", :class => "btn btn-primary btn-lg"
-
-  %form{ :action => "/charge", :method => "POST" }
-    %script{ :src => "https://checkout.stripe.com/checkout.js", :class => "stripe-button", "data-key" => Rails.configuration.stripe[:publishable_key], "data-image" => "", "data-name" => "Signing Up", "data-description" => "Liberatio Plan (#{number_to_currency(49)}/month)", "data-amount" => 4900, "data-panel-label" => "Subscribe {{amount}}/month", "data-email" => current_user.email_address, "data-label" => "Sign Up Now" }
+  = link_to browse_buy_path, :class => "btn btn-primary btn-lg" do
+    Sign Up Now
+    &#x279e;

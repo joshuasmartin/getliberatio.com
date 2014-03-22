@@ -2,10 +2,10 @@ table.table-plan tr td { padding-top: 10px; padding-bottom: 10px; }
 table.table-plan tr.details { font-size: 12px; }
 
 h4.signing-up { margin-bottom: 0; }
-h2.plan-name { margin-top: 10px; }
+img.buy-logo { margin-top: 20px; }
 
 .text-grayed { color: #808080; }
 
 #plan-details { margin-top: 30px; padding-top: 10px; padding-bottom: 10px; }
-#plan-details h5 { font-weight: bold; }
-#plan-details ul.list-unstyled li { padding-top: 5px; font-size: 12px; }
+#plan-details h5 { font-weight: bold; font-size: 14px; }
+#plan-details ul.list-unstyled li { padding-top: 5px; font-size: 14px; }

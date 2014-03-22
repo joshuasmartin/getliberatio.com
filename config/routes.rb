@@ -1,5 +1,7 @@
 Liberatio::Application.routes.draw do
 
+  resources :subscriptions
+
   get "au/latest" => "automatic_updates#latest"
 
   resources :issues

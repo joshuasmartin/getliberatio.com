@@ -12,6 +12,8 @@
 
     <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 
+    = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
+
 %body
 
   %nav.navbar.navbar-default.navbar-fixed-top{ role: "navigation" }
