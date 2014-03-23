@@ -1,6 +1,8 @@
 Liberatio::Application.routes.draw do
 
-  resources :subscriptions
+  resources :subscriptions do
+    get 'welcome', :on => :collection, :as => "welcome"
+  end
 
   get "au/latest" => "automatic_updates#latest"
 
@@ -24,9 +26,7 @@ Liberatio::Application.routes.draw do
   end
   resources :instances
   resources :applications
-  resources :organizations do
-    get 'settings', :on => :member, :as => 'settings'
-  end
+  resources :organizations
   resources :nodes do
     resources :commands
     get 'registered', :on => :collection

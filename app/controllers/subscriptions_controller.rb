@@ -1,3 +1,11 @@
+# -----------------------------------------------------------------------------
+# This file is a part of Liberatio, a systems management Web application.
+# The text in this file is subject to the terms defined in the LICENSE file.
+#
+# Copyright 2014, Joshua Shane Martin
+# All Rights Reserved
+# -----------------------------------------------------------------------------
+
 class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:show, :edit, :update, :destroy]
 
@@ -14,6 +22,7 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/new
   def new
+    @highlight = "pricing"
     @subscription = Subscription.new
   end
 
@@ -24,14 +33,17 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   def create
     @subscription = Subscription.new(subscription_params)
+    @subscription.organization = current_user.organization
 
     respond_to do |format|
       if @subscription.save_with_payment
-        format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+        format.html { redirect_to welcome_subscriptions_path }
       else
         format.html { render action: 'new' }
       end
     end
+  rescue => e
+    render action: 'new'
   end
 
   # PATCH/PUT /subscriptions/1
@@ -66,6 +78,6 @@ class SubscriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscription_params
-      params.require(:subscription).permit(:organization_id)
+      params.require(:subscription).permit(:stripe_card_token)
     end
 end

@@ -1,0 +1,71 @@
+- content_for :title, "Signing Up"
+
+.row{ :style => "margin-top: 60px; margin-bottom: 40px;" }
+
+  .col-md-offset-2.col-md-4
+
+    .row
+
+      %h4.signing-up.text-grayed Great, you're signing up for
+      = image_tag("banner-logo.png", :alt => "Liberatio Logo", :class => "buy-logo")
+      
+      #plan-details.text-grayed
+        %h5 What you're getting for <strong>#{number_to_currency(59)}</strong>/month
+
+        .row
+          .col-md-5
+            %ul.list-unstyled
+              %li Unlimited Devices
+              %li Hardware Inventory
+              %li Software Inventory
+          .col-md-7
+            %ul.list-unstyled
+              %li Real-Time Windows Agent
+              %li Execute Commands Remotely
+              %li Determine Needed Updates
+    
+  .col-md-offset-1.col-md-4
+
+    .row
+
+    - if !current_user
+      %h5 To continue, just sign in or register:
+      .row
+        .col-md-4
+          = link_to "Sign In", new_session_path, :class => "btn btn-primary btn-lg btn-block"
+        .col-md-4
+          = link_to "Register", new_user_path, :class => "btn btn-primary btn-lg btn-block"
+    - else
+      = form_for @subscription, :html => { :class => "form", :role => "form" } do |f|
+        = f.hidden_field :stripe_card_token
+
+        .form-group
+          = label_tag :card_number, "Credit or Debit Card Number"
+          = text_field_tag :card_number, nil, name: nil, :class => "form-control first"
+
+        .form-group
+          = label_tag :card_code, "Security Code on Card (CVV)"
+          = text_field_tag :card_code, nil, name: nil, :class => "form-control"
+
+        .form-group
+          = label_tag :card_month, "Card Expiration"
+          .row
+            .col-md-6
+              = select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", :class => "form-control" }
+            .col-md-6
+              = select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, id: "card_year", :class => "form-control" }
+
+        #stripe_error
+          %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+        
+        .form-group{ :style => "padding-top: 20px;" }
+          = f.submit "Start Subscribtion &#x279e;".html_safe, :class => "btn btn-primary"
+
+      %p.text-small.text-muted{ :style => "padding-top: 30px;" }
+        %strong We Accept
+        %br/
+        = image_tag("cards/visa-32.png", :alt => "Visa")
+        = image_tag("cards/mastercard-32.png", :alt => "Mastercard")
+        = image_tag("cards/amex-32.png", :alt => "American Express")
+        %br/
+        and Discover, Diners Club, JCB

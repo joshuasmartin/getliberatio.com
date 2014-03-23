@@ -17,6 +17,7 @@ class Organization < ActiveRecord::Base
   has_many :updates, dependent: :destroy
   has_many :tickets, dependent: :destroy
   has_many :issues, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
 
   # validations
   validates :name, presence: true

@@ -37,6 +37,7 @@ h3.no-top-margin { padding-top: 0; }
 
 
 /* bootstrap extensions */
-.tab-content .tab-pane { padding-top: 20px; }
+.tab-content .tab-pane { padding-top: 20px; padding-bottom: 20px; }
+.tab-content .tab-pane-padded { padding-top: 40px; padding-bottom: 20px; }
 
 ul.list-padded li { padding: 5px 0 5px 0; }

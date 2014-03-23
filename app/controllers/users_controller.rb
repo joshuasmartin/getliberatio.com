@@ -9,7 +9,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:new, :create]
   before_action :set_navigation
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :settings, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -20,6 +20,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  end
+
+  # GET /users/1/settings
+  def settings
+    @subscription = @user.organization.subscriptions.first
+    @card = Stripe::Customer.retrieve(@subscription.stripe_customer_token).cards.all.first
   end
 
   # GET /users/new

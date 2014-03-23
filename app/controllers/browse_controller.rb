@@ -26,6 +26,7 @@ class BrowseController < ApplicationController
   # GET /browse/sign_up
   def buy
     @highlight = "pricing"
+    @subscription = Subscription.new
 
     # Set session variable
     if params.has_key?(:plan)

@@ -13,6 +13,8 @@
     <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 
     = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
+    - if false
+      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 %body
 
@@ -69,10 +71,8 @@
               %b.caret
             %ul.dropdown-menu
               %li
-                = link_to "My Organization", settings_organization_path(current_user.organization_id)
+                = link_to "Account", settings_user_path(current_user)
               %li.divider
-              %li
-                = link_to "My Account", settings_user_path(current_user)
               %li
                 = link_to "Logout", logout_path, method: :delete
       - else

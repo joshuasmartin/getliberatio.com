@@ -1,0 +1,14 @@
+- content_for :title, "Signed Up"
+
+.row{ :style => "margin-top: 60px; margin-bottom: 40px;" }
+
+  .col-md-offset-2.col-md-4
+
+    .row
+
+      %h4.text-grayed Welcome to Liberatio!
+      %p.text-grayed You're signed up now, and you'll be billed <strong>#{number_to_currency(59)}</strong> monthly
+      
+  .col-md-offset-1.col-md-4
+
+    = link_to "Continue to Liberatio Dashboard", dashboard_nodes_path, :class => "btn btn-primary btn-lg"
