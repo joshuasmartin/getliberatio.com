@@ -14,25 +14,28 @@
         %h4.pricing-question.text-liberatio-primary.cursive Is there a contract?
         %p.pricing-answer No, you can cancel your subscription and download your data at any time.
 
-      .col-md-6
         %h4.pricing-question.text-liberatio-primary.cursive What platforms are supported?
         %p.pricing-answer Only Windows is supported by our Agent at this time - the Agent sends an inventory to Liberatio, and allows you to control the machine from the Liberatio Website. Any other type of device can be added manually.
+
+      .col-md-6
+        %h4.pricing-question.text-liberatio-primary.cursive What do I get?
+        %p.pricing-answer
+          Simple, you get the works!
+          %br/
+          %ul.list-unstyled.list-padded
+            %li &#x2713; Unlimited Devices
+            %li &#x2713; Hardware Inventory
+            %li &#x2713; Software Inventory
+            %li &#x2713; Discover Needed Updates
+            %li &#x2713; Execute Commands Remotely
+            %li &#x2713; Automatic System Cleanup
+            %li &#x2713; Real-Time Windows Agent
 
   .col-md-4
 
     %h1 $59/month
+    %h4{ :style => "padding-bottom: 20px;" } Single, Unified Plan Gets You:
 
-    %h4 Single, Unified Plan Gets You:
-
-    %ul.list-unstyled.list-padded
-      %li &#x2713; Unlimited Devices
-      %li &#x2713; Hardware Inventory
-      %li &#x2713; Software Inventory
-      %li &#x2713; Real-Time Windows Agent
-      %li &#x2713; Execute Commands Remotely
-      %li &#x2713; Determine Needed Updates
-
-.text-center
-  = link_to new_subscription_path, :class => "btn btn-primary btn-lg" do
-    Sign Up Now
-    &#x279e;
+    = link_to new_subscription_path, :class => "btn btn-primary btn-lg" do
+      Sign Up Now
+      &#x279e;

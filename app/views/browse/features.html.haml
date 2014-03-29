@@ -17,6 +17,8 @@
       %li
         = link_to "System Cleanup", "#cleanup", "data-toggle" => "pill"
       %li
+        = link_to "Agent", "#agent", "data-toggle" => "pill"
+      %li
         = link_to "Open Source", "#foss", "data-toggle" => "pill"
       %li
         = link_to "Roadmap", "#roadmap", "data-toggle" => "pill"
@@ -26,7 +28,7 @@
       #inventory.tab-pane.active
         .row
           .col-md-6
-            %h4.text-liberatio-primary.cursive What gets inventoried?
+            %h4.text-liberatio-primary.cursive.feature-title What gets inventoried?
             %p The Agent inventories both hardware and software:
             %ul.list-liberatio-padded
               %li Model and Serial Number
@@ -43,7 +45,7 @@
       #remote-commands.tab-pane
         .row
           .col-md-6
-            %h4.text-liberatio-primary.cursive What are "Remote Commands" ?
+            %h4.text-liberatio-primary.cursive.feature-title What are "Remote Commands" ?
             %p Liberatio Agent allows you to run executables (with parameters) and typical "Command Prompt" commands on a remote device via the Liberatio Dashboard.
             %p This powerful feature enables you to do things like delete files, run batch files, or execute binaries from a remote location over secure, encrypted channels in the context of a privileged account (i.e. Administrator account).
             %p The result of the Remote Command is available to you immediately upon execution due to our unique, direct, two-way communication with the remote device (using standard, open, secure protocols).
@@ -54,7 +56,7 @@
 
         .row
           .col-md-6
-            %h4.text-liberatio-primary.cursive What kind of commands can I execute?
+            %h4.text-liberatio-primary.cursive.feature-title What kind of commands can I execute?
             %p Examples would include:
             %p
               %pre rd /s /q "C:\Folder"
@@ -63,7 +65,7 @@
             %p
               %pre C:\mybat.bat
           .col-md-6
-            %h4.text-liberatio-primary.cursive Is it secure?
+            %h4.text-liberatio-primary.cursive.feature-title Is it secure?
             %p Absolutely.
             %p The commands are sent over secure, encrypted WebSockets; and the user account on the remote device is a privileged account whose password resets automatically every time the Agent is started. This account is kept disabled until it is needed, and the password is generated and stored (encrypted) in a file that only the Agent can read.
             %p Only you can execute Remote Commands, and a history of all Remote Commands is maintained.
@@ -72,14 +74,31 @@
       #cleanup.tab-pane
         .row
           .col-md-6
-            &nbsp;
+            %h4.text-liberatio-primary.cursive.feature-title What is System Cleanup ?
+            %p System Cleanup is performed by the Liberatio Agent on a regular basis in order to improve the performance of your system and reclaim storage space.
+            %p The cleanup consists of:
+            %ul.list-liberatio-padded
+              %li Clearing Windows Temporary Files
+              %li Clearing Windows Prefetch
           .col-md-offset-1.col-md-3
             = image_tag("features/cleanup.png", :alt => "Cleanup", :class => "text-center btn-block")
+
+      #agent.tab-pane
+        .row
+          .col-md-6
+            %h4.text-liberatio-primary.cursive.feature-title What is the Agent?
+            %p The Agent is a software application that runs on all of your devices. It's responsible for collecting an inventory of your hardware and software, enabling commands to be executed remotely from the Website, and performing a cleanup of your system at predefined intervals.
+            %p Real-time communication between the Website and Agent is achieved using standard HTML5 WebSockets; communication can be made through firewalls, proxies, and other traditional network obstacles.
+            %p
+              %strong At this time, a Liberatio Agent is only available for Windows systems.
+              Other systems and platforms will become available as soon as possible; keep an eye on our Roadmap, and sign up for the Newsletter to be notified of when we add new ones.
+          .col-md-offset-1.col-md-3
+            = image_tag("features/agent.png", :alt => "Agent", :class => "text-center btn-block")
 
       #foss.tab-pane
         .row
           .col-md-6
-            %h4.text-liberatio-primary.cursive Liberatio Agents are Open
+            %h4.text-liberatio-primary.cursive.feature-title Liberatio Agents are Open
             %p The Agent(s) for every platform will always be Open Source to ensure that you can see exactly what information we collect, how we collect it, and what we do it with.
             %p The source code for the Liberatio Agent for Windows is licensed under the GPLv3 and is #{link_to 'available on GitHub', 'https://github.com/joshuasmartin/liberatio-agent-windows'}.
           .col-md-offset-1.col-md-3
@@ -92,6 +111,11 @@
               %li Alerts for System Issues
               %li Antivirus and Firewall Discovery
               %li Software Deployment
+              %li Linux Agent
+              %li OS X Agent
+              %li BSD Agent
+              %li iOS Agent
+              %li Android Agent
           .col-md-offset-1.col-md-3
             = image_tag("features/roadmap.png", :alt => "Roadmap", :class => "text-center btn-block")
 
@@ -103,13 +127,17 @@
       %tr
         %td.text-center &#x2713;
         %td
-          %strong Automatically Inventory Devices
+          %strong Automatic Hardware Inventory
+      %tr
+        %td.text-center &#x2713;
+        %td
+          %strong Automatic Software Inventory
       %tr
         %td.text-center &#x2713;
         %td Track Device Maintenance
       %tr
         %td.text-center &#x2713;
-        %td Discover Out-of-Date Devices
+        %td Discover Needed Updates
       %tr
         %td.text-center &#x2713;
         %td
@@ -118,3 +146,13 @@
         %td.text-center &#x2713;
         %td
           %strong Automatic System Cleanup
+      %tr
+        %td.text-center &#x2713;
+        %td
+          %strong Real-Time Windows Agent
+
+%hr/
+
+%h5 Have a question about a feature or want to suggest a new feature?
+%p
+  = link_to "Contact Us", "#", :class => "btn btn-primary btn-sm"
