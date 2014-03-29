@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322033814) do
+ActiveRecord::Schema.define(version: 20140329234836) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20140322033814) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stripe_customer_token"
+    t.string   "status"
   end
 
   create_table "tickets", force: true do |t|

@@ -37,8 +37,8 @@
               %li Network Interfaces
               %li Operating System Name and Version
               %li <strong>Software Applications Installed</strong>
-              %li Windows Updates <em>Installed</em>
-              %li <strong>Windows Updates <em>Needed</em></strong>
+              %li Windows Updates Installed
+              %li <strong>Windows Updates Needed</strong>
           .col-md-offset-1.col-md-3
             = image_tag("features/inventory.png", :alt => "Inventory", :class => "text-center btn-block")
 
@@ -153,6 +153,6 @@
 
 %hr/
 
-%h5 Have a question about a feature or want to suggest a new feature?
 %p
-  = link_to "Contact Us", "#", :class => "btn btn-primary btn-sm"
+  Have a question about a feature or want to suggest a new feature?
+  = link_to "Contact Us", browse_contacts_path, :class => "btn btn-primary btn-sm"

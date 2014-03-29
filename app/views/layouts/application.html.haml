@@ -13,8 +13,8 @@
     <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 
     = tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key]
-    - if false
-      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    - if true
+      %script{ type: "text/javascript", src: "https://js.stripe.com/v2/" }
 
 %body
 
@@ -78,7 +78,9 @@
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
-            = link_to "Login or Register", login_path
+            = link_to login_path do
+              Login or Register
+              = image_tag("login.png", :alt => "Login or Register", :style => "height: 18px;")
 
   .container
 
@@ -96,6 +98,10 @@
 
   %footer.container
     %hr/
-    %small
-      %p.text-muted
-        &copy; 2014, Joshua Shane Martin | Icons by #{link_to "icons8", "http://icons8.com/"}
+    .row
+      .col-md-6
+        %p.text-muted
+          %small #{link_to "Contact", browse_contacts_path} | #{link_to "About", browse_about_path} | #{link_to "Terms and Privacy", browse_contacts_path}
+      .col-md-6
+        %p.text-muted.text-right
+          %small &copy; 2014, Joshua Shane Martin | Icons by #{link_to "icons8", "http://icons8.com/"}
