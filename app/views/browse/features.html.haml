@@ -78,8 +78,10 @@
             %p System Cleanup is performed by the Liberatio Agent on a regular basis in order to improve the performance of your system and reclaim storage space.
             %p The cleanup consists of:
             %ul.list-liberatio-padded
-              %li Clearing Windows Temporary Files
               %li Clearing Windows Prefetch
+              %li Clear the Windows Update Download Cache
+              %li Flush the DNS Cache
+              %li Delete Archived System Error Reporting Logs
           .col-md-offset-1.col-md-3
             = image_tag("features/cleanup.png", :alt => "Cleanup", :class => "text-center btn-block")
 
