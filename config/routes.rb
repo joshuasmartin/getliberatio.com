@@ -13,6 +13,7 @@ Liberatio::Application.routes.draw do
 
   # Needed by Pusher C# Client for authentication
   post "pusher/auth" => "pusher#auth"
+  post "pusher/webhook" => "pusher#webhook"
 
   get "browse/home" => "browse#home"
   get "browse/about" => "browse#about", :as => "browse_about"

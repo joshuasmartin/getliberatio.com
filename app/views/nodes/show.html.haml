@@ -72,7 +72,13 @@
               %tr
                 %td.col-md-5 Status
                 %td
-                  %strong.text-success Online
+                  - if @node.status == 'online'
+                    %strong.text-success Online
+                  - elsif @node.status == 'offline'
+                    %strong.text-danger Offline
+              %tr
+                %td.col-md-5 Agent Version
+                %td #{@node.agent_version}
               %tr
                 %td Last Inventory
                 %td

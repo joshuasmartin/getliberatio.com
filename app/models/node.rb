@@ -30,7 +30,6 @@ class Node < ActiveRecord::Base
   #   errors.add(:base, "Operating system is not valid") if not Node.operating_systems.include?(self.operating_system)
   # end
 
-
   # Returns a newly created or updated node object for the given uuid. The
   # node will belong to the organization with the given registration code and
   # will have its communications token regenerated before being returned.
@@ -42,7 +41,13 @@ class Node < ActiveRecord::Base
     return @node
   end
 
-
+  # Updates the node with the given id to the given status
+  def self.update_status(hsh = {})
+    @node = Node.find(hsh[:id])
+    unless @node.blank?
+      @node.update(status: hsh[:status])
+    end
+  end
   
   def inventory(inventory)
     self.update(inventory.except(:uuid, :applications, :memory, :processor, :disks, :updates).merge(:inventoried_at => Time.now))
