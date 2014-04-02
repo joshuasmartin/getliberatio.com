@@ -8,7 +8,7 @@
 
 class PusherController < ApplicationController
   protect_from_forgery :except => [:auth, :webook] # stop rails CSRF protection for this action
-  skip_before_filter :authenticate_user!, only: [:auth, :webook]
+  skip_before_filter :authenticate_user!, only: [:auth, :webhook]
 
   # POST /pusher/auth
   def auth
