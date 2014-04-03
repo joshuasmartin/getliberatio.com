@@ -117,6 +117,11 @@ class Node < ActiveRecord::Base
     end
   end
 
+  def online?
+    response = Pusher.get("/channels/presence-cmd_#{self.uuid}/users")
+    response[:users].any? { |u| u[:id] == self.id }
+  end
+
 
   def self.operating_systems
     oses = []

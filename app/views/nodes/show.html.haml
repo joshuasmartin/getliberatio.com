@@ -72,9 +72,9 @@
               %tr
                 %td.col-md-5 Status
                 %td
-                  - if @node.status == 'online'
+                  - if @node.online?
                     %strong.text-success Online
-                  - elsif @node.status == 'offline'
+                  - else
                     %strong.text-danger Offline
               %tr
                 %td.col-md-5 Agent Version
