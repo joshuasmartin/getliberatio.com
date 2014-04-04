@@ -72,6 +72,8 @@
               %tr
                 %td.col-md-5 Status
                 %td
+                  #{Pusher.get("/channels/presence-cmd_#{@node.uuid}/users")}
+                  %br/
                   - if @node.online?
                     %strong.text-success Online
                   - else
