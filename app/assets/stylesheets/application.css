@@ -41,12 +41,14 @@ h3.no-top-margin { padding-top: 0; }
 .tab-content .tab-pane-padded { padding-top: 40px; padding-bottom: 20px; }
 
 ul.list-padded li { padding: 5px 0 5px 0; }
+ol.list-padded li { padding: 5px 0 5px 0; }
 
 .text-liberatio-primary { color: #5599ff; }
 .cursive { font-family: 'Gloria Hallelujah', cursive; }
 
 div.row-padded { margin-top: 40px; margin-bottom: 60px; }
 p.expanded { padding-bottom: 15px; line-height: 26px; }
+p.padded { line-height: 24px; }
 
 /* footer */
 footer { padding-bottom: 30px; }

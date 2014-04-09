@@ -1,0 +1,30 @@
+- content_for :title, "Frequently Asked Questions"
+
+%ol.breadcrumb
+  %li.active
+    Frequently Asked Questions
+
+%h3
+  Frequently Asked Questions
+  %br/
+  %small Authored by Joshua Shane Martin | April 9, 2014
+
+%br/
+
+.row
+  .col-md-5
+
+    %h4 What is a "Registration Code"?
+    %p.padded The <strong>registration code</strong> is a string of characters that serve as a way to <em>initially associate</em> your Agents with your Liberatio account. After installing Liberatio Agent on a computer, you must enter the registration code in the Agent's configuration and restart the Agent - the Agent will perform the necessary steps to securely associate itself with your account upon restart.
+    %p.padded The following steps will be taken on restart:
+    %ol.list-padded
+      %li Agent detects a registration code in configuration.
+      %li Agent connects to Liberatio Website.
+      %li Agent is registered and associated with your account.
+      %li Website responds with a <strong>Communication Token</strong>.
+      %li The Communication Token is saved to the configuration.
+    %p.padded Every subsequent contact with the server includes the Communication Token to authenticate the request (the Communication Token is stored on the server to ensure that the Communication Token coming from the Agent matches the one on the server).
+
+  .col-md-5.col-md-offset-1
+
+    %h4 What is a "Communication Token"?

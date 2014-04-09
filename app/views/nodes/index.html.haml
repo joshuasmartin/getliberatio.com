@@ -53,5 +53,7 @@
       Registration Code
       %strong
         = current_user.organization.registration_code
+      = link_to "#" do
+        %span.glyphicon.glyphicon-refresh
       %br/
       %small #{link_to 'Install the Agent', browse_download_path} on your devices and register with this code.

@@ -74,50 +74,59 @@
 
     .well{ :style => "padding: 40px;" }
 
-      %h3
-        <strong>#{number_to_currency(59)}</strong> monthly
-        %br/
-        %small Billed the #{@subscription.created_at.day.ordinalize} of every month
+      - if @subscription.present?
+        %h3
+          <strong>#{number_to_currency(59)}</strong> monthly
+          %br/
+          %small Billed the #{@subscription.created_at.day.ordinalize} of every month
 
-      %p{ :style => "padding-top: 20px; margin-bottom: 0;" }
-        %strong #{@card.type} ending in #{@card.last4}
-      %p.text-muted{ :style => "margin-top: 0px;" }
-        Current Card
-      %p{ :style => "padding-top: 20px;" }
-        = link_to "Update Card", "javascript:void(0)", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#modal-update-card"
+        %p{ :style => "padding-top: 20px; margin-bottom: 0;" }
+          %strong #{@card.type} ending in #{@card.last4}
+        %p.text-muted{ :style => "margin-top: 0px;" }
+          Current Card
+        %p{ :style => "padding-top: 20px;" }
+          = link_to "Update Card", "javascript:void(0)", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#modal-update-card"
 
-/ update card modal
-.modal.fade{ :id => "modal-update-card" }
-  .modal-dialog
-    .modal-content
-      .modal-header
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        %h4.modal-title Update Card
-      .modal-body
+        / update card modal
+        .modal.fade{ :id => "modal-update-card" }
+          .modal-dialog
+            .modal-content
+              .modal-header
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                %h4.modal-title Update Card
+              .modal-body
 
 
-        = form_for @subscription, :html => { :class => "form", :role => "form" } do |f|
-          = f.hidden_field :stripe_card_token
+                = form_for @subscription, :html => { :class => "form", :role => "form" } do |f|
+                  = f.hidden_field :stripe_card_token
 
-          .form-group
-            = label_tag :card_number, "Credit or Debit Card Number"
-            = text_field_tag :card_number, nil, name: nil, :class => "form-control first"
+                  .form-group
+                    = label_tag :card_number, "Credit or Debit Card Number"
+                    = text_field_tag :card_number, nil, name: nil, :class => "form-control first"
 
-          .form-group
-            = label_tag :card_code, "Security Code on Card (CVV)"
-            = text_field_tag :card_code, nil, name: nil, :class => "form-control"
+                  .form-group
+                    = label_tag :card_code, "Security Code on Card (CVV)"
+                    = text_field_tag :card_code, nil, name: nil, :class => "form-control"
 
-          .form-group
-            = label_tag :card_month, "Card Expiration"
-            .row
-              .col-md-6
-                = select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", :class => "form-control" }
-              .col-md-6
-                = select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, id: "card_year", :class => "form-control" }
+                  .form-group
+                    = label_tag :card_month, "Card Expiration"
+                    .row
+                      .col-md-6
+                        = select_month nil, { add_month_numbers_true: true }, { name: nil, id: "card_month", :class => "form-control" }
+                      .col-md-6
+                        = select_year nil, { start_year: Date.today.year, end_year: Date.today.year + 15 }, { name: nil, id: "card_year", :class => "form-control" }
 
-          #stripe_error
-            %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
-          
-          .form-group{ :style => "padding-top: 20px;" }
-            = link_to "Cancel", "javascript:void(0)", "data-dismiss" => "modal", :class => "btn btn-default"
-            = f.submit "Save Changes", :class => "btn btn-primary"
+                  #stripe_error
+                    %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+                  
+                  .form-group{ :style => "padding-top: 20px;" }
+                    = link_to "Cancel", "javascript:void(0)", "data-dismiss" => "modal", :class => "btn btn-default"
+                    = f.submit "Save Changes", :class => "btn btn-primary"
+      - else
+        %h3
+          <strong>#{number_to_currency(0)}</strong> monthly
+          %br/
+          %small No active subscription!
+        = link_to new_subscription_path, :class => "btn btn-primary" do
+          Sign Up Now
+          &#x279e;

@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   # GET /users/1/settings
   def settings
     @subscription = @user.organization.subscriptions.first
-    @card = Stripe::Customer.retrieve(@subscription.stripe_customer_token).cards.all.first
+    if @subscription.present?
+      @card = Stripe::Customer.retrieve(@subscription.stripe_customer_token).cards.all.first
+    end
   end
 
   # GET /users/new
