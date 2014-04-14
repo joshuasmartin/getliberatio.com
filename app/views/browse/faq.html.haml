@@ -14,6 +14,13 @@
 .row
   .col-md-5
 
+    %h4 What does Liberatio do?
+    %p.padded Liberatio is a cloud-based systems management tool designed to give you greater control and insight over your IT devices and infrastructure. Agents are a key component that, when deployed on your devices, enable real-time, two-way communication and management securely over the Web.
+    %p.padded More specifically, Liberatio consists of two components - the Liberatio Website, which provides an API and management interface, and software agents that are deployed onto devices to enable real-time management and inventory.
+
+    %br/
+    %br/
+
     %h4 What is a "Registration Code"?
     %p.padded The <strong>registration code</strong> is a string of characters that serve as a way to <em>initially associate</em> your Agents with your Liberatio account. After installing Liberatio Agent on a computer, you must enter the registration code in the Agent's configuration and restart the Agent - the Agent will perform the necessary steps to securely associate itself with your account upon restart.
     %p.padded The following steps will be taken on restart:
@@ -28,3 +35,6 @@
   .col-md-5.col-md-offset-1
 
     %h4 What is a "Communication Token"?
+    %p.padded The <strong>Communication Token</strong> is a security token that is passed back and forth between the server and agent to authenticate that requests from the agent are valid.
+    %p.padded A communication token is generated automatically by the Liberatio Website when the agent is registered, when the communication token is saved to the configuration for future communications. Every transmission from the agent will contain the communication token, which will be compared to the token on the server.
+    %p.padded Communication Tokens are unique for each device.
