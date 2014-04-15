@@ -1,3 +1,19 @@
 - content_for :title, "Documentation"
 
 %h2 Documentation
+
+%br/
+
+.row
+  .col-md-5.col-md-offset-1
+    %h4 Articles
+    %ul.list-padded
+      %li #{link_to "Getting Started", browse_getting_started_path}
+      %li #{link_to "Frequently Asked Questions", browse_faq_path}
+      %li #{link_to "Configuring Liberatio Agent", browse_configuring_agent_path}
+
+  .col-md-6
+    %h3 Need Help?
+    %p Email us at <strong>support@getliberatio.com</strong>
+
+%br/

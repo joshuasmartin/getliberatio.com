@@ -25,6 +25,7 @@ Liberatio::Application.routes.draw do
   get "browse/getting_started" => "browse#getting_started", :as => "browse_getting_started"
   get "browse/faq" => "browse#faq", :as => "browse_faq"
   get "browse/documentation" => "browse#documentation", :as => "browse_documentation"
+  get "browse/configuring_agent" => "browse#configuring_agent", :as => "browse_configuring_agent"
 
   resources :inventories, :only => :create
   resources :users do

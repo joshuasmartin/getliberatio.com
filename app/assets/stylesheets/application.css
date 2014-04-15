@@ -28,8 +28,6 @@ body { padding-top: 70px; }
 
 h3.no-top-margin { padding-top: 0; }
 
-.alert-small { padding: 10px; }
-
 .navbar-brand { padding-top: 13px; }
 
 
@@ -49,6 +47,7 @@ ol.list-padded li { padding: 5px 0 5px 0; }
 div.row-padded { margin-top: 40px; margin-bottom: 60px; }
 p.expanded { padding-bottom: 15px; line-height: 26px; }
 p.padded { line-height: 24px; }
+.alert-small { padding: 10px; }
 
 /* footer */
 footer { padding-bottom: 30px; }
