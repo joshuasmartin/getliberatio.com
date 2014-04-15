@@ -24,6 +24,7 @@ Liberatio::Application.routes.draw do
   get "browse/download" => "browse#download", :as => "browse_download"
   get "browse/getting_started" => "browse#getting_started", :as => "browse_getting_started"
   get "browse/faq" => "browse#faq", :as => "browse_faq"
+  get "browse/documentation" => "browse#documentation", :as => "browse_documentation"
 
   resources :inventories, :only => :create
   resources :users do

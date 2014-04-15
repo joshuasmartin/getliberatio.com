@@ -13,6 +13,11 @@ class BrowseController < ApplicationController
   def home
   end
 
+  # GET /browse/documentation
+  def documentation
+    @highlight = "docs"
+  end
+
   # GET /browse/download
   def download
     @highlight = "download"

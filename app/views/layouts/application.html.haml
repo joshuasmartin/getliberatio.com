@@ -58,6 +58,10 @@
             = link_to browse_download_path do
               = image_tag("download.png", :alt => "Download", :style => "height: 18px;")
               Download
+          %li{ :class => ("active" if @highlight == "docs") }
+            = link_to browse_documentation_path do
+              = image_tag("docs.png", :alt => "Documentation", :style => "height: 18px;")
+              Docs
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right
