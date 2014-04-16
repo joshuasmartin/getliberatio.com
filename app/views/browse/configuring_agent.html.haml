@@ -12,7 +12,7 @@
       %br/
       %small Authored by Joshua Shane Martin | April 15, 2014
 
-    %p.padded After you've signed up for Liberatio on the Website, you can begin by either adding devices of any type or system manually (called Unmanaged Devices), or by installing the Agent (called Managed Devices) on devices to have them inventoried, and to enable additional functionality such as Remote Commands, etc.
+    %p.padded Liberatio Agent can be configured manually via the configuration file, or via the GUI; Liberatio Agent is only supported on Windows at this time.
 
     %br/
 
@@ -20,24 +20,21 @@
 
       .col-md-10.col-md-offset-1
 
-        %h4 Adding Unmanaged Devices
-        %p.padded Unmanaged Devices are devices that do not have an agent installed, which means that you add them manually in the Liberatio Dashboard in order to record and store information about them.
-        %ol.list-padded
-          %li Go to the <strong>Liberatio Dashboard</strong>.
-          %li Click the <strong>Devices</strong> tab.
-          %li Click the "Add Unmanaged Device" button.
+        %h4 Windows (Graphical User Interface)
+        %p.padded
+          Launch the Liberatio Agent Tray Icon located at:
+          %br/
+          %pre Start > All Programs > Liberatio > <strong>Liberatio Agent</strong>
 
         %br/
 
-        %h4 Adding Managed Devices
-        %p.padded Managed Devices are devices that have the Liberatio Agent installed and running; they are automatically added to the Liberatio Dashboard during the device registration process, and have advanced functionality like Remote Commands, automatic hardware and software inventory, System Cleanup, etc.
-        %ol.list-padded
-          %li #{link_to "Download", browse_download_path} the Liberatio Agent for the correct platform.
-          %li Install the agent.
-          %li
-            Add the <strong>registration code</strong> to the agent's configuration.
-            %p
-              .alert.alert-info.alert-small
-                #{link_to "See the documentation", "#"} for how to edit the configuration on each platform.
-          %li Restart the agent (or the device).
-          %li The device will register in the Liberatio Dashboard.
+        %h4 Windows (Configuration File)
+        %p.padded Edit the configuration file using Notepad, text editor, or an XML Editor located at:
+        %p.padded
+          %strong Windows 32-bit Versions
+          %br/
+          %pre C:\Program Files\Liberatio Agent\LiberatioService.xml.config
+        %p.padded
+          %strong Windows 64-bit Versions
+          %br/
+          %pre C:\Program Files (x86)\Liberatio Agent\LiberatioService.xml.config
