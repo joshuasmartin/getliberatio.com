@@ -18,6 +18,7 @@ Liberatio::Application.routes.draw do
   get "browse/home" => "browse#home"
   get "browse/about" => "browse#about", :as => "browse_about"
   get "browse/contacts" => "browse#contacts", :as => "browse_contacts"
+  get "browse/privacy" => "browse#privacy", :as => "browse_privacy"
   get "browse/pricing" => "browse#pricing", :as => "browse_pricing"
   get "browse/features" => "browse#features", :as => "browse_features"
   get "browse/buy" => "browse#buy", :as => "browse_buy"

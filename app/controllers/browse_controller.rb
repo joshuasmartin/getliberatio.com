@@ -13,8 +13,23 @@ class BrowseController < ApplicationController
   def home
   end
 
+  # GET /browse/configuring_agent
+  def configuring_agent
+    @highlight = "docs"
+  end
+
   # GET /browse/documentation
   def documentation
+    @highlight = "docs"
+  end
+
+  # GET /browse/faq
+  def faq
+    @highlight = "docs"
+  end
+
+  # GET /browse/getting_started
+  def getting_started
     @highlight = "docs"
   end
 
