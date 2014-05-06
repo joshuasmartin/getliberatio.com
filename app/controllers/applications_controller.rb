@@ -7,6 +7,8 @@
 # -----------------------------------------------------------------------------
 
 class ApplicationsController < ApplicationController
+  before_action :set_highlight
+  before_action :set_navigation
   before_action :set_application, only: [:show, :edit, :update, :destroy]
 
   # GET /applications
@@ -71,12 +73,18 @@ class ApplicationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_application
       @application = Application.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_highlight
+      @highlight = "software"
+    end
+
+    def set_navigation
+      @navigation = "account"
+    end
+
     def application_params
       params.require(:application).permit(:name, :publisher, :version, :organization_id)
     end
