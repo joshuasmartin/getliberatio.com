@@ -6,31 +6,35 @@
   %li.active
     #{@application.name}
 
-Devices with #{@application.name}
+.row
 
-.well
-  .row
-    .col-md-4
-      Name <strong>#{@application.name}</strong>
-    .col-md-4
-      Version: <strong>#{@application.version}</strong>
-    .col-md-4
-      Publisher: <strong>#{@application.publisher}</strong>
+  .col-md-12
 
-%br/
+    %h2{ :style => "margin-top: 0;" } Devices with #{@application.name}
 
-%table.table.table-bordered.table-striped.table-condensed
-  %thead
-    %tr
-      %th Name
+  .well
+    .row
+      .col-md-4
+        Name <strong>#{@application.name}</strong>
+      .col-md-4
+        Version: <strong>#{@application.version}</strong>
+      .col-md-4
+        Publisher: <strong>#{@application.publisher}</strong>
 
-  %tbody
-    - if @instances.any?
-      - @instances.each do |instance|
-        %tr
-          %td
-            = link_to instance.node.name, node_path(instance.node)
-    - else
+  %br/
+
+  %table.table.table-bordered.table-striped.table-condensed
+    %thead
       %tr
-        %td{ colspan: 1 }
-          This application is not installed on any devices.
+        %th Name
+
+    %tbody
+      - if @instances.any?
+        - @instances.each do |instance|
+          %tr
+            %td
+              = link_to instance.node.name, node_path(instance.node)
+      - else
+        %tr
+          %td{ colspan: 1 }
+            This application is not installed on any devices.
