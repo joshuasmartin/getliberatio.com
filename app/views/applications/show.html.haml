@@ -6,6 +6,19 @@
   %li.active
     #{@application.name}
 
+Devices with #{@application.name}
+
+.well
+  .row
+    .col-md-4
+      Name <strong>#{@application.name}</strong>
+    .col-md-4
+      Version: <strong>#{@application.version}</strong>
+    .col-md-4
+      Publisher: <strong>#{@application.publisher}</strong>
+
+%br/
+
 %table.table.table-bordered.table-striped.table-condensed
   %thead
     %tr
