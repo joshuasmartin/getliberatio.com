@@ -15,7 +15,8 @@
     - if @instances.any?
       - @instances.each do |instance|
         %tr
-          %td #{instance.node.name}
+          %td
+            = link_to instance.node.name, node_path(instance.node)
     - else
       %tr
         %td{ colspan: 1 }
