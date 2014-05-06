@@ -17,7 +17,8 @@
       - Application.order(:name).each do |application|
         - if application.instances.where(organization_id: current_user.organization_id).any?
           %tr
-            %td #{application.name}
+            %td
+              = link_to application.name, application_path(application)
             %td #{application.version}
             %td #{Instance.where(application: application).count}
             %td #{application.publisher}
