@@ -18,6 +18,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/1
   # GET /applications/1.json
   def show
+    @instances = @application.instances.includes(:node).order("nodes.name")
   end
 
   # GET /applications/new

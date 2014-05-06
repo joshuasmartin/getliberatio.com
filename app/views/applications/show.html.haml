@@ -1,0 +1,22 @@
+- content_for :title, @application.name
+
+%ol.breadcrumb
+  %li
+    = link_to "Software", instances_path
+  %li.active
+    #{@application.name}
+
+%table.table.table-bordered.table-striped.table-condensed
+  %thead
+    %tr
+      %th Name
+
+  %tbody
+    - if @instances.any?
+      - @instances.each do |instance|
+        %tr
+          %td #{instance.node.name}
+    - else
+      %tr
+        %td{ colspan: 1 }
+          This application is not installed on any devices.
