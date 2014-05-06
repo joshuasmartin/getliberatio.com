@@ -12,29 +12,29 @@
 
     %h2{ :style => "margin-top: 0;" } Devices with #{@application.name}
 
-  .well
-    .row
-      .col-md-4
-        Name <strong>#{@application.name}</strong>
-      .col-md-4
-        Version: <strong>#{@application.version}</strong>
-      .col-md-4
-        Publisher: <strong>#{@application.publisher}</strong>
+    .well
+      .row
+        .col-md-4
+          Name <strong>#{@application.name}</strong>
+        .col-md-4
+          Version: <strong>#{@application.version}</strong>
+        .col-md-4
+          Publisher: <strong>#{@application.publisher}</strong>
 
-  %br/
+    %br/
 
-  %table.table.table-bordered.table-striped.table-condensed
-    %thead
-      %tr
-        %th Name
-
-    %tbody
-      - if @instances.any?
-        - @instances.each do |instance|
-          %tr
-            %td
-              = link_to instance.node.name, node_path(instance.node)
-      - else
+    %table.table.table-bordered.table-striped.table-condensed
+      %thead
         %tr
-          %td{ colspan: 1 }
-            This application is not installed on any devices.
+          %th Name
+
+      %tbody
+        - if @instances.any?
+          - @instances.each do |instance|
+            %tr
+              %td
+                = link_to instance.node.name, node_path(instance.node)
+        - else
+          %tr
+            %td{ colspan: 1 }
+              This application is not installed on any devices.
