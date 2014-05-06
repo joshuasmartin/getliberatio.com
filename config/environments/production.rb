@@ -77,4 +77,7 @@ Liberatio::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Set the default host for links.
+  config.action_mailer.default_url_options = { host: 'liberatio.herokuapp.com' }
 end
