@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 
 class CommandsController < ApplicationController
+  before_action :require_subscription!
   before_action :set_node, only: [:show, :create]
 
   # GET /nodes/1/commands/1.json

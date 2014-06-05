@@ -7,19 +7,15 @@
 # -----------------------------------------------------------------------------
 
 class User < ActiveRecord::Base
-  # accessors
   attr_accessor :organization_name
 
-  # callbacks
+  belongs_to :organization
+  has_many :subscriptions
+
   before_validation :set_defaults
 
-  # relationships
-  belongs_to :organization
-
-  # security
   has_secure_password
 
-  # validations
   validates :email_address, :name, :organization, :role, presence: true
 
   # convenience method to determine the role of a user

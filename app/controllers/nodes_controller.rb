@@ -9,6 +9,7 @@
 class NodesController < ApplicationController
   protect_from_forgery except: :register
   skip_before_filter :authenticate_user!, only: [:register, :registered]
+  before_action :require_subscription!
   before_action :set_highlight, except: :maintenance
   before_action :set_navigation
   before_action :set_node, only: [:show, :edit, :update, :destroy]

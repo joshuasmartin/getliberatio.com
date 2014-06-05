@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 
 class SubscriptionsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: :new
   before_action :set_subscription, only: [:show, :edit, :update, :destroy]
 
   # GET /subscriptions

@@ -37,7 +37,17 @@
           %small Supports Windows Vista, 7, 8, 2003, 2008, 2008 R2, 2012. Requires .NET 4 Client Profile.
 
       #osx.tab-pane
-        %p Coming Soon, #{link_to 'Get Notified', '#'} when we add this platform
+        %p
+          Coming Soon
+          - if current_user
+            , #{link_to 'Get Notified', settings_user_path(current_user)} when we add this platform
+          - else
+            , #{link_to 'Login', new_session_path} to get notified when we add this platform
 
       #linux.tab-pane
-        %p Coming Soon, #{link_to 'Get Notified', '#'} when we add this platform
+        %p
+          Coming Soon
+          - if current_user
+            , #{link_to 'Get Notified', settings_user_path(current_user)} when we add this platform
+          - else
+            , #{link_to 'Login', new_session_path} to get notified when we add this platform

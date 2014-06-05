@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   private
 
     def current_user
@@ -41,5 +43,17 @@ class ApplicationController < ActionController::Base
         flash[:alert] = "You are not authorized to perform that action!"
         redirect_to root_path
       end
+    end
+
+    def require_subscription!
+      if current_user.organization.subscriptions.none?
+        flash[:alert] = "You can't do that because you don't have a subscription!"
+        redirect_to settings_user_path(current_user)
+      end
+    end
+
+    def user_not_authorized
+      flash[:alert] = "You are not authorized to perform that action."
+      redirect_to(request.referrer || root_path)
     end
 end

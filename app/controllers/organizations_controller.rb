@@ -51,7 +51,13 @@ class OrganizationsController < ApplicationController
   def update
     respond_to do |format|
       if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
+        format.html {
+          if params.has_key? :settings
+            redirect_to settings_user_path(current_user), notice: 'Changes saved sucessfully!'
+          else
+            redirect_to @organization, notice: 'Changes saved sucessfully!'
+          end
+        }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

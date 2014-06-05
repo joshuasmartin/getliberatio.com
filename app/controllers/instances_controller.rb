@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 
 class InstancesController < ApplicationController
+  before_action :require_subscription!
   before_action :set_highlight
   before_action :set_navigation
   before_action :set_instance, only: [:show, :edit, :update, :destroy]

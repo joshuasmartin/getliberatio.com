@@ -14,7 +14,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user.is? "Root"
+      @users = User.all
+    else
+      raise Pundit::NotAuthorizedError
+    end
   end
 
   # GET /users/1
@@ -53,7 +57,7 @@ class UsersController < ApplicationController
 
           # Continue sign up if a plan is in the session
           if session[:plan]
-            redirect_to browse_buy_path
+            redirect_to new_subscription_path
           else
             redirect_to root_path
           end
@@ -70,7 +74,13 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html {
+          if params.has_key? :settings
+            redirect_to settings_user_path(@user), notice: 'Changes saved sucessfully!'
+          else
+            redirect_to @user, notice: 'Changes saved sucessfully!'
+          end
+        }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

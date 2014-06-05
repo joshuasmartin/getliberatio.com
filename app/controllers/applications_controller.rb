@@ -7,6 +7,7 @@
 # -----------------------------------------------------------------------------
 
 class ApplicationsController < ApplicationController
+  before_action :require_subscription!
   before_action :set_highlight
   before_action :set_navigation
   before_action :set_application, only: [:show, :edit, :update, :destroy]
