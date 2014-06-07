@@ -22,12 +22,11 @@ class Organization < ActiveRecord::Base
   # validations
   validates :name, presence: true
 
-  private
-    def generate_registration_code
-      chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ0123456789'
-      code = ''
-      10.times { code << chars[rand(chars.size)] }
+  def generate_registration_code
+    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ0123456789'
+    code = ''
+    10.times { code << chars[rand(chars.size)] }
 
-      self.registration_code = code
-    end
+    self.registration_code = code
+  end
 end

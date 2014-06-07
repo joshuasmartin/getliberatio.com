@@ -34,7 +34,9 @@ Liberatio::Application.routes.draw do
   end
   resources :instances
   resources :applications
-  resources :organizations
+  resources :organizations do
+    get 'regenerate_registration_code', on: :collection
+  end
   resources :nodes do
     resources :commands
     get 'registered', :on => :collection

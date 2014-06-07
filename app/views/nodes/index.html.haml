@@ -49,11 +49,11 @@
 
     %br/
 
-    .alert.alert-info
+    .alert.alert-info.registration-code
       Registration Code
       %strong
         = current_user.organization.registration_code
-      = link_to "#" do
+      = link_to "javascript:void(0)", :class => "command-regenerate_registration_code" do
         %span.glyphicon.glyphicon-refresh
       %br/
       %small #{link_to 'Install the Agent', browse_download_path} on your devices and register with this code.

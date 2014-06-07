@@ -30,6 +30,15 @@ class OrganizationsController < ApplicationController
   def edit
   end
 
+  # GET /organizations/regenerate_registration_code
+  def regenerate_registration_code
+    @organization = current_user.organization
+    @organization.generate_registration_code
+    @organization.save
+
+    render json: @organization, status: :ok
+  end
+
   # POST /organizations
   # POST /organizations.json
   def create

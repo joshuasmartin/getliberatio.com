@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     end
 
     def require_subscription!
-      if current_user.organization.subscriptions.none?
+      if false#current_user.organization.subscriptions.none?
         flash[:alert] = "You can't do that because you don't have a subscription!"
         redirect_to settings_user_path(current_user)
       end
