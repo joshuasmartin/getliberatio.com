@@ -22,18 +22,18 @@ class Date
   end
 end
 
-class Integer
+class String
   def to_severity_level
     case self
-    when 0
+    when "0"
       "Unspecified"
-    when 10
+    when "10"
       "Moderate"
-    when 20
+    when "20"
       "Low"
-    when 30
+    when "30"
       "Important"
-    when 40
+    when "40"
       "Critical"
     end
   end
