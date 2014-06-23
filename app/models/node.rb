@@ -54,7 +54,7 @@ class Node < ActiveRecord::Base
 
     # applications
     self.instances.destroy_all
-    if inventory.has_key? :applications
+    if inventory[:applications].present?
       inventory[:applications].each do |a|
         application = Application.find_or_create_by( name: a[:name],
                                                      publisher: a[:publisher],
@@ -66,7 +66,7 @@ class Node < ActiveRecord::Base
 
     # memories
     self.memories.destroy_all
-    if inventory.has_key? :memory
+    if inventory[:memory].present?
       inventory[:memory].each do |m|
         self.memories << self.memories.new( capacity: m[:capacity],
                                             form_factor: m[:form_factor],
@@ -78,7 +78,7 @@ class Node < ActiveRecord::Base
 
     # processors
     self.processors.destroy_all
-    if inventory.has_key? :processor
+    if inventory[:processor].present?
       inventory[:processor].each do |p|
         self.processors << self.processors.new( architecture: p[:architecture],
                                                 name: p[:name],
@@ -89,7 +89,7 @@ class Node < ActiveRecord::Base
 
     # disks
     self.disks.destroy_all
-    if inventory.has_key? :disks
+    if inventory[:disks].present?
       inventory[:disks].each do |d|
         self.disks << self.disks.new( disk_type: d[:disk_type],
                                       file_system: d[:file_system],
@@ -101,7 +101,7 @@ class Node < ActiveRecord::Base
 
     # updates
     self.updates.destroy_all
-    if inventory.has_key? :updates
+    if inventory[:updates].present?
       inventory[:updates].each do |u|
         self.updates << self.updates.new( title: u[:title],
                                           severity: u[:severity],
