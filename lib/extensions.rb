@@ -22,7 +22,7 @@ class Date
   end
 end
 
-def Integer
+class Integer
   def to_severity_level
     case self
     when 0
