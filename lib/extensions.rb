@@ -21,3 +21,20 @@ class Date
     self.strftime('%b %d, %Y')
   end
 end
+
+def Integer
+  def to_severity_level
+    case self
+    when 0
+      "Unspecified"
+    when 10
+      "Moderate"
+    when 20
+      "Low"
+    when 30
+      "Important"
+    when 40
+      "Critical"
+    end
+  end
+end

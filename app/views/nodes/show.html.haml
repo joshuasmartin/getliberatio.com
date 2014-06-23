@@ -268,7 +268,7 @@
             - if @node.updates.where(is_installed: true).any?
               - @node.updates.where(is_installed: true).each do |update|
                 %tr
-                  %td #{update.severity}
+                  %td #{update.severity.to_severity_level}
                   %td #{update.title}
             - else
               %tr
