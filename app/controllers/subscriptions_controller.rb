@@ -40,6 +40,7 @@ class SubscriptionsController < ApplicationController
       if @subscription.save_with_payment
         format.html { redirect_to welcome_subscriptions_path }
       else
+        flash[:alert] = @subscription.errors.full_messages
         format.html { render action: 'new' }
       end
     end

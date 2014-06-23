@@ -37,6 +37,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    session[:signup] = true if params.has_key? :signup
+
+    if beta? && current_user
+      flash[:notice] = "Congratulations, you already have Liberatio!"
+      redirect_to nodes_path
+    end
   end
 
   # GET /users/1/edit
@@ -56,7 +62,7 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
 
           # Continue sign up if a plan is in the session
-          if session[:plan]
+          if session.has_key? :signup
             redirect_to new_subscription_path
           else
             redirect_to root_path
@@ -105,7 +111,9 @@ class UsersController < ApplicationController
     end
 
     def set_navigation
-      @navigation = "account"
+      if action_name == "edit"
+        @navigation = "account"
+      end
     end
 
     def user_params

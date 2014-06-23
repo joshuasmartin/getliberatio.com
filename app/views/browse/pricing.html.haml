@@ -2,42 +2,58 @@
 
 = render partial: "layouts/onboarding_banner"
 
-%h2 Simple, Direct Pricing
+- if beta?
 
-.row
+  %h2 Use Liberatio for Free
 
-  .col-md-8
+  %br/
 
-    .row
-      .col-md-6
-        %h4.pricing-question.text-liberatio-primary.cursive How do I pay?
-        %p.pricing-answer On a month-by-month basis. You pay each month via a debit or credit card. You can cancel at any time.
+  .row
 
-        %h4.pricing-question.text-liberatio-primary.cursive Is there a contract?
-        %p.pricing-answer No, you can cancel your subscription at any time.
+    .col-md-6
 
-        %h4.pricing-question.text-liberatio-primary.cursive What platforms are supported?
-        %p.pricing-answer Only Windows is supported by our Agent at this time - the Agent sends an inventory to Liberatio, and allows you to control the machine from the Liberatio Website. Any other type of device can be added manually.
+      %p.padded During the public beta, which will last for the foreseeable future, Liberatio will be available for anyone to use for free.
+      %p.padded To get started, simply #{link_to "create an account", new_user_path} and you'll have access.
+      %p.padded Even if we do end the public beta, and you decide not to pay for Liberatio, you will still have access to Liberatio for a time, in order to export your data.
 
-      .col-md-6
-        %h4.pricing-question.text-liberatio-primary.cursive What do I get?
-        %p.pricing-answer
-          Simple, you get the works!
-          %br/
-          %ul.list-unstyled.list-padded
-            %li &#x2713; Unlimited Devices
-            %li &#x2713; Hardware Inventory
-            %li &#x2713; Software Inventory
-            %li &#x2713; Discover Needed Updates
-            %li &#x2713; Execute Commands Remotely
-            %li &#x2713; Automatic System Cleanup
-            %li &#x2713; Real-Time Windows Agent
+- else
 
-  .col-md-4
+  %h2 Simple, Direct Pricing
 
-    %h1 $59/month
-    %h4{ :style => "padding-bottom: 20px;" } Single, Simple, Unified Plan
+  .row
 
-    = link_to new_subscription_path, :class => "btn btn-primary btn-lg" do
-      Sign Up Now
-      &#x279e;
+    .col-md-8
+
+      .row
+        .col-md-6
+          %h4.pricing-question.text-liberatio-primary.cursive How do I pay?
+          %p.pricing-answer On a month-by-month basis. You pay each month via a debit or credit card. You can cancel at any time.
+
+          %h4.pricing-question.text-liberatio-primary.cursive Is there a contract?
+          %p.pricing-answer No, you can cancel your subscription at any time.
+
+          %h4.pricing-question.text-liberatio-primary.cursive What platforms are supported?
+          %p.pricing-answer Only Windows is supported by our Agent at this time - the Agent sends an inventory to Liberatio, and allows you to control the machine from the Liberatio Website. Any other type of device can be added manually.
+
+        .col-md-6
+          %h4.pricing-question.text-liberatio-primary.cursive What do I get?
+          %p.pricing-answer
+            Simple, you get the works!
+            %br/
+            %ul.list-unstyled.list-padded
+              %li &#x2713; Unlimited Devices
+              %li &#x2713; Hardware Inventory
+              %li &#x2713; Software Inventory
+              %li &#x2713; Discover Needed Updates
+              %li &#x2713; Execute Commands Remotely
+              %li &#x2713; Automatic System Cleanup
+              %li &#x2713; Real-Time Windows Agent
+
+    .col-md-4
+
+      %h1 $59/month
+      %h4{ :style => "padding-bottom: 20px;" } Single, Simple, Unified Plan
+
+      = link_to new_subscription_path, :class => "btn btn-primary btn-lg" do
+        Sign Up Now
+        &#x279e;

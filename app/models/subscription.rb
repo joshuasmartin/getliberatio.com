@@ -14,6 +14,8 @@ class Subscription < ActiveRecord::Base
   scope :active, -> { where(status: 'active') }
   scope :inactive, -> { where(status: 'inactive') }
 
+  validates :organization, presence: true
+
   def save_with_payment
     if valid?
       customer = Stripe::Customer.create(description: self.organization_id,  plan: "Bang", card: self.stripe_card_token)

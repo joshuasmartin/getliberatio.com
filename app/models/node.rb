@@ -54,51 +54,61 @@ class Node < ActiveRecord::Base
 
     # applications
     self.instances.destroy_all
-    inventory[:applications].each do |a|
-      application = Application.find_or_create_by( name: a[:name],
-                                                   publisher: a[:publisher],
-                                                   version: a[:version] )
+    if inventory.has_key? :applications
+      inventory[:applications].each do |a|
+        application = Application.find_or_create_by( name: a[:name],
+                                                     publisher: a[:publisher],
+                                                     version: a[:version] )
 
-      self.instances << self.instances.new(application_id: application.id, organization_id: self.organization_id)
+        self.instances << self.instances.new(application_id: application.id, organization_id: self.organization_id)
+      end
     end
 
     # memories
     self.memories.destroy_all
-    inventory[:memory].each do |m|
-      self.memories << self.memories.new( capacity: m[:capacity],
-                                          form_factor: m[:form_factor],
-                                          manufacturer: m[:manufacturer],
-                                          memory_type: m[:memory_type],
-                                          speed: m[:speed])
+    if inventory.has_key? :memory
+      inventory[:memory].each do |m|
+        self.memories << self.memories.new( capacity: m[:capacity],
+                                            form_factor: m[:form_factor],
+                                            manufacturer: m[:manufacturer],
+                                            memory_type: m[:memory_type],
+                                            speed: m[:speed])
+      end
     end
 
     # processors
     self.processors.destroy_all
-    inventory[:processor].each do |p|
-      self.processors << self.processors.new( architecture: p[:architecture],
-                                              name: p[:name],
-                                              cores_count: p[:cores_count],
-                                              speed: p[:speed])
+    if inventory.has_key? :processor
+      inventory[:processor].each do |p|
+        self.processors << self.processors.new( architecture: p[:architecture],
+                                                name: p[:name],
+                                                cores_count: p[:cores_count],
+                                                speed: p[:speed])
+      end
     end
 
     # disks
     self.disks.destroy_all
-    inventory[:disks].each do |d|
-      self.disks << self.disks.new( disk_type: d[:disk_type],
-                                    file_system: d[:file_system],
-                                    free_bytes: d[:free_bytes],
-                                    total_bytes: d[:total_bytes],
-                                    volume_name: d[:volume_name])
+    if inventory.has_key? :disks
+      inventory[:disks].each do |d|
+        self.disks << self.disks.new( disk_type: d[:disk_type],
+                                      file_system: d[:file_system],
+                                      free_bytes: d[:free_bytes],
+                                      total_bytes: d[:total_bytes],
+                                      volume_name: d[:volume_name])
+      end
     end
 
     # updates
     self.updates.destroy_all
-    inventory[:updates].each do |u|
-      self.updates << self.updates.new( title: u[:title],
-                                        severity: u[:severity],
-                                        support_url: u[:support_url],
-                                        is_installed: u[:is_installed],
-                                        organization_id: self.organization_id )
+    if inventory.has_key? :updates
+      inventory[:updates].each do |u|
+        self.updates << self.updates.new( title: u[:title],
+                                          severity: u[:severity],
+                                          support_url: u[:support_url],
+                                          is_installed: u[:is_installed],
+                                          organization_id: self.organization_id )
+      end
     end
 
     return self.save

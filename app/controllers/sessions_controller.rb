@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
+    session[:signup] = true if params.has_key? :signup
   end
 
   # POST /sessions
@@ -27,8 +28,8 @@ class SessionsController < ApplicationController
           session[:user_id] = user.id
 
           # Continue sign up if a plan is in the session
-          if session[:plan]
-            redirect_to browse_buy_path
+          if session.has_key? :signup
+            redirect_to new_subscription_path
           else
             redirect_to root_path
           end

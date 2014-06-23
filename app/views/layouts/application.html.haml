@@ -65,7 +65,7 @@
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right
-          - if @navigation != "account"
+          - if current_user.organization.subscriptions.any? && (@navigation != "account")
             %li
               = link_to dashboard_nodes_path do
                 %strong Go to Liberatio Dashboard
@@ -91,11 +91,15 @@
     .row
       .col-md-12
         - unless notice.nil?
-          .alert.alert-info
+          .alert.alert-info.alert-dismissable
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            %strong Hold Up!
             = notice
 
         - unless alert.nil?
-          .alert.alert-danger
+          .alert.alert-danger.alert-dismissable
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            %strong Uh oh!
             = alert
 
     = yield
