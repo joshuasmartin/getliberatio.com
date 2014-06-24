@@ -65,7 +65,7 @@
 
       - if current_user
         %ul.nav.navbar-nav.navbar-right
-          - if current_user.organization.subscriptions.any? && (@navigation != "account")
+          - if (current_user.organization.subscriptions.any? || beta?) && (@navigation != "account")
             %li
               = link_to dashboard_nodes_path do
                 %strong Go to Liberatio Dashboard
