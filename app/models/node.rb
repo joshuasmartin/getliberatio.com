@@ -129,7 +129,7 @@ class Node < ActiveRecord::Base
 
   def online?
     response = Pusher.get("/channels/presence-cmd_#{self.uuid}/users")
-    (response[:users].find { |u| u["id"] == self.id }).present?
+    response[:users].any? { |u| u["id"] == self.id }
   end
 
 
