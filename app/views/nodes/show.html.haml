@@ -202,10 +202,10 @@
                       %td #{disk.volume_name}
                     %tr
                       %td Total Size
-                      %td #{disk.total_bytes.to_filesize}
+                      %td #{disk.total_bytes.to_i.to_filesize}
                     %tr
                       %td Free Size
-                      %td #{disk.free_bytes.to_filesize}
+                      %td #{disk.free_bytes.to_i.to_filesize}
 
             - else
               %p No disks inventoried.
