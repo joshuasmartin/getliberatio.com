@@ -94,7 +94,7 @@
             Options
             %span.caret
           %ul.dropdown-menu{ :role => "menu" }
-            - if true#@node.is_managed?
+            - if @node.is_managed?
               %li
                 = link_to "Execute Command", "javascript:void(0)", :class => "command-show-modal-custom"
               %li.divider
