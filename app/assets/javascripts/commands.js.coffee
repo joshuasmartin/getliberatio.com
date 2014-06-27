@@ -29,8 +29,7 @@ $ ->
 
     json = JSON.stringify({
       command: {
-        executable: $("#command_executable").val(),
-        arguments: $("#command_arguments").val()
+        executable: $("#command_executable").val()
       }
     })
 
@@ -60,7 +59,6 @@ $ ->
         $("#command_arguments").attr("disabled", false)
         $("#command_kind").css("color", "#000000")
         $("#command_executable").css("color", "#000000")
-        $("#command_arguments").css("color", "#000000")
       when "off"
         $(".command-execute").text("Working...")
         $(".command-execute").attr("disabled", true)
@@ -72,7 +70,6 @@ $ ->
         $("#command_arguments").attr("disabled", true)
         $("#command_kind").css("color", "#888888")
         $("#command_executable").css("color", "#888888")
-        $("#command_arguments").css("color", "#888888")
 
 
   # Sets the 'kind' select to 'custom' and shows the modal

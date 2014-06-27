@@ -8,18 +8,23 @@
 
 class Command < ActiveRecord::Base
   # callbacks
-  # after_create :trigger_event
+  after_create :trigger_event
 
   # relationships
   belongs_to :node
 
   # Returns a hash whose content depends on the 'kind' of command this is.
   def to_pusher_json
+    # should look like {"commands": [{ "name": "reboot"}]}
     case self.kind
     when "builtin"
+      # Resembles
+      # {"commands": [{ "name": "shutdown"}]}
       { commands: { name: self.name } }
     when "custom"
-      { commands: { executable: self.executable, arguments: self.arguments } }
+      # Resembles
+      # {"commands": [{ "executable": "shutdown.exe /r" }]}
+      { commands: { executable: self.executable } }
     end
   end
 
