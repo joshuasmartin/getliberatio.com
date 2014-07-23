@@ -31,12 +31,12 @@
       %tr
         %td.col-md-2
         %td.col-md-2.text-center
-          %strong #{current_user.organization.nodes(is_managed: true).count}
+          %strong #{current_user.organization.nodes(:is_managed => true).count}
         %td Managed
       %tr
         %td.col-md-2
         %td.col-md-2.text-center
-          %strong #{current_user.organization.nodes(is_managed: false).count}
+          %strong #{current_user.organization.nodes(:is_managed => false).count}
         %td Unmanaged
       %tr
         %td.col-md-2
