@@ -6,14 +6,8 @@
 
   .content{:style=>"padding:15px 20px 15px 20px; max-width:500px; min-height:330px; color:#333; font-size:16px; font-family:Helvetica,Futura,sans-serif; font-weight:200; line-height:1.45em; letter-spacing:.01em;" }
 
-    - if @user && @user.first_name.present?
-      %p
-        Hi, #{@user.first_name}
-
-
     -# Content of an Email is rendered here.
     = yield
-
 
     %p{:style=>"margin-top:30px;" }
       \- Liberatio Team
