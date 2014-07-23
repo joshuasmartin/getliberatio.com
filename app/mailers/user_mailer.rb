@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "noreply@getliberatio.com"
+  default from: "Joshua <joshua@getliberatio.com>"
 
   # Use views/layouts/user_mailer.(html.haml|.text.erb)
   layout 'user_mailer'
