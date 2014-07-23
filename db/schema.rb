@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401143253) do
+ActiveRecord::Schema.define(version: 20140723190605) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20140401143253) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "should_receive_newsletter", default: false
+    t.string   "time_zone",                 default: "Eastern Time (US & Canada)"
   end
 
   add_index "users", ["organization_id"], name: "index_users_on_organization_id"

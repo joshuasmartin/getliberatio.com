@@ -7,11 +7,10 @@
 # -----------------------------------------------------------------------------
 
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
+  around_filter :set_time_zone
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -34,10 +33,13 @@ class ApplicationController < ActionController::Base
     # helper should be protected
     helper_method :current_user
 
-    # users can be located in any given timezone, so we allow them
-    # to have their own and have it set every time they login
-    def set_user_time_zone
-      Time.zone = current_user.time_zone unless ((current_user.nil?) || (current_user.is? "Root"))
+    # Sets the user's time zone from his time_zone attribute.
+    def set_time_zone
+      if current_user
+        Time.use_zone(current_user.time_zone) { yield }
+      else
+        yield
+      end
     end
 
     # Requires that a logged-in user must be present
