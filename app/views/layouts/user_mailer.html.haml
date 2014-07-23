@@ -4,7 +4,7 @@
 
 .box{:style=>"border-top:solid 2px #eee;" }
 
-  .content{:style=>"padding:15px 20px 15px 20px; max-width:500px; min-height:330px; color:#333; font-size:16px; font-family:Helvetica,Futura,sans-serif; font-weight:200; line-height:1.45em; letter-spacing:.01em;" }
+  .content{:style=>"padding:15px 20px 15px 20px; max-width:500px; min-height:330px; color:#333; font-size:16px; font-family:Arial,sans-serif; font-weight:200; line-height:1.45em; letter-spacing:.01em;" }
 
     - if @user
       %p
@@ -17,11 +17,10 @@
       \- Liberatio Team
 
   .footer{:style=>"margin:20px auto 10px auto; font-size:11px; color:#999; letter-spacing:.01em; text-align:center;"}
-    / %a{:href=>"http://nfoshare.com/unsubscribe", :style=>"color:#acacac; font-family:Helvetica,Futura,sans-serif;font-weight:200; "} Unsubscribe
-    %a{:href=>"https://getliberatio.com", :style=>"color:#999; font-family:Helvetica,Futura,sans-serif;font-weight:200; "} GetLiberatio.com
+    %a{:href=>"https://getliberatio.com", :style=>"color:#999; font-family:Arial,sans-serif;font-weight:200; "} GetLiberatio.com
 
     = surround ' | ', ' | ' do
-      %a{:href=>"https://getliberatio.com/browse/about", :style=>"color:#999; font-family:Helvetica,Futura,sans-serif;font-weight:200; "} About Liberatio
+      %a{:href=>"https://getliberatio.com/browse/about", :style=>"color:#999; font-family:Arial,sans-serif;font-weight:200; "} About Liberatio
 
-    %a{:href => "https://getliberatio.com/browse/privacy", :style=>"color:#999; font-family:Helvetica,Futura,sans-serif;font-weight:200; "}
+    %a{:href => "https://getliberatio.com/browse/privacy", :style=>"color:#999; font-family:Arial,sans-serif;font-weight:200; "}
       Privacy + Terms
