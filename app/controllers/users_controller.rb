@@ -71,7 +71,6 @@ class UsersController < ApplicationController
           # end
         }
       else
-        flash[:alert] = @user.errors.full_messages
         format.html { render action: 'new' }
       end
     end
