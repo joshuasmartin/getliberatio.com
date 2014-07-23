@@ -41,9 +41,9 @@
       %tr
         %td.col-md-2
         %td.col-md-2.text-center
-          %strong #{current_user.organization.instances.count}
+          %strong #{current_user.organization.updates.where(is_installed: false).group(:node_id).count}
         %td Needing Updates
       %tr{ :style => "background-color: #f9f9f9;" }
         %td.col-md-2.text-center
-          %strong #{current_user.organization.instances.count}
+          %strong #{current_user.organization.instances.group(:application_id).count}
         %td{ colspan: 2 } Total Applications
