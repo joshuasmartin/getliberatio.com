@@ -7,9 +7,10 @@
 # -----------------------------------------------------------------------------
 
 class UsersController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:new, :create]
   before_action :set_navigation
   before_action :set_user, only: [:show, :settings, :edit, :update, :destroy]
+  after_filter :verify_authorized, :except => [:index]
+  skip_before_filter :authenticate_user!, :only => [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -24,10 +25,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    authorize(@user)
   end
 
   # GET /users/1/settings
   def settings
+    authorize(@user)
+
     @subscription = @user.organization.subscriptions.first
     if @subscription.present?
       @card = Stripe::Customer.retrieve(@subscription.stripe_customer_token).cards.all.first
@@ -37,6 +41,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    authorize(@user)
+
     session[:signup] = true if params.has_key? :signup
 
     if beta? && current_user
@@ -47,12 +53,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    authorize(@user)
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    authorize(@user)
 
     respond_to do |format|
       if @user.save
@@ -79,6 +87,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    authorize(@user)
+
     respond_to do |format|
       if @user.update(user_params)
         format.html {
@@ -99,6 +109,8 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    authorize(@user)
+
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url }
@@ -107,17 +119,20 @@ class UsersController < ApplicationController
   end
 
   private
+    # Common setup and constraints.
     def set_user
       @user = User.find(params[:id])
     end
 
+    # Common setup and constraints.
     def set_navigation
       if action_name == "edit"
         @navigation = "account"
       end
     end
 
+    # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email_address, :name, :password, :password_confirmation, :role, :organization_id, :organization_name, :should_receive_newsletter)
+      params.require(:user).permit(:email_address, :name, :organization_name, :password, :password_confirmation, :role, :should_receive_newsletter)
     end
 end
