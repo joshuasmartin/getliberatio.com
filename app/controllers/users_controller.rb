@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     if beta? && current_user
       flash[:notice] = "Congratulations, you already have Liberatio!"
-      redirect_to nodes_path
+      redirect_to dashboard_nodes_path
     end
   end
 
@@ -61,12 +61,14 @@ class UsersController < ApplicationController
           
           session[:user_id] = @user.id
 
-          # Continue sign up if a plan is in the session
-          if session.has_key? :signup
-            redirect_to new_subscription_path
-          else
-            redirect_to root_path
-          end
+          redirect_to welcome_subscriptions_path
+
+          # # Continue sign up if a plan is in the session
+          # if session.has_key? :signup
+          #   redirect_to new_subscription_path
+          # else
+          #   redirect_to root_path
+          # end
         }
       else
         flash[:alert] = @user.errors.full_messages

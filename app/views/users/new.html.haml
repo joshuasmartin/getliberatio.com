@@ -1,13 +1,30 @@
 - content_for :title, "Signing Up"
 
-.row
+.row.row-padded
 
-  .col-md-4
+  .col-md-4.col-md-offset-1
+    %h3 Signing Up for Liberatio
+    %hr/
 
-    %h3 Register for Liberatio
+    %h4{ :style => "color: Green;" }
+      %strong Free During the Public Beta
 
-  .col-md-4
+    #plan-details.text-grayed
+      %h5 What you're getting for <strong>#{number_to_currency(0)}</strong>/month
 
+      .row
+        .col-md-5
+          %ul.list-unstyled
+            %li Unlimited Devices
+            %li Hardware Inventory
+            %li Software Inventory
+        .col-md-7
+          %ul.list-unstyled
+            %li Real-Time Windows Agent
+            %li Execute Commands Remotely
+            %li Determine Needed Updates
+
+  .col-md-4.col-md-offset-1
     = form_for :user, :url => users_path, :html => { :role => "form" } do |f|
 
       .form-group

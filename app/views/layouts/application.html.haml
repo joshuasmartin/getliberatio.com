@@ -78,13 +78,13 @@
                 = link_to "Account", settings_user_path(current_user)
               %li.divider
               %li
-                = link_to "Logout", logout_path, method: :delete
+                = link_to "Sign Out", logout_path, method: :delete
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
             = link_to login_path do
-              Login or Register
-              = image_tag("login.png", :alt => "Login or Register", :style => "height: 18px;")
+              Sign In or Register
+              = image_tag("login.png", :alt => "Sign In or Register", :style => "height: 18px;")
 
   .container
 
