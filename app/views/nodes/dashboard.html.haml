@@ -9,7 +9,7 @@
     %h1 Welcome to Liberatio
     %h5.text-muted
       for #{current_user.organization.name},
-      joined #{current_user.organization.created_at.to_date.to_human}
+      joined #{current_user.organization.created_at.in_time_zone.to_date.to_human}
 
     .row{ :style => "padding-top: 30px;" }
       .col-md-7
