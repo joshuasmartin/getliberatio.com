@@ -1,4 +1,8 @@
 class UserPolicy < Struct.new(:user, :record)
+  def settings?
+    update?
+  end
+
   def index?
     true
   end
