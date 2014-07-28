@@ -124,7 +124,7 @@ $ ->
       error: (jqXHR, textStatus, errorThrown) ->
         console.log "AJAX Error: #{textStatus}"
       success: (data, textStatus, jqXHR) ->
-        $("#modal-new-note").modal("hide")
+        location.reload()
   )
 
 
