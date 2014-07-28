@@ -297,27 +297,6 @@
               %br/
               = note.contents
 
-        / %table.table.table-condensed.table-bordered
-        /   %thead
-        /     %tr
-        /       %th Title
-        /       %th.col-md-3 User
-        /       %th.col-md-3 Created
-        /       %th.col-md-1
-        /   %tbody
-        /     - if @node.notes.any?
-        /       - @node.notes.order("created_at desc").each do |note|
-        /         %tr
-        /           %td #{note.title}
-        /           %td #{note.user.name}
-        /           %td #{note.created_at.to_human}
-        /           %td.text-center
-        /             = link_to node_note_path(@node, note), :method => :delete, :confirm => "Are you sure? The note will not be recoverable." do
-        /               %span.glyphicon.glyphicon-trash
-        /     - else
-        /       %tr
-        /         %td{ colspan: 4 } None, #{link_to "but you can create one", "javascript:void(0)", :class => "command-show-modal-note"}
-
       - if false
         / files and documents tab
         .tab-pane{ :id => "files" }
