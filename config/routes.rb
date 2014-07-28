@@ -35,10 +35,14 @@ Liberatio::Application.routes.draw do
   resources :instances
   resources :applications
   resources :organizations do
+    resources :hosted_files
+    resources :notes
     get 'regenerate_registration_code', on: :collection
   end
   resources :nodes do
     resources :commands
+    resources :hosted_files
+    resources :notes
     get 'registered', :on => :collection
     post 'register', :on => :collection
     get 'maintenance', :on => :collection, :as => "maintenance"

@@ -54,3 +54,6 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # gem 'debugger', group: [:development, :test]
 
 gem 'pundit'
+
+# Amazon Web Services
+gem 'aws-sdk'

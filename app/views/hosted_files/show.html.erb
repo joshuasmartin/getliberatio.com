@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Node:</strong>
+  <%= @hosted_file.node_id %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @hosted_file.organization_id %>
+</p>
+
+<p>
+  <strong>File name:</strong>
+  <%= @hosted_file.file_name %>
+</p>
+
+<p>
+  <strong>Friendly name:</strong>
+  <%= @hosted_file.friendly_name %>
+</p>
+
+<p>
+  <strong>S3 url:</strong>
+  <%= @hosted_file.s3_url %>
+</p>
+
+<%= link_to 'Edit', edit_hosted_file_path(@hosted_file) %> |
+<%= link_to 'Back', hosted_files_path %>

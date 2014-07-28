@@ -13,7 +13,6 @@
 
   .col-md-10
     %h2{ :style => "margin-top: 0;" } #{@node.name}
-    %h4 #{@node.role}, #{@node.operating_system}
 
     %br/
 
@@ -112,6 +111,13 @@
         = link_to "Software", "#software", "data-toggle" => "tab"
       %li
         = link_to "Updates", "#updates", "data-toggle" => "tab"
+      %li
+        = link_to "#notes", "data-toggle" => "tab" do
+          Notes
+      - if false
+        %li
+          = link_to "#files", "data-toggle" => "tab" do
+            Files + Documents
 
     .tab-content
 
@@ -272,6 +278,65 @@
               %tr
                 %td{ colspan: 2 } No Updates Inventoried
 
+      / notes tab
+      .tab-pane{ :id => "notes" }
+
+        = link_to "New Note", "javascript:void(0)", :class => "btn btn-primary command-show-modal-note"
+
+        %br/
+        %br/
+
+        %table.table.table-condensed.table-bordered
+          %thead
+            %tr
+              %th Title
+              %th.col-md-3 User
+              %th.col-md-3 Created
+              %th.col-md-1
+          %tbody
+            - if @node.notes.any?
+              - @node.notes.order("created_at desc").each do |note|
+                %tr
+                  %td #{note.title}
+                  %td #{note.user.name}
+                  %td #{note.created_at.to_human}
+                  %td.text-center
+                    = link_to node_note_path(@node, note), :method => :delete, :confirm => "Are you sure? The note will not be recoverable." do
+                      %span.glyphicon.glyphicon-trash
+            - else
+              %tr
+                %td{ colspan: 4 } None, #{link_to "but you can create one", "javascript:void(0)", :class => "command-show-modal-note"}
+
+      - if false
+        / files and documents tab
+        .tab-pane{ :id => "files" }
+
+          = link_to "Upload File", "javascript:void(0)", :class => "btn btn-primary command-show-modal-upload"
+
+          %br/
+          %br/
+
+          %table.table.table-condensed.table-bordered
+            %thead
+              %tr
+                %th Name
+                %th File Name
+                %th.col-md-3 Created
+                %th.col-md-1
+            %tbody
+              - if @node.hosted_files.any?
+                - @node.hosted_files.order("created_at desc").each do |hosted_file|
+                  %tr
+                    %td #{hosted_file.friendly_name}
+                    %td #{hosted_file.file_name}
+                    %td #{hosted_file.created_at.to_human}
+                    %td.text-center
+                      = link_to node_hosted_file_path(@node, hosted_file), :method => :delete, :confirm => "Are you sure? The file will not be recoverable." do
+                        %span.glyphicon.glyphicon-trash
+              - else
+                %tr
+                  %td{ colspan: 4 } None, #{link_to "but you can upload one", "javascript:void(0)", :class => "command-show-modal-upload"}
+
 - if true#@node.is_managed?
   .modal.fade{ :id => "modal-execute-command" }
     .modal-dialog
@@ -312,3 +377,50 @@
             %small
               %strong Warning!
               Commands will be run in the context of a <em>very privileged</em> account called LocalSystem. It is more powerful than an Administrator account, and will perform almost any function - even those that would destroy your computer. Liberatio cannot protect you from yourself - only execute commands whose ramifications you are willing to accept and capable of managing.
+
+.modal.fade{ :id => "modal-new-note" }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        %h4.modal-title New Note
+      .modal-body
+
+        = form_for :note, :html => { :class => "form-horizontal", :role => "form" } do |f|
+          .form-group
+            = f.label :title, :class => "col-sm-2 control-label"
+            .col-sm-10
+              = f.text_field :title, :class => "form-control"
+          .form-group
+            = f.label :contents, "Note", :class => "col-sm-2 control-label"
+            .col-sm-10
+              = f.text_area :contents, :class => "form-control"
+          .form-group
+            .col-md-offset-2.col-sm-10
+              = link_to "Save Changes", "javascript:void(0)", :class => "btn btn-primary command-save-note", "data-node_id" => @node.id
+              <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+              = image_tag("waiting.gif", :alt => "Working", :class => "waiting", :style => "display: none;")
+
+- if false
+  .modal.fade{ :id => "modal-upload" }
+    .modal-dialog
+      .modal-content
+        .modal-header
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          %h4.modal-title Upload File
+        .modal-body
+
+          = form_for :hosted_file, :html => { :class => "form-horizontal", :role => "form" } do |f|
+            .form-group
+              = f.label :friendly_name, "Description", :class => "col-sm-2 control-label"
+              .col-sm-10
+                = f.text_field :friendly_name, :class => "form-control"
+            .form-group
+              = f.label :file, :class => "col-sm-2 control-label"
+              .col-sm-10
+                = f.file_field :file, :class => "form-control"
+            .form-group
+              .col-md-offset-2.col-sm-10
+                = link_to "Upload", "javascript:void(0)", :class => "btn btn-primary command-upload-file", "data-node_id" => @node.id
+                <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                = image_tag("waiting.gif", :alt => "Working", :class => "waiting", :style => "display: none;")

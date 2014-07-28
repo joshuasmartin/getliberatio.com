@@ -1,0 +1,37 @@
+<%= form_for(@hosted_file) do |f| %>
+  <% if @hosted_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hosted_file.errors.count, "error") %> prohibited this hosted_file from being saved:</h2>
+
+      <ul>
+      <% @hosted_file.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :node_id %><br>
+    <%= f.number_field :node_id %>
+  </div>
+  <div class="field">
+    <%= f.label :organization_id %><br>
+    <%= f.number_field :organization_id %>
+  </div>
+  <div class="field">
+    <%= f.label :file_name %><br>
+    <%= f.text_area :file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :friendly_name %><br>
+    <%= f.text_area :friendly_name %>
+  </div>
+  <div class="field">
+    <%= f.label :s3_url %><br>
+    <%= f.text_area :s3_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

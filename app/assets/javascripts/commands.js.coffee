@@ -98,3 +98,61 @@ $ ->
     $("#command_name").change()
     $("#modal-execute-command").modal("show")
   )
+
+
+  # Shows the new note modal.
+  $("a.command-show-modal-note").on('click', (event) ->
+    $("#modal-new-note").modal("show")
+  )
+
+  # Shows the new note modal.
+  $("a.command-save-note").on('click', (event) ->
+    link = $(this)
+
+    json = JSON.stringify({
+      note: {
+        contents: $("#note_contents").val(),
+        title: $("#note_title").val()
+      }
+    })
+
+    $.ajax "/nodes/#{link.data("node_id")}/notes",
+      type: 'POST',
+      contentType: 'application/json',
+      data: json,
+      dataType: 'json',
+      error: (jqXHR, textStatus, errorThrown) ->
+        console.log "AJAX Error: #{textStatus}"
+      success: (data, textStatus, jqXHR) ->
+        $("#modal-new-note").modal("hide")
+  )
+
+
+  # Shows the upload file modal.
+  $("a.command-show-modal-upload").on('click', (event) ->
+    $("#modal-upload").modal("show")
+  )
+
+
+  # Shows the upload file modal.
+  $("a.command-upload-file").on('click', (event) ->
+    link = $(this)
+
+    json = JSON.stringify({
+      hosted_file: {
+        friendly_name: $("#hosted_file_friendly_name").val(),
+        file_name: "",
+        s3_url: ""
+      }
+    })
+
+    $.ajax "/nodes/#{link.data("node_id")}/hosted_files",
+      type: 'POST',
+      contentType: 'application/json',
+      data: json,
+      dataType: 'json',
+      error: (jqXHR, textStatus, errorThrown) ->
+        console.log "AJAX Error: #{textStatus}"
+      success: (data, textStatus, jqXHR) ->
+        $("#modal-upload").modal("hide")
+  )

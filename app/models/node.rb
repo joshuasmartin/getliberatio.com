@@ -14,15 +14,18 @@ class Node < ActiveRecord::Base
   # relationships
   belongs_to :organization
   has_many :commands, dependent: :destroy
+  has_many :hosted_files, dependent: :destroy
   has_many :instances, dependent: :destroy
   has_many :memories, dependent: :destroy
+  has_many :notes, dependent: :destroy
   has_many :processors, dependent: :destroy
   has_many :disks, dependent: :destroy
   has_many :updates, dependent: :destroy
-
+  
   # validations
   validates :uuid, :organization, presence: true
-  validates :role, :inclusion => {:in => ["Domain Controller", "Phone", "Router", "Server", "Tablet", "Workstation"]}, :if => Proc.new { |node| node.role.present? }
+  validates :role, :inclusion => { :in => ["Domain Controller", "Phone", "Router", "Server", "Tablet", "Workstation"] }, :if => Proc.new { |node| node.role.present? }
+  validates :name, presence: true, :if => Proc.new { |node| !node.is_managed? }
   # validates :operating_system, :inclusion => {:in => Node.operating_systems}
 
   # validate :validate_operating_system_in_operating_systems

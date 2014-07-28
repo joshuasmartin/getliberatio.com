@@ -26,18 +26,18 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:password]) # authenticated
         format.html {
           session[:user_id] = user.id
-
-          # Continue sign up if a plan is in the session
-          if session.has_key? :signup
-            redirect_to new_subscription_path
-          else
-            redirect_to root_path
-          end
+          redirect_to dashboard_nodes_path
+          # # Continue sign up if a plan is in the session
+          # if session.has_key? :signup
+          #   redirect_to new_subscription_path
+          # else
+          #   redirect_to root_path
+          # end
         }
         format.json { render :json => user.as_json( :only => [:api_key, :api_secret] ) }
       else
         format.html {
-          flash.alert = "Invalid E-mail address or password"
+          flash.now.alert = "Invalid E-mail address or password"
           render :new
         }
         format.json { render :json => { :error => "Invalid E-mail address or password" } }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723190605) do
+ActiveRecord::Schema.define(version: 20140727191511) do
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20140723190605) do
   end
 
   add_index "disks", ["node_id"], name: "index_disks_on_node_id"
+
+  create_table "hosted_files", force: true do |t|
+    t.integer  "node_id"
+    t.integer  "organization_id"
+    t.text     "file_name"
+    t.text     "friendly_name"
+    t.text     "s3_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hosted_files", ["node_id"], name: "index_hosted_files_on_node_id"
+  add_index "hosted_files", ["organization_id"], name: "index_hosted_files_on_organization_id"
 
   create_table "instances", force: true do |t|
     t.integer  "application_id"
@@ -99,6 +112,20 @@ ActiveRecord::Schema.define(version: 20140723190605) do
   end
 
   add_index "nodes", ["organization_id"], name: "index_nodes_on_organization_id"
+
+  create_table "notes", force: true do |t|
+    t.integer  "node_id"
+    t.integer  "organization_id"
+    t.text     "title"
+    t.text     "contents"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["node_id"], name: "index_notes_on_node_id"
+  add_index "notes", ["organization_id"], name: "index_notes_on_organization_id"
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
 
   create_table "organizations", force: true do |t|
     t.string   "name"

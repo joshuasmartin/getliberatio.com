@@ -1,0 +1,35 @@
+<h1>Listing hosted_files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Organization</th>
+      <th>File name</th>
+      <th>Friendly name</th>
+      <th>S3 url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hosted_files.each do |hosted_file| %>
+      <tr>
+        <td><%= hosted_file.node_id %></td>
+        <td><%= hosted_file.organization_id %></td>
+        <td><%= hosted_file.file_name %></td>
+        <td><%= hosted_file.friendly_name %></td>
+        <td><%= hosted_file.s3_url %></td>
+        <td><%= link_to 'Show', hosted_file %></td>
+        <td><%= link_to 'Edit', edit_hosted_file_path(hosted_file) %></td>
+        <td><%= link_to 'Destroy', hosted_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hosted file', new_hosted_file_path %>
