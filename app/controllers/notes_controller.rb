@@ -14,6 +14,8 @@ class NotesController < ApplicationController
   before_action :set_organization
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
+  respond_to :json
+
   # GET /organizations/1/notes
   # GET /nodes/1/notes
   def index
