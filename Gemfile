@@ -57,3 +57,6 @@ gem 'pundit'
 
 # Amazon Web Services
 gem 'aws-sdk'
+
+# Prevention for Heroku timeouts
+gem "rack-timeout"
